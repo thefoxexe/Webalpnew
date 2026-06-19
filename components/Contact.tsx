@@ -20,12 +20,47 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
+  const [error, setError] = useState<string | null>(null)
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    await new Promise((r) => setTimeout(r, 1000))
-    setLoading(false)
-    setSubmitted(true)
+    setError(null)
+
+    try {
+      const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID
+      const endpoint = formspreeId
+        ? `https://formspree.io/f/${formspreeId}`
+        : `mailto:contact@webalp.ch`
+
+      if (!formspreeId) {
+        // Fallback: open mail client
+        const subject = encodeURIComponent(`Nouveau projet — ${form.name}`)
+        const body = encodeURIComponent(
+          `Nom: ${form.name}\nEmail: ${form.email}\nEntreprise: ${form.company}\nBudget: ${form.budget}\n\n${form.message}`
+        )
+        window.location.href = `mailto:contact@webalp.ch?subject=${subject}&body=${body}`
+        setSubmitted(true)
+        setLoading(false)
+        return
+      }
+
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      if (res.ok) {
+        setSubmitted(true)
+      } else {
+        setError("Une erreur s'est produite. Écrivez-nous directement à contact@webalp.ch")
+      }
+    } catch {
+      setError("Une erreur s'est produite. Écrivez-nous directement à contact@webalp.ch")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -244,6 +279,10 @@ export default function Contact() {
                     </>
                   )}
                 </button>
+
+                {error && (
+                  <p className="text-xs text-red-600 text-center font-medium">{error}</p>
+                )}
 
                 <p className="text-xs text-black/35 text-center">
                   Vos données sont confidentielles et ne seront jamais partagées.
