@@ -2,129 +2,111 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-
-const navLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Réalisations', href: '#portfolio' },
-  { label: 'Tarifs', href: '#tarifs' },
-  { label: 'À propos', href: '#process' },
-  { label: 'Contact', href: '#contact' },
-]
+import { useLanguage } from '@/contexts/LanguageContext'
+import type { Lang } from '@/lib/translations'
 
 export default function Navbar() {
+  const { t, lang, setLang } = useLanguage()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    const h = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', h, { passive: true })
+    return () => window.removeEventListener('scroll', h)
   }, [])
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  const navLinks = [
+    { label: t.nav.services, href: '#services' },
+    { label: t.nav.portfolio, href: '#portfolio' },
+    { label: t.nav.pricing, href: '#tarifs' },
+    { label: t.nav.about, href: '#process' },
+    { label: t.nav.contact, href: '#contact' },
+  ]
+
+  const toggleLang = () => setLang(lang === 'fr' ? 'en' : 'fr')
+
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-white/90 backdrop-blur-md border-b border-black/8 py-3'
-            : 'bg-transparent py-5'
-        }`}
-      >
-        <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <Link
-            href="/"
-            className="text-xl font-display font-bold tracking-tight text-black hover:opacity-70 transition-opacity"
-            aria-label="WebAlp - Accueil"
-          >
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white/90 backdrop-blur-lg border-b border-black/8 py-3' : 'bg-transparent py-5'
+      }`}>
+        <nav className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between gap-4">
+          <Link href="/" className="font-display font-extrabold text-xl tracking-tight text-black hover:opacity-70 transition-opacity" aria-label="WebAlp">
             WebAlp
           </Link>
 
-          {/* Desktop nav */}
-          <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm font-medium text-black/70 hover:text-black transition-colors"
-                >
-                  {link.label}
+          {/* Desktop */}
+          <ul className="hidden md:flex items-center gap-7">
+            {navLinks.map(l => (
+              <li key={l.href}>
+                <Link href={l.href} className="text-sm font-medium text-black/60 hover:text-black transition-colors underline-grow">
+                  {l.label}
                 </Link>
               </li>
             ))}
           </ul>
 
-          <div className="flex items-center gap-3">
-            <Link
-              href="#contact"
-              className="hidden md:inline-flex items-center gap-2 bg-black text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-black/80 transition-colors"
+          <div className="flex items-center gap-2">
+            {/* Language switcher */}
+            <button
+              onClick={toggleLang}
+              className="hidden md:flex items-center gap-1.5 text-xs font-bold text-black/40 hover:text-black transition-colors border border-black/10 rounded-full px-3 py-1.5 hover:border-black/30"
+              aria-label={`Switch to ${lang === 'fr' ? 'English' : 'Français'}`}
             >
-              Démarrer un projet
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <span className={lang === 'fr' ? 'text-black' : 'text-black/30'}>FR</span>
+              <span className="text-black/20">/</span>
+              <span className={lang === 'en' ? 'text-black' : 'text-black/30'}>EN</span>
+            </button>
+
+            <Link href="#contact" className="hidden md:inline-flex items-center gap-2 bg-black text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-black/80 active:scale-95 transition-all duration-150">
+              {t.nav.cta}
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </Link>
 
             {/* Mobile hamburger */}
-            <button
-              className="md:hidden flex flex-col gap-1.5 p-2"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-              aria-expanded={menuOpen}
-            >
+            <button className="md:hidden flex flex-col gap-1.5 p-2" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu" aria-expanded={menuOpen}>
               <span className={`block h-0.5 bg-black transition-all duration-300 ${menuOpen ? 'w-6 rotate-45 translate-y-2' : 'w-6'}`} />
-              <span className={`block h-0.5 bg-black transition-all duration-300 ${menuOpen ? 'w-0 opacity-0' : 'w-4'}`} />
+              <span className={`block h-0.5 bg-black transition-all duration-200 ${menuOpen ? 'opacity-0 w-0' : 'w-4'}`} />
               <span className={`block h-0.5 bg-black transition-all duration-300 ${menuOpen ? 'w-6 -rotate-45 -translate-y-2' : 'w-6'}`} />
             </button>
           </div>
         </nav>
       </header>
 
-      {/* Mobile menu overlay */}
-      <div
-        className={`fixed inset-0 z-40 bg-white flex flex-col transition-all duration-400 ${
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-      >
-        <div className="flex-1 flex flex-col justify-center px-8">
-          <ul className="space-y-6">
-            {navLinks.map((link, i) => (
-              <li key={link.href} style={{ transitionDelay: menuOpen ? `${i * 60}ms` : '0ms' }}
-                className={`transition-all duration-300 ${menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
-              >
-                <Link
-                  href={link.href}
-                  className="text-4xl font-display font-bold text-black hover:opacity-50 transition-opacity"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
+      {/* Mobile overlay */}
+      <div className={`fixed inset-0 z-40 bg-white flex flex-col transition-all duration-300 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div className="flex-1 flex flex-col justify-center px-8 pt-20">
+          <ul className="space-y-5 mb-10">
+            {navLinks.map((l, i) => (
+              <li key={l.href} style={{ transitionDelay: menuOpen ? `${i * 50}ms` : '0ms' }}
+                className={`transition-all duration-300 ${menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
+                <Link href={l.href} className="font-display font-extrabold text-4xl text-black hover:text-black/40 transition-colors" onClick={() => setMenuOpen(false)}>
+                  {l.label}
                 </Link>
               </li>
             ))}
           </ul>
 
-          <div className="mt-12">
-            <Link
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-black text-white text-base font-semibold px-7 py-4 rounded-full hover:bg-black/80 transition-colors"
-              onClick={() => setMenuOpen(false)}
-            >
-              Démarrer un projet
-              <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+          <div className="flex items-center gap-3">
+            <Link href="#contact" className="inline-flex items-center gap-2 bg-black text-white font-semibold text-base px-7 py-4 rounded-full" onClick={() => setMenuOpen(false)}>
+              {t.nav.cta}
             </Link>
+            {/* Mobile lang switcher */}
+            <button onClick={toggleLang} className="flex items-center gap-1.5 text-sm font-bold border border-black/15 rounded-full px-4 py-3.5">
+              <span className={lang === 'fr' ? 'text-black' : 'text-black/30'}>FR</span>
+              <span className="text-black/20">/</span>
+              <span className={lang === 'en' ? 'text-black' : 'text-black/30'}>EN</span>
+            </button>
           </div>
-
-          <p className="mt-8 text-sm text-black/40">contact@webalp.ch · +41 77 274 17 26</p>
+          <p className="mt-8 text-sm text-black/30">contact@webalp.ch · +41 77 274 17 26</p>
         </div>
       </div>
     </>

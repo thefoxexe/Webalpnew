@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const projects = [
   {
@@ -17,7 +18,7 @@ const projects = [
   },
   {
     index: '02',
-    name: 'Cook\'Eazy',
+    name: "Cook'Eazy",
     type: 'Site web + Application',
     year: '2025',
     sector: 'Application culinaire',
@@ -46,6 +47,7 @@ const projectList = [
 ]
 
 export default function Portfolio() {
+  const { t } = useLanguage()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [hovered, setHovered] = useState<number | null>(null)
@@ -54,7 +56,6 @@ export default function Portfolio() {
     <section id="portfolio" className="py-28 bg-[#F5F4F0]" ref={ref} aria-labelledby="portfolio-title">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -63,18 +64,17 @@ export default function Portfolio() {
         >
           <div>
             <p className="text-xs font-mono text-black/35 tracking-widest uppercase mb-4">
-              — Nos réalisations
+              — {t.portfolio.label}
             </p>
             <h2 id="portfolio-title" className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold text-black leading-tight">
-              Des résultats,<br />pas des promesses.
+              {t.portfolio.h2a}<br />{t.portfolio.h2b}
             </h2>
           </div>
           <p className="text-black/40 text-sm max-w-xs md:text-right leading-relaxed">
-            Chaque projet est une collaboration unique avec un objectif clair : vous faire gagner des clients.
+            {t.portfolio.sub}
           </p>
         </motion.div>
 
-        {/* Featured projects — 3 cards */}
         <div className="grid md:grid-cols-3 gap-3 mb-3">
           {projects.map((p, i) => (
             <motion.article
@@ -86,7 +86,6 @@ export default function Portfolio() {
               onMouseLeave={() => setHovered(null)}
               className={`relative ${p.bg} rounded-2xl overflow-hidden p-8 md:p-10 cursor-default group min-h-[340px] flex flex-col justify-between`}
             >
-              {/* Top */}
               <div className="flex items-start justify-between">
                 <span className={`font-mono text-xs font-bold ${p.dark ? 'text-white/20' : 'text-black/20'}`}>
                   {p.index}
@@ -96,7 +95,6 @@ export default function Portfolio() {
                 </span>
               </div>
 
-              {/* Result metric — big */}
               <div>
                 <motion.p
                   animate={{ opacity: hovered === i ? 0 : 1 }}
@@ -116,7 +114,6 @@ export default function Portfolio() {
                 </motion.p>
               </div>
 
-              {/* Bottom */}
               <div className="flex items-end justify-between">
                 <div>
                   <h3 className={`font-display text-xl font-extrabold ${p.dark ? 'text-white' : 'text-black'}`}>
@@ -140,7 +137,6 @@ export default function Portfolio() {
           ))}
         </div>
 
-        {/* List of other projects */}
         <div className="border border-black/10 rounded-2xl overflow-hidden bg-white">
           {projectList.map((p, i) => (
             <motion.div

@@ -2,12 +2,15 @@
 
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Contact() {
+  const { t } = useLanguage()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -20,8 +23,6 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const [error, setError] = useState<string | null>(null)
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
@@ -29,12 +30,8 @@ export default function Contact() {
 
     try {
       const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID
-      const endpoint = formspreeId
-        ? `https://formspree.io/f/${formspreeId}`
-        : `mailto:contact@webalp.ch`
 
       if (!formspreeId) {
-        // Fallback: open mail client
         const subject = encodeURIComponent(`Nouveau projet — ${form.name}`)
         const body = encodeURIComponent(
           `Nom: ${form.name}\nEmail: ${form.email}\nEntreprise: ${form.company}\nBudget: ${form.budget}\n\n${form.message}`
@@ -45,7 +42,7 @@ export default function Contact() {
         return
       }
 
-      const res = await fetch(endpoint, {
+      const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(form),
@@ -54,14 +51,16 @@ export default function Contact() {
       if (res.ok) {
         setSubmitted(true)
       } else {
-        setError("Une erreur s'est produite. Écrivez-nous directement à contact@webalp.ch")
+        setError(t.contact.fields.errorMsg)
       }
     } catch {
-      setError("Une erreur s'est produite. Écrivez-nous directement à contact@webalp.ch")
+      setError(t.contact.fields.errorMsg)
     } finally {
       setLoading(false)
     }
   }
+
+  const f = t.contact.fields
 
   return (
     <section
@@ -79,18 +78,15 @@ export default function Contact() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="text-xs font-semibold tracking-widest uppercase text-black/40 mb-5">
-              Parlons de votre projet
+              {t.contact.label}
             </p>
             <h2
               id="contact-title"
               className="font-display text-4xl md:text-5xl font-extrabold text-black leading-tight mb-6"
             >
-              Prêt à avoir un site qui rapporte ?
+              {t.contact.h2a}<br />{t.contact.h2b}
             </h2>
-            <p className="text-black/55 text-lg leading-relaxed mb-10">
-              Remplissez le formulaire et on vous répond sous 24h avec un premier audit
-              gratuit de votre situation actuelle.
-            </p>
+            <p className="text-black/55 text-lg leading-relaxed mb-10">{t.contact.body}</p>
 
             <div className="space-y-6">
               <div className="flex items-center gap-4">
@@ -100,8 +96,8 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-black">Sion, Valais, Suisse</p>
-                  <p className="text-xs text-black/45">Interventions dans toute la Suisse</p>
+                  <p className="text-sm font-semibold text-black">{t.contact.location}</p>
+                  <p className="text-xs text-black/45">{t.contact.locationSub}</p>
                 </div>
               </div>
 
@@ -114,7 +110,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-black">contact@webalp.ch</p>
-                  <p className="text-xs text-black/45">Réponse sous 24h</p>
+                  <p className="text-xs text-black/45">{t.contact.emailSub}</p>
                 </div>
               </div>
 
@@ -126,24 +122,21 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-black">+41 77 274 17 26</p>
-                  <p className="text-xs text-black/45">Lun-Ven, 9h-18h</p>
+                  <p className="text-xs text-black/45">{t.contact.phoneSub}</p>
                 </div>
               </div>
             </div>
 
-            {/* Social proof */}
             <div className="mt-10 p-6 bg-[#F5F5F5] rounded-2xl border border-black/6">
-              <div className="flex gap-1 mb-2" aria-label="5 étoiles">
+              <div className="flex gap-1 mb-2" aria-label="5 stars">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} width="14" height="14" viewBox="0 0 16 16" fill="#0A0A0A" aria-hidden="true">
                     <path d="M8 1l1.76 3.57L14 5.27l-3 2.92.7 4.1L8 10.16l-3.7 2.13.7-4.1L2 5.27l4.24-.7z"/>
                   </svg>
                 ))}
               </div>
-              <p className="text-sm text-black/65 italic mb-3">
-                &ldquo;On a eu notre devis sous 2 heures et le site en 12 jours. Impressionnant.&rdquo;
-              </p>
-              <p className="text-xs font-semibold text-black/45">— Marc D., StartUp Sion</p>
+              <p className="text-sm text-black/65 italic mb-3">{t.contact.quoteText}</p>
+              <p className="text-xs font-semibold text-black/45">{t.contact.quoteAuthor}</p>
             </div>
           </motion.div>
 
@@ -160,13 +153,8 @@ export default function Contact() {
                     <path d="M4 14l7 7 13-13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-                <h3 className="font-display text-2xl font-extrabold text-white mb-3">
-                  Message envoyé !
-                </h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Merci pour votre message. On vous répond sous 24h avec un audit gratuit
-                  de votre présence en ligne.
-                </p>
+                <h3 className="font-display text-2xl font-extrabold text-white mb-3">{f.successTitle}</h3>
+                <p className="text-white/60 text-sm leading-relaxed">{f.successBody}</p>
               </div>
             ) : (
               <form
@@ -177,7 +165,7 @@ export default function Contact() {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-xs font-semibold text-black/60 mb-1.5">
-                      Nom & prénom *
+                      {f.name}
                     </label>
                     <input
                       id="name"
@@ -186,13 +174,13 @@ export default function Contact() {
                       required
                       value={form.name}
                       onChange={handleChange}
-                      placeholder="Jean Dupont"
+                      placeholder={f.namePlaceholder}
                       className="w-full bg-white border border-black/12 rounded-xl px-4 py-3 text-sm text-black placeholder:text-black/30 focus:outline-none focus:border-black transition-colors"
                     />
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-xs font-semibold text-black/60 mb-1.5">
-                      Email *
+                      {f.email}
                     </label>
                     <input
                       id="email"
@@ -201,7 +189,7 @@ export default function Contact() {
                       required
                       value={form.email}
                       onChange={handleChange}
-                      placeholder="jean@exemple.ch"
+                      placeholder={f.emailPlaceholder}
                       className="w-full bg-white border border-black/12 rounded-xl px-4 py-3 text-sm text-black placeholder:text-black/30 focus:outline-none focus:border-black transition-colors"
                     />
                   </div>
@@ -209,7 +197,7 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="company" className="block text-xs font-semibold text-black/60 mb-1.5">
-                    Entreprise
+                    {f.company}
                   </label>
                   <input
                     id="company"
@@ -217,14 +205,14 @@ export default function Contact() {
                     type="text"
                     value={form.company}
                     onChange={handleChange}
-                    placeholder="Ma Super Entreprise SA"
+                    placeholder={f.companyPlaceholder}
                     className="w-full bg-white border border-black/12 rounded-xl px-4 py-3 text-sm text-black placeholder:text-black/30 focus:outline-none focus:border-black transition-colors"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="budget" className="block text-xs font-semibold text-black/60 mb-1.5">
-                    Budget approximatif
+                    {f.budget}
                   </label>
                   <select
                     id="budget"
@@ -233,17 +221,16 @@ export default function Contact() {
                     onChange={handleChange}
                     className="w-full bg-white border border-black/12 rounded-xl px-4 py-3 text-sm text-black focus:outline-none focus:border-black transition-colors appearance-none"
                   >
-                    <option value="">Sélectionner un budget</option>
-                    <option value="starter">CHF 890 – 1&apos;200 (Starter)</option>
-                    <option value="growth">CHF 1&apos;200 – 2&apos;000 (Croissance)</option>
-                    <option value="authority">CHF 2&apos;000 – 3&apos;500 (Autorité)</option>
-                    <option value="custom">CHF 3&apos;500+ (Sur mesure)</option>
+                    <option value="">{f.budgetDefault}</option>
+                    {f.budgets.map((b) => (
+                      <option key={b.value} value={b.value}>{b.label}</option>
+                    ))}
                   </select>
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-xs font-semibold text-black/60 mb-1.5">
-                    Décrivez votre projet *
+                    {f.message}
                   </label>
                   <textarea
                     id="message"
@@ -252,7 +239,7 @@ export default function Contact() {
                     value={form.message}
                     onChange={handleChange}
                     rows={4}
-                    placeholder="Mon activité est... J'ai besoin d'un site pour... Mes objectifs sont..."
+                    placeholder={f.messagePlaceholder}
                     className="w-full bg-white border border-black/12 rounded-xl px-4 py-3 text-sm text-black placeholder:text-black/30 focus:outline-none focus:border-black transition-colors resize-none"
                   />
                 </div>
@@ -268,11 +255,11 @@ export default function Contact() {
                         <circle cx="8" cy="8" r="6" stroke="white" strokeOpacity="0.25" strokeWidth="2"/>
                         <path d="M14 8a6 6 0 01-6 6" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                       </svg>
-                      Envoi en cours...
+                      {f.submitting}
                     </>
                   ) : (
                     <>
-                      Envoyer ma demande
+                      {f.submit}
                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                         <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
@@ -284,9 +271,7 @@ export default function Contact() {
                   <p className="text-xs text-red-600 text-center font-medium">{error}</p>
                 )}
 
-                <p className="text-xs text-black/35 text-center">
-                  Vos données sont confidentielles et ne seront jamais partagées.
-                </p>
+                <p className="text-xs text-black/35 text-center">{f.privacy}</p>
               </form>
             )}
           </motion.div>

@@ -1,27 +1,19 @@
-import Link from 'next/link'
+'use client'
 
-const footerLinks = {
-  Services: [
-    { label: 'Site vitrine', href: '#services' },
-    { label: 'SEO & Référencement', href: '#services' },
-    { label: 'E-commerce', href: '#services' },
-    { label: 'Maintenance', href: '#services' },
-  ],
-  Entreprise: [
-    { label: 'Notre processus', href: '#process' },
-    { label: 'Réalisations', href: '#portfolio' },
-    { label: 'Tarifs', href: '#tarifs' },
-    { label: 'Témoignages', href: '#testimonials' },
-  ],
-  Contact: [
-    { label: 'Démarrer un projet', href: '#contact' },
-    { label: 'contact@webalp.ch', href: 'mailto:contact@webalp.ch' },
-    { label: '+41 77 274 17 26', href: 'tel:+41772741726' },
-    { label: 'Sion, Valais, Suisse', href: '#' },
-  ],
-}
+import Link from 'next/link'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Footer() {
+  const { t } = useLanguage()
+
+  const footerSections = Object.entries(t.footer.sections) as unknown as [string, readonly string[]][]
+
+  const sectionHrefs: Record<number, string[]> = {
+    0: ['#services', '#services', '#services', '#services'],
+    1: ['#process', '#portfolio', '#tarifs', '#testimonials'],
+    2: ['#contact', 'mailto:contact@webalp.ch', 'tel:+41772741726', '#'],
+  }
+
   return (
     <footer className="bg-white border-t border-black/8" role="contentinfo">
       <div className="max-w-6xl mx-auto px-6 py-16">
@@ -31,10 +23,7 @@ export default function Footer() {
             <Link href="/" className="inline-block mb-4" aria-label="WebAlp - Accueil">
               <span className="font-display text-2xl font-extrabold text-black">WebAlp</span>
             </Link>
-            <p className="text-sm text-black/50 leading-relaxed mb-6 max-w-xs">
-              Agence web à Sion, Valais. Nous créons des sites web qui convertissent
-              pour les startups et PME suisses.
-            </p>
+            <p className="text-sm text-black/50 leading-relaxed mb-6 max-w-xs">{t.footer.tagline}</p>
             <div className="flex items-center gap-3">
               <a
                 href="mailto:contact@webalp.ch"
@@ -70,20 +59,20 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links */}
-          {Object.entries(footerLinks).map(([category, links]) => (
+          {/* Link sections */}
+          {footerSections.map(([category, links], sectionIndex) => (
             <div key={category}>
               <h3 className="text-xs font-bold tracking-widest uppercase text-black/40 mb-4">
                 {category}
               </h3>
               <ul className="space-y-2.5">
-                {links.map((link) => (
-                  <li key={link.label}>
+                {links.map((label, linkIndex) => (
+                  <li key={label}>
                     <Link
-                      href={link.href}
+                      href={sectionHrefs[sectionIndex]?.[linkIndex] ?? '#'}
                       className="text-sm text-black/60 hover:text-black transition-colors"
                     >
-                      {link.label}
+                      {label}
                     </Link>
                   </li>
                 ))}
@@ -92,17 +81,16 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-black/8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-black/35">
-            © {new Date().getFullYear()} WebAlp. Tous droits réservés. Sion, Valais, Suisse.
+            {t.footer.rights.replace('{year}', String(new Date().getFullYear()))}
           </p>
           <div className="flex items-center gap-4">
             <Link href="/mentions-legales" className="text-xs text-black/35 hover:text-black transition-colors">
-              Mentions légales
+              {t.footer.legal}
             </Link>
             <Link href="/confidentialite" className="text-xs text-black/35 hover:text-black transition-colors">
-              Confidentialité
+              {t.footer.privacy}
             </Link>
           </div>
         </div>
