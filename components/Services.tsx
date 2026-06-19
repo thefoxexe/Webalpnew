@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 
@@ -8,125 +8,133 @@ const services = [
   {
     number: '01',
     title: 'Site vitrine',
-    subtitle: 'Votre carte de visite digitale',
-    description:
-      'Un site professionnel, rapide et beau qui représente parfaitement votre activité. Conçu pour convertir les visiteurs en clients dès la première visite.',
-    features: ['Design sur mesure', 'Mobile-first', 'SEO technique', 'Formulaire de contact', 'Analytics intégré'],
-    cta: 'À partir de CHF 890',
+    price: 'dès CHF 890',
+    description: 'Votre carte de visite digitale, pensée pour convertir. Design sur mesure, mobile-first, SEO intégré. Livré en 14 jours.',
+    features: ['Design 100% sur mesure', 'Optimisation mobile', 'SEO technique inclus', 'Formulaire de contact', 'Google Analytics', 'Formation incluse'],
+    cta: 'Demander un devis',
   },
   {
     number: '02',
     title: 'SEO & Référencement',
-    subtitle: 'Soyez trouvé sur Google',
-    description:
-      'Optimisation complète pour que vos clients vous trouvent avant la concurrence. Recherche de mots-clés, optimisation technique et création de contenu.',
-    features: ['Audit SEO complet', 'Mots-clés stratégiques', 'Optimisation On-Page', 'Google Business', 'Suivi mensuel'],
-    cta: 'À partir de CHF 290/mois',
+    price: 'dès CHF 290/mois',
+    description: "Soyez visible avant vos concurrents sur Google. Audit, stratégie mots-clés, optimisation continue, Google Business.",
+    features: ['Audit SEO complet', 'Recherche mots-clés', 'Optimisation On-Page', 'Google Business', 'Rapport mensuel', 'Suivi positions'],
+    cta: 'En savoir plus',
   },
   {
     number: '03',
-    title: 'E-commerce',
-    subtitle: 'Vendez en ligne, 24h/24',
-    description:
-      'Boutique en ligne complète avec gestion des paiements, stocks et commandes. Optimisée pour maximiser votre panier moyen et réduire les abandons.',
-    features: ['Catalogue produits', 'Paiement sécurisé', 'Gestion des stocks', 'Emails automatiques', 'Dashboard pro'],
-    cta: 'À partir de CHF 1\'990',
+    title: 'Application web',
+    price: 'dès CHF 1\'990',
+    description: 'Boutique en ligne, plateforme de réservation, application métier. On code vos fonctionnalités sur mesure.',
+    features: ['E-commerce ou sur mesure', 'Système de réservation', 'Paiement en ligne', 'Dashboard admin', 'Emails automatiques', 'Tests complets'],
+    cta: 'Discuter du projet',
   },
   {
     number: '04',
     title: 'Maintenance & Support',
-    subtitle: 'On s\'occupe de tout',
-    description:
-      'Vous gérez votre business, on gère votre site. Mises à jour, sauvegardes, sécurité et support réactif pour que votre site soit toujours au top.',
-    features: ['Mises à jour CMS', 'Sauvegardes quotidiennes', 'Certificat SSL', 'Support sous 24h', 'Rapport mensuel'],
-    cta: 'À partir de CHF 89/mois',
+    price: 'dès CHF 89/mois',
+    description: "Vous gérez votre business, on gère votre site. Mises à jour, sauvegardes, sécurité. Support réactif sous 24h.",
+    features: ['Mises à jour CMS', 'Sauvegardes quotidiennes', 'Certificat SSL', 'Support sous 24h', 'Rapport mensuel', 'Monitoring 24/7'],
+    cta: 'Souscrire',
   },
 ]
 
 export default function Services() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const [active, setActive] = useState<number | null>(null)
 
   return (
-    <section id="services" className="py-28 bg-white" ref={ref} aria-labelledby="services-title">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="services" className="py-28 bg-[#F5F4F0]" ref={ref} aria-labelledby="services-title">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-16"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
         >
-          <p className="text-xs font-semibold tracking-widest uppercase text-black/40 mb-4">
-            Nos services
-          </p>
-          <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-0 justify-between">
-            <h2
-              id="services-title"
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight max-w-lg"
-            >
-              Tout ce qu&apos;il faut pour dominer votre marché.
+          <div>
+            <p className="text-xs font-mono text-black/35 tracking-widest uppercase mb-4">— Nos services</p>
+            <h2 id="services-title" className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold text-black leading-tight">
+              Tout ce qu&apos;il faut<br />pour dominer.
             </h2>
-            <p className="text-black/50 text-base max-w-xs md:text-right leading-relaxed">
-              Des prestations complètes, pensées pour les entreprises suisses qui veulent des résultats.
-            </p>
           </div>
+          <p className="text-black/40 text-sm max-w-xs md:text-right leading-relaxed">
+            Des prestations complètes, pensées pour les entreprises suisses qui veulent des résultats — pas des excuses.
+          </p>
         </motion.div>
 
-        {/* Services grid */}
-        <div className="grid md:grid-cols-2 gap-px bg-black/8">
-          {services.map((service, i) => (
+        {/* Services accordion / grid */}
+        <div className="space-y-px">
+          {services.map((s, i) => (
             <motion.div
-              key={service.number}
-              initial={{ opacity: 0, y: 30 }}
+              key={s.number}
+              initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
-              className="bg-white p-8 md:p-10 group hover:bg-[#F5F5F5] transition-colors duration-300"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className={`group border border-black/10 rounded-2xl overflow-hidden transition-all duration-300 ${
+                active === i ? 'bg-[#0A0A0A]' : 'bg-white hover:bg-[#F5F4F0]'
+              }`}
             >
-              <div className="flex items-start justify-between mb-6">
-                <span className="text-xs font-mono font-bold text-black/25 tracking-wider">
-                  {service.number}
+              <button
+                className="w-full flex items-center gap-6 px-6 md:px-8 py-6 text-left"
+                onClick={() => setActive(active === i ? null : i)}
+                aria-expanded={active === i}
+              >
+                <span className={`font-mono text-xs font-bold w-7 flex-shrink-0 ${active === i ? 'text-white/25' : 'text-black/20'}`}>
+                  {s.number}
                 </span>
-                <svg
-                  className="text-black/20 group-hover:text-black group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path d="M4 16L16 4M16 4H8M16 4V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
+                <div className="flex-1 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
+                  <h3 className={`font-display text-2xl md:text-3xl font-extrabold transition-colors ${active === i ? 'text-white' : 'text-black'}`}>
+                    {s.title}
+                  </h3>
+                  <span className={`text-sm font-bold transition-colors ${active === i ? 'text-white/40' : 'text-black/35'}`}>
+                    {s.price}
+                  </span>
+                </div>
+                <div className={`w-9 h-9 rounded-full border flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                  active === i ? 'border-white/20 rotate-45' : 'border-black/15 group-hover:border-black/35'
+                }`}>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M6 2v8M2 6h8" stroke={active === i ? 'white' : '#0A0A0A'} strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                </div>
+              </button>
 
-              <h3 className="font-display text-2xl md:text-3xl font-extrabold text-black mb-1">
-                {service.title}
-              </h3>
-              <p className="text-sm font-medium text-black/45 mb-4">{service.subtitle}</p>
-              <p className="text-black/60 leading-relaxed mb-6 text-sm md:text-base">
-                {service.description}
-              </p>
-
-              <ul className="space-y-2 mb-8">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2 text-sm text-black/65">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                      <path d="M2 6l3 3 5-5" stroke="#0A0A0A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              {/* Expanded content */}
+              <motion.div
+                initial={false}
+                animate={{ height: active === i ? 'auto' : 0 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="overflow-hidden"
+              >
+                <div className="px-6 md:px-8 pb-8 grid md:grid-cols-[1fr_auto] gap-8 items-end">
+                  <div>
+                    <p className="text-white/55 leading-relaxed mb-6">{s.description}</p>
+                    <ul className="grid grid-cols-2 gap-2">
+                      {s.features.map((f) => (
+                        <li key={f} className="flex items-center gap-2 text-sm text-white/65">
+                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                            <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Link
+                    href="#contact"
+                    className="inline-flex items-center gap-2 bg-white text-black text-sm font-bold px-5 py-3 rounded-full hover:bg-white/85 active:scale-95 transition-all flex-shrink-0"
+                  >
+                    {s.cta}
+                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="flex items-center justify-between pt-6 border-t border-black/8">
-                <span className="text-sm font-bold text-black">{service.cta}</span>
-                <Link
-                  href="#contact"
-                  className="text-xs font-semibold text-black/50 hover:text-black transition-colors underline underline-offset-4"
-                >
-                  Demander un devis
-                </Link>
-              </div>
+                  </Link>
+                </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

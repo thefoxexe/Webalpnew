@@ -1,140 +1,205 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
-export default function Hero() {
-  const gridRef = useRef<HTMLDivElement>(null)
+const rotatingStats = [
+  { value: '45+', label: 'projets livrés' },
+  { value: '+340%', label: 'trafic moyen gagné' },
+  { value: '14 jours', label: 'délai de livraison' },
+  { value: '98/100', label: 'score performance' },
+]
+
+function RotatingStat() {
+  const [index, setIndex] = useState(0)
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!gridRef.current) return
-      const rect = gridRef.current.getBoundingClientRect()
-      const x = ((e.clientX - rect.left) / rect.width) * 100
-      const y = ((e.clientY - rect.top) / rect.height) * 100
-      gridRef.current.style.setProperty('--mouse-x', `${x}%`)
-      gridRef.current.style.setProperty('--mouse-y', `${y}%`)
+    const t = setInterval(() => setIndex((i) => (i + 1) % rotatingStats.length), 2800)
+    return () => clearInterval(t)
+  }, [])
+
+  const stat = rotatingStats[index]
+  return (
+    <motion.span
+      key={index}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.35 }}
+      className="inline-flex items-baseline gap-1.5"
+    >
+      <span className="font-display font-extrabold text-white text-sm">{stat.value}</span>
+      <span className="text-white/40 text-xs">{stat.label}</span>
+    </motion.span>
+  )
+}
+
+export default function Hero() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    let animId: number
+    let t = 0
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
     }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    resize()
+    window.addEventListener('resize', resize)
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.strokeStyle = 'rgba(255,255,255,0.06)'
+      ctx.lineWidth = 1
+
+      const spacing = 72
+      const cols = Math.ceil(canvas.width / spacing) + 2
+      const rows = Math.ceil(canvas.height / spacing) + 2
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const x = c * spacing
+          const y = r * spacing
+          const wave = Math.sin(t * 0.8 + c * 0.4 + r * 0.3) * 6
+          ctx.beginPath()
+          ctx.arc(x, y + wave, 1, 0, Math.PI * 2)
+          ctx.stroke()
+        }
+      }
+      t += 0.012
+      animId = requestAnimationFrame(draw)
+    }
+    draw()
+
+    return () => {
+      window.removeEventListener('resize', resize)
+      cancelAnimationFrame(animId)
+    }
   }, [])
 
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
-      aria-label="Section principale"
+      className="relative min-h-screen bg-[#0A0A0A] overflow-hidden flex flex-col"
+      aria-label="Section principale WebAlp"
     >
-      {/* Subtle grid background */}
+      {/* Animated dot grid */}
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" aria-hidden="true" />
+
+      {/* Diagonal accent line */}
       <div
-        ref={gridRef}
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px)
-          `,
-          backgroundSize: '64px 64px',
-        }}
+        className="absolute top-0 right-0 w-px h-[60vh] bg-gradient-to-b from-transparent via-white/10 to-transparent"
+        aria-hidden="true"
       />
 
-      {/* Corner decorations */}
-      <div className="absolute top-28 left-6 md:left-10 text-xs font-mono text-black/25 tracking-widest uppercase hidden md:block">
-        <span>46°N 7°E</span>
-        <br />
-        <span>Sion, Valais</span>
-      </div>
-      <div className="absolute top-28 right-6 md:right-10 text-xs font-mono text-black/25 tracking-widest uppercase text-right hidden md:block">
-        <span>Est. 2025</span>
-        <br />
-        <span>Suisse</span>
-      </div>
-
       {/* Main content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center pt-24 pb-16">
-        {/* Eyebrow tag */}
-        <div className="inline-flex items-center gap-2 border border-black/12 rounded-full px-4 py-1.5 mb-8">
-          <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
-          <span className="text-xs font-semibold tracking-widest uppercase text-black/60">
-            Agence web · Sion, Valais, Suisse
+      <div className="relative z-10 flex-1 flex flex-col justify-end max-w-7xl mx-auto w-full px-6 md:px-12 pt-36 pb-12">
+        {/* Eyebrow */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="flex items-center gap-3 mb-10"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-white/60 flex-shrink-0" />
+          <span className="text-xs font-mono text-white/35 tracking-widest uppercase">
+            Agence web · Sion · Valais · Suisse
           </span>
-        </div>
+          <span className="ml-auto hidden md:flex items-center gap-2 border border-white/10 rounded-full px-3 py-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400/80" />
+            <span className="text-xs text-white/30 font-mono">Disponible · juillet 2026</span>
+          </span>
+        </motion.div>
 
         {/* Headline */}
-        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-black leading-[1.02] tracking-tight mb-6">
-          Des sites web qui
-          <br />
-          <span className="relative inline-block">
-            travaillent pour vous
-            <svg
-              className="absolute -bottom-2 left-0 w-full"
-              viewBox="0 0 400 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
+        <div className="mb-10 overflow-hidden">
+          <motion.h1
+            initial={{ opacity: 0, y: 80 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            className="font-display font-extrabold text-white leading-[0.92] tracking-[-0.04em]"
+            style={{ fontSize: 'clamp(52px, 9.5vw, 130px)' }}
+          >
+            Votre site<br />
+            <span>rapporte.</span>
+            <br />
+            <span className="text-white/18">Ou il coûte.</span>
+          </motion.h1>
+        </div>
+
+        {/* Sub row */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
+          className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8"
+        >
+          <p className="text-white/45 text-base md:text-lg max-w-md leading-relaxed">
+            Nous créons des sites web performants qui génèrent de vrais clients
+            pour les startups et PME suisses.{' '}
+            <span className="text-white/70">Design, SEO, conversion — tout inclus.</span>
+          </p>
+
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <Link
+              href="#contact"
+              className="group inline-flex items-center gap-2 bg-white text-black text-sm font-bold px-6 py-3.5 rounded-full hover:bg-white/88 active:scale-95 transition-all duration-150"
             >
-              <path
-                d="M2 9C50 3 150 1 200 5C250 9 320 11 398 6"
-                stroke="#0A0A0A"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
-            </svg>
-          </span>
-          ,<br />
-          24h/24.
-        </h1>
-
-        {/* Subheadline */}
-        <p className="max-w-2xl mx-auto text-lg md:text-xl text-black/55 leading-relaxed mb-10">
-          Nous créons des sites web performants pour les startups, indépendants et PME suisses.
-          Design sur mesure, SEO natif, résultats mesurables.
-          <strong className="text-black/80 font-semibold"> À partir de CHF 890.</strong>
-        </p>
-
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-black text-white font-semibold text-base px-8 py-4 rounded-full hover:bg-black/85 active:scale-95 transition-all duration-150 shadow-lg shadow-black/20"
-          >
-            Démarrer mon projet
-            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
-          <Link
-            href="#portfolio"
-            className="inline-flex items-center gap-2 bg-transparent text-black font-semibold text-base px-8 py-4 rounded-full border border-black/20 hover:border-black/60 hover:bg-black/4 active:scale-95 transition-all duration-150"
-          >
-            Voir nos réalisations
-            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M7 2v10M2 7l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
-        </div>
-
-        {/* Social proof bar */}
-        <div className="mt-16 pt-10 border-t border-black/8 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12">
-          {[
-            { number: '45+', label: 'Projets livrés' },
-            { number: '100%', label: 'Clients satisfaits' },
-            { number: '14j', label: 'Délai de livraison' },
-            { number: 'CHF 890', label: "Tarif d'entrée" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-2xl font-display font-extrabold text-black leading-none">
-                {stat.number}
-              </p>
-              <p className="text-xs text-black/45 mt-1 tracking-wide uppercase font-medium">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
+              Démarrer mon projet
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform" aria-hidden="true">
+                <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+            <Link
+              href="#portfolio"
+              className="inline-flex items-center gap-2 border border-white/15 text-white/60 text-sm font-medium px-6 py-3.5 rounded-full hover:border-white/40 hover:text-white/90 active:scale-95 transition-all duration-150"
+            >
+              Nos projets
+            </Link>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+      {/* Stats bar */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.55 }}
+        className="relative z-10 border-t border-white/8"
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-5 flex flex-wrap items-center justify-between gap-y-4 gap-x-6">
+          <div className="flex items-center gap-2 overflow-hidden">
+            <span className="text-white/20 text-xs font-mono">STAT →</span>
+            <RotatingStat />
+          </div>
+
+          <div className="flex items-center gap-6 md:gap-10">
+            {[
+              { n: '6', l: 'projets actifs' },
+              { n: '2', l: 'fondateurs' },
+              { n: 'CHF 890', l: "à partir de" },
+            ].map((s) => (
+              <div key={s.l} className="text-center">
+                <p className="font-display font-extrabold text-white text-sm leading-none">{s.n}</p>
+                <p className="text-white/30 text-[10px] font-mono uppercase tracking-wider mt-0.5">{s.l}</p>
+              </div>
+            ))}
+          </div>
+
+          <a
+            href="tel:+41772741726"
+            className="hidden md:flex items-center gap-2 text-white/30 text-xs font-mono hover:text-white/60 transition-colors"
+          >
+            +41 77 274 17 26
+          </a>
+        </div>
+      </motion.div>
     </section>
   )
 }

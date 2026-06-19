@@ -5,11 +5,7 @@
 @layer base {
   :root {
     --black: #0A0A0A;
-    --white: #FAFAFA;
-    --gray-100: #F5F5F5;
-    --gray-200: #E8E8E8;
-    --gray-400: #999999;
-    --gray-600: #555555;
+    --white: #F5F4F0;
   }
 
   html {
@@ -23,61 +19,100 @@
   }
 
   body {
-    background-color: #FAFAFA;
+    background-color: #F5F4F0;
     color: #0A0A0A;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    text-wrap: balance;
+  h1, h2, h3, h4 {
     font-weight: 800;
     letter-spacing: -0.03em;
-    line-height: 1.05;
-  }
-
-  p {
-    text-wrap: pretty;
-    line-height: 1.65;
-  }
-}
-
-@layer utilities {
-  .text-balance {
+    line-height: 1.0;
     text-wrap: balance;
   }
 
-  .clip-path-slant {
-    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
-  }
+  p { line-height: 1.65; text-wrap: pretty; }
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 3px;
-}
-::-webkit-scrollbar-track {
-  background: #FAFAFA;
-}
-::-webkit-scrollbar-thumb {
-  background: #0A0A0A;
-  border-radius: 10px;
-}
-
-/* Selection */
-::selection {
-  background: #0A0A0A;
-  color: #FAFAFA;
+/* ─── Grain texture ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
 }
 
-/* Marquee pause on hover */
-.marquee-container:hover .animate-marquee {
-  animation-play-state: paused;
+/* ─── Marquee ─── */
+.marquee-track { display: flex; width: max-content; }
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+.animate-marquee { animation: marquee 28s linear infinite; }
+
+/* ─── Scramble text animation ─── */
+@keyframes flicker {
+  0%, 100% { opacity: 1 }
+  50% { opacity: 0.4 }
 }
 
-/* Focus styles */
-*:focus-visible {
-  outline: 2px solid #0A0A0A;
-  outline-offset: 3px;
+/* ─── Cursor line blink ─── */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.cursor-blink { animation: blink 1s step-end infinite; }
+
+/* ─── Reveal from bottom ─── */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(60px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+.reveal-up { animation: reveal-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* ─── Horizontal line grow ─── */
+@keyframes line-grow { from{scaleX:0} to{scaleX:1} }
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: #F5F4F0; }
+::-webkit-scrollbar-thumb { background: #0A0A0A; }
+
+/* ─── Selection ─── */
+::selection { background: #0A0A0A; color: #F5F4F0; }
+
+/* ─── Focus ─── */
+*:focus-visible { outline: 2px solid #0A0A0A; outline-offset: 3px; }
+
+/* ─── Smooth image render ─── */
+img { image-rendering: -webkit-optimize-contrast; }
+
+/* ─── Number tabular ─── */
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* ─── Border shine on dark ─── */
+.border-shine {
+  border: 1px solid transparent;
+  background: linear-gradient(#111,#111) padding-box,
+              linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.03) 100%) border-box;
+}
+
+/* ─── Underline grow ─── */
+.underline-grow {
+  position: relative;
+  text-decoration: none;
+}
+.underline-grow::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.underline-grow:hover::after { transform: scaleX(1); transform-origin: left; }
