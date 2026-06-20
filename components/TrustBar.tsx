@@ -30,7 +30,7 @@ export default function TrustBar() {
         {t.trust.label}
       </p>
 
-      <div className="marquee-container relative flex">
+      <div className="marquee-container relative flex overflow-hidden">
         <ul className="animate-marquee flex items-center gap-12 whitespace-nowrap" aria-hidden="true">
           {clients.map((client, i) => (
             <li key={`a-${i}`} className="flex items-center gap-3 text-sm font-semibold text-black/30 hover:text-black/60 transition-colors cursor-default">

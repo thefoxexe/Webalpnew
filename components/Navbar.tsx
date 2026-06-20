@@ -99,14 +99,14 @@ export default function Navbar() {
 
             {/* Mobile hamburger */}
             <button
-              className="md:hidden flex flex-col gap-1.5 p-2"
+              className="md:hidden relative w-6 h-[18px] flex-shrink-0 p-0"
               onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Menu"
+              aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
               aria-expanded={menuOpen}
             >
-              <span className={`block h-0.5 transition-all duration-300 ${dark ? 'bg-white' : 'bg-black'} ${menuOpen ? 'w-6 rotate-45 translate-y-2' : 'w-6'}`} />
-              <span className={`block h-0.5 transition-all duration-200 ${dark ? 'bg-white' : 'bg-black'} ${menuOpen ? 'opacity-0 w-0' : 'w-4'}`} />
-              <span className={`block h-0.5 transition-all duration-300 ${dark ? 'bg-white' : 'bg-black'} ${menuOpen ? 'w-6 -rotate-45 -translate-y-2' : 'w-6'}`} />
+              <span className={`absolute left-0 w-6 h-0.5 transition-all duration-300 ${dark ? 'bg-white' : 'bg-black'} ${menuOpen ? 'top-[9px] rotate-45' : 'top-0'}`} />
+              <span className={`absolute left-0 w-4 h-0.5 transition-all duration-200 ${dark ? 'bg-white' : 'bg-black'} top-[9px] ${menuOpen ? 'opacity-0 scale-x-0' : 'opacity-100'}`} />
+              <span className={`absolute left-0 w-6 h-0.5 transition-all duration-300 ${dark ? 'bg-white' : 'bg-black'} ${menuOpen ? 'top-[9px] -rotate-45' : 'top-[18px]'}`} />
             </button>
           </div>
         </nav>

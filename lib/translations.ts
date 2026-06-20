@@ -151,6 +151,8 @@ export const translations = {
       h2a: 'Des résultats,',
       h2b: 'pas des promesses.',
       sub: 'Chaque projet est une collaboration unique avec un objectif clair : vous faire gagner des clients.',
+      total: '8 projets réalisés · Suisse romande & alémanique',
+      cta: 'Démarrer votre projet',
     },
     pricing: {
       label: 'Nos tarifs',
@@ -442,6 +444,8 @@ export const translations = {
       h2a: 'Results,',
       h2b: 'not promises.',
       sub: 'Every project is a unique collaboration with a clear goal: help you win more clients.',
+      total: '8 projects delivered · French & German-speaking Switzerland',
+      cta: 'Start your project',
     },
     pricing: {
       label: 'Pricing',

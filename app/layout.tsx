@@ -148,7 +148,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${syne.variable}`}>
+    <html lang="fr" className={`${inter.variable} ${syne.variable} overflow-x-hidden`}>
       <head>
         <script
           type="application/ld+json"
