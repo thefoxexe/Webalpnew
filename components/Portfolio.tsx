@@ -66,7 +66,7 @@ export default function Portfolio() {
             <p className="text-xs font-mono text-black/35 tracking-widest uppercase mb-4">
               — {t.portfolio.label}
             </p>
-            <h2 id="portfolio-title" className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold text-black leading-tight">
+            <h2 id="portfolio-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight">
               {t.portfolio.h2a}<br />{t.portfolio.h2b}
             </h2>
           </div>

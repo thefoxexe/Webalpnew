@@ -23,7 +23,7 @@ export default function Problem() {
             <p className="text-xs font-mono text-black/35 tracking-widest uppercase mb-5">
               — {t.problem.label}
             </p>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight mb-8">
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight mb-8">
               {t.problem.h2a}<br />
               <span className="text-black/25">{t.problem.h2b}</span>
             </h2>

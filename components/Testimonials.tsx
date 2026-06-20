@@ -38,7 +38,7 @@ export default function Testimonials() {
             <p className="text-xs font-mono text-white/25 tracking-widest uppercase mb-4">
               — {t.testimonials.label}
             </p>
-            <h2 id="testimonials-title" className="font-display text-5xl md:text-6xl font-extrabold text-white leading-tight">
+            <h2 id="testimonials-title" className="font-display text-4xl md:text-5xl font-extrabold text-white leading-tight">
               {t.testimonials.h2a}<br />{t.testimonials.h2b}
             </h2>
           </div>

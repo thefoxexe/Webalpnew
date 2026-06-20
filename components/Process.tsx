@@ -24,7 +24,7 @@ export default function Process() {
           <div className="flex flex-col md:flex-row md:items-end gap-4 justify-between">
             <h2
               id="process-title"
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight max-w-lg"
+              className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold text-black leading-tight max-w-lg"
             >
               {t.process.h2}
             </h2>

@@ -23,7 +23,7 @@ export default function Services() {
         >
           <div>
             <p className="text-xs font-mono text-black/35 tracking-widest uppercase mb-4">— {t.services.label}</p>
-            <h2 id="services-title" className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold text-black leading-tight">
+            <h2 id="services-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight">
               {t.services.h2}
             </h2>
           </div>

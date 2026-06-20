@@ -25,12 +25,15 @@ export default function Pricing() {
           </p>
           <h2
             id="pricing-title"
-            className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight mb-4"
+            className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold text-black leading-tight mb-4"
           >
             {t.pricing.h2}
           </h2>
-          <p className="text-black/50 text-lg max-w-xl mx-auto">{t.pricing.sub}</p>
-          <p className="mt-4 text-xs font-mono text-black/35 tracking-wide">{t.pricing.urgency}</p>
+          <p className="text-black/50 text-base md:text-lg max-w-xl mx-auto">{t.pricing.sub}</p>
+          <div className="mt-4 inline-flex items-center gap-2 border border-black/10 rounded-full px-4 py-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            <p className="text-xs font-mono text-black/40">{t.pricing.urgency}</p>
+          </div>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-4 mb-12">

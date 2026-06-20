@@ -25,7 +25,7 @@ export default function About() {
             </p>
             <h2
               id="about-title"
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight mb-6"
+              className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold text-black leading-tight mb-6"
             >
               {t.about.h2a}
               <br />
