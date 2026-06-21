@@ -32,7 +32,7 @@ export default function CTA() {
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
               <div>
                 <div className="inline-flex items-center gap-2 border border-white/10 rounded-full px-3 py-1.5 mb-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400/80 animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" style={{ boxShadow: '0 0 6px #B3FF47' }} />
                   <span className="text-white/40 text-xs font-mono">{t.cta.badge}</span>
                 </div>
 
@@ -49,7 +49,7 @@ export default function CTA() {
               <div className="flex flex-col gap-3 flex-shrink-0 min-w-[220px]">
                 <Link
                   href="#contact"
-                  className="group flex items-center justify-between gap-4 bg-white text-black font-bold text-base px-6 py-4 rounded-2xl hover:bg-white/88 active:scale-[0.98] transition-all duration-150"
+                  className="group flex items-center justify-between gap-4 bg-accent text-[#0A0A0A] font-bold text-base px-6 py-4 rounded-2xl hover:brightness-110 active:scale-[0.98] transition-all duration-150 accent-glow"
                 >
                   {t.cta.cta}
                   <svg width="16" height="16" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform" aria-hidden="true">

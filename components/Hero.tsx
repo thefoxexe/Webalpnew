@@ -16,7 +16,7 @@ function RotatingStat() {
   return (
     <AnimatePresence mode="wait">
       <motion.span key={i} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.3 }} className="inline-flex items-baseline gap-1.5">
-        <span className="font-display font-extrabold text-white text-sm">{stats[i].value}</span>
+        <span className="font-display font-extrabold text-accent text-sm accent-text-glow">{stats[i].value}</span>
         <span className="text-white/35 text-xs">{stats[i].label}</span>
       </motion.span>
     </AnimatePresence>
@@ -80,9 +80,9 @@ export default function Hero() {
         >
           <span className="w-1.5 h-1.5 rounded-full bg-white/40 flex-shrink-0" />
           <span className="text-xs font-mono text-white/30 tracking-widest uppercase">{t.hero.tag}</span>
-          <span className="ml-auto hidden md:flex items-center gap-2 border border-white/10 rounded-full px-3 py-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400/80 animate-pulse" />
-            <span className="text-xs text-white/30 font-mono">{t.hero.available}</span>
+          <span className="ml-auto hidden md:flex items-center gap-2 border border-accent/20 rounded-full px-3 py-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" style={{ boxShadow: '0 0 6px #B3FF47' }} />
+            <span className="text-xs text-white/40 font-mono">{t.hero.available}</span>
           </span>
         </motion.div>
 
@@ -119,7 +119,7 @@ export default function Hero() {
           <div className="flex items-center gap-3 flex-shrink-0">
             <Link
               href="#contact"
-              className="group inline-flex items-center gap-2 bg-white text-black text-sm font-bold px-5 md:px-6 py-3 md:py-3.5 rounded-full hover:bg-white/88 active:scale-95 transition-all duration-150"
+              className="group inline-flex items-center gap-2 bg-accent text-[#0A0A0A] text-sm font-bold px-5 md:px-6 py-3 md:py-3.5 rounded-full hover:brightness-110 active:scale-95 transition-all duration-150 accent-glow"
             >
               {t.hero.cta1}
               <svg width="13" height="13" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform" aria-hidden="true">

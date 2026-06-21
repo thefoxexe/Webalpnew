@@ -35,7 +35,7 @@ export default function Process() {
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-[26px] top-0 bottom-0 w-px bg-black/10 hidden md:block" aria-hidden="true" />
+          <div className="absolute left-[26px] top-0 bottom-0 w-px hidden md:block" style={{ background: 'linear-gradient(to bottom, #B3FF47, rgba(179,255,71,0.1))' }} aria-hidden="true" />
 
           <div className="space-y-0">
             {t.process.steps.map((step, i) => (
@@ -47,7 +47,7 @@ export default function Process() {
                 className="relative grid md:grid-cols-[60px_1fr_1fr] gap-6 md:gap-8 pb-12 last:pb-0"
               >
                 <div className="flex md:flex-col items-center md:items-center gap-4">
-                  <div className="w-[52px] h-[52px] rounded-full bg-black text-white flex items-center justify-center flex-shrink-0 relative z-10 font-mono text-sm font-bold">
+                  <div className="w-[52px] h-[52px] rounded-full bg-accent text-[#0A0A0A] flex items-center justify-center flex-shrink-0 relative z-10 font-mono text-sm font-bold accent-glow">
                     {step.number}
                   </div>
                 </div>
@@ -93,7 +93,7 @@ export default function Process() {
           </div>
           <a
             href="#contact"
-            className="flex-shrink-0 inline-flex items-center gap-2 bg-white text-black font-semibold text-sm px-6 py-3 rounded-full hover:bg-white/85 active:scale-95 transition-all"
+            className="flex-shrink-0 inline-flex items-center gap-2 bg-accent text-[#0A0A0A] font-semibold text-sm px-6 py-3 rounded-full hover:brightness-110 active:scale-95 transition-all accent-glow"
           >
             {t.process.consultCta}
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">

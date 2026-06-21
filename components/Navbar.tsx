@@ -87,7 +87,7 @@ export default function Navbar() {
               href="#contact"
               className={`hidden md:inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-150 active:scale-95 ${
                 dark
-                  ? 'bg-white text-black hover:bg-white/85'
+                  ? 'bg-accent text-[#0A0A0A] hover:brightness-110 accent-glow'
                   : 'bg-black text-white hover:bg-black/80'
               }`}
             >

@@ -31,7 +31,7 @@ export default function FloatingCTA() {
         <Link
           href="#contact"
           tabIndex={visible ? 0 : -1}
-          className="inline-flex items-center gap-2 bg-white text-black text-sm font-bold px-5 py-2.5 rounded-full hover:bg-white/90 active:scale-95 transition-all"
+          className="inline-flex items-center gap-2 bg-accent text-[#0A0A0A] text-sm font-bold px-5 py-2.5 rounded-full hover:brightness-110 active:scale-95 transition-all accent-glow"
         >
           {t.nav.cta}
           <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">

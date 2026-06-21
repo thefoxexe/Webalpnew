@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Syne } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import './globals.css'
 
@@ -9,11 +9,11 @@ const inter = Inter({
   display: 'swap',
 })
 
-const syne = Syne({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-syne',
+  variable: '--font-space-grotesk',
   display: 'swap',
-  weight: ['700', '800'],
+  weight: ['600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -148,7 +148,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${syne.variable} overflow-x-hidden`}>
+    <html lang="fr" className={`${inter.variable} ${spaceGrotesk.variable} overflow-x-hidden`}>
       <head>
         <script
           type="application/ld+json"

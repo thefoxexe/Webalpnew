@@ -31,7 +31,7 @@ export default function Pricing() {
           </h2>
           <p className="text-black/50 text-base md:text-lg max-w-xl mx-auto">{t.pricing.sub}</p>
           <div className="mt-4 inline-flex items-center gap-2 border border-black/10 rounded-full px-4 py-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" style={{ boxShadow: '0 0 6px #B3FF47' }} />
             <p className="text-xs font-mono text-black/40">{t.pricing.urgency}</p>
           </div>
         </motion.div>
@@ -83,7 +83,7 @@ export default function Pricing() {
                 {plan.features.map((feature) => (
                   <li key={feature} className={`flex items-start gap-2.5 text-sm ${plan.popular ? 'text-white/80' : 'text-black/65'}`}>
                     <svg className="flex-shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                      <path d="M2 7l3 3 7-7" stroke={plan.popular ? 'white' : '#0A0A0A'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M2 7l3 3 7-7" stroke={plan.popular ? '#B3FF47' : '#0A0A0A'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     {feature}
                   </li>
@@ -94,7 +94,7 @@ export default function Pricing() {
                 href="#contact"
                 className={`block text-center font-semibold text-sm px-6 py-3.5 rounded-full transition-all duration-150 active:scale-95 ${
                   plan.popular
-                    ? 'bg-white text-black hover:bg-white/85'
+                    ? 'bg-accent text-[#0A0A0A] hover:brightness-110 accent-glow'
                     : 'bg-black text-white hover:bg-black/80'
                 }`}
               >

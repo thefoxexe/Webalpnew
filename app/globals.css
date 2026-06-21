@@ -6,6 +6,8 @@
   :root {
     --black: #0A0A0A;
     --white: #F5F4F0;
+    --accent: #B3FF47;
+    --accent-glow: rgba(179, 255, 71, 0.22);
   }
 
   html {
@@ -91,6 +93,14 @@ img { image-rendering: -webkit-optimize-contrast; }
 
 /* ─── Number tabular ─── */
 .tabular { font-variant-numeric: tabular-nums; }
+
+/* ─── Accent glow ─── */
+.accent-glow {
+  box-shadow: 0 0 0 1px rgba(179,255,71,0.3), 0 0 24px rgba(179,255,71,0.18), 0 0 48px rgba(179,255,71,0.08);
+}
+.accent-text-glow {
+  text-shadow: 0 0 20px rgba(179,255,71,0.5);
+}
 
 /* ─── Border shine on dark ─── */
 .border-shine {

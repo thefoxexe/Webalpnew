@@ -81,7 +81,7 @@ export default function Services() {
                       {s.features.map((f) => (
                         <li key={f} className="flex items-center gap-2 text-sm text-white/65">
                           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                            <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M2 6l3 3 5-5" stroke="#B3FF47" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
                           {f}
                         </li>
@@ -90,7 +90,7 @@ export default function Services() {
                   </div>
                   <Link
                     href="#contact"
-                    className="inline-flex items-center gap-2 bg-white text-black text-sm font-bold px-5 py-3 rounded-full hover:bg-white/85 active:scale-95 transition-all flex-shrink-0"
+                    className="inline-flex items-center gap-2 bg-accent text-[#0A0A0A] text-sm font-bold px-5 py-3 rounded-full hover:brightness-110 active:scale-95 transition-all flex-shrink-0 accent-glow"
                   >
                     {t.services.cta}
                     <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
