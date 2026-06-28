@@ -27,7 +27,7 @@ function Counter({ value, suffix, dark, accent }: { value: number; suffix: strin
   return (
     <span ref={ref} className={`tabular-nums font-display font-extrabold leading-none ${
       accent ? 'text-[#0A0A0A]' : dark ? 'text-white' : 'text-black'
-    }`} style={{ fontSize: 'clamp(44px, 7vw, 90px)' }}>
+    }`} style={{ fontSize: 'clamp(26px, 4.5vw, 90px)' }}>
       {count}{suffix}
     </span>
   )
@@ -57,7 +57,7 @@ export default function Stats() {
                 initial={{ opacity: 0, y: 28, scale: 0.95 }}
                 animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
                 transition={{ ...spring, delay: i * 0.08 }}
-                className={`rounded-2xl p-7 md:p-10 flex flex-col justify-between min-h-[140px] sm:min-h-[170px] md:min-h-[200px] ${s.bg}`}
+                className={`rounded-2xl p-4 sm:p-6 md:p-10 flex flex-col justify-between min-h-[110px] sm:min-h-[150px] md:min-h-[200px] ${s.bg}`}
               >
                 <Counter value={stat.value} suffix={stat.suffix} dark={s.dark} accent={s.accent} />
                 <p className={`text-xs sm:text-sm mt-4 font-medium ${s.label}`}>{stat.label}</p>

@@ -69,17 +69,8 @@ export const translations = {
           features: ['Design 100% sur mesure', 'Mobile-first', 'SEO technique inclus', 'Formulaire de contact', 'Google Analytics', 'Code livré & documenté'],
         },
         {
-          icon: 'search',
-          number: '02',
-          title: 'SEO & Visibilité',
-          price: 'dès CHF 290/mois',
-          sub: 'Soyez trouvé avant vos concurrents',
-          description: 'Apparaître en premier sur Google n\'est pas de la magie. C\'est une méthode. On l\'applique sur chaque aspect de votre site pour que vos clients arrivent d\'eux-mêmes.',
-          features: ['Audit SEO complet', 'Recherche mots-clés', 'Optimisation On-Page', 'Google Business', 'Rapport mensuel', 'Suivi des positions'],
-        },
-        {
           icon: 'lightning',
-          number: '03',
+          number: '02',
           title: 'Application web',
           price: 'dès CHF 1\'990',
           sub: 'Vos concurrents n\'ont pas ça',
@@ -88,7 +79,7 @@ export const translations = {
         },
         {
           icon: 'shield',
-          number: '04',
+          number: '03',
           title: 'Maintenance & Support',
           price: 'dès CHF 89/mois',
           sub: 'On s\'occupe de tout',
@@ -229,9 +220,9 @@ export const translations = {
       ],
       addons: [
         { name: 'Maintenance mensuelle', price: 'CHF 89/mois' },
-        { name: 'SEO mensuel', price: 'CHF 290/mois' },
         { name: 'Article blog SEO', price: 'CHF 149/article' },
         { name: 'Traduction FR/DE/EN', price: 'CHF 200/langue' },
+        { name: 'Landing page', price: 'CHF 490' },
       ],
     },
     testimonials: {
@@ -321,7 +312,7 @@ export const translations = {
     footer: {
       tagline: 'Agence web à Sion, Valais. On crée des sites qui convertissent pour les PME suisses.',
       sections: {
-        Services: ['Site vitrine', 'SEO & Référencement', 'E-commerce', 'Maintenance'],
+        Services: ['Site vitrine', 'Application web', 'E-commerce', 'Maintenance'],
         Entreprise: ['Notre processus', 'Réalisations', 'Tarifs', 'Témoignages'],
         Contact: ['Démarrer un projet', 'contact@webalp.ch', '079 823 58 62', 'Sion, Valais, Suisse'],
       },
@@ -399,17 +390,8 @@ export const translations = {
           features: ['100% custom design', 'Mobile-first', 'SEO included', 'Contact form', 'Google Analytics', 'Clean code delivered'],
         },
         {
-          icon: 'search',
-          number: '02',
-          title: 'SEO & Visibility',
-          price: 'from CHF 290/mo',
-          sub: 'Be found before your competitors',
-          description: 'Ranking first on Google isn\'t magic. It\'s a method. We apply it to every aspect of your site so the right clients find you on their own.',
-          features: ['Full SEO audit', 'Keyword research', 'On-page optimization', 'Google Business', 'Monthly report', 'Position tracking'],
-        },
-        {
           icon: 'lightning',
-          number: '03',
+          number: '02',
           title: 'Web application',
           price: 'from CHF 1\'990',
           sub: 'Your competitors don\'t have this',
@@ -418,7 +400,7 @@ export const translations = {
         },
         {
           icon: 'shield',
-          number: '04',
+          number: '03',
           title: 'Maintenance & Support',
           price: 'from CHF 89/mo',
           sub: 'We handle everything',
@@ -559,9 +541,9 @@ export const translations = {
       ],
       addons: [
         { name: 'Monthly maintenance', price: 'CHF 89/mo' },
-        { name: 'Monthly SEO', price: 'CHF 290/mo' },
         { name: 'SEO blog article', price: 'CHF 149/article' },
         { name: 'Translation FR/DE/EN', price: 'CHF 200/lang' },
+        { name: 'Landing page', price: 'CHF 490' },
       ],
     },
     testimonials: {
@@ -651,7 +633,7 @@ export const translations = {
     footer: {
       tagline: 'Web agency in Sion, Valais. We build converting websites for Swiss SMEs.',
       sections: {
-        Services: ['Showcase website', 'SEO & Visibility', 'E-commerce', 'Maintenance'],
+        Services: ['Showcase website', 'Web application', 'E-commerce', 'Maintenance'],
         Company: ['Our process', 'Work', 'Pricing', 'Testimonials'],
         Contact: ['Start a project', 'contact@webalp.ch', '079 823 58 62', 'Sion, Valais, Switzerland'],
       },

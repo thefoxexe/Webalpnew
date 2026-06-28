@@ -30,7 +30,7 @@ export default function Services() {
           <p className="text-black/60 text-base mt-4 max-w-lg">{t.services.sub}</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {t.services.items.map((s, i) => (
             <motion.div
               key={s.number}
@@ -38,7 +38,7 @@ export default function Services() {
               animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ ...spring, delay: 0.1 + i * 0.1 }}
               whileHover={{ y: -4, transition: { type: 'spring', stiffness: 400, damping: 28 } }}
-              className={`rounded-2xl p-7 md:p-8 flex flex-col gap-6 cursor-default ${
+              className={`rounded-2xl p-6 md:p-8 flex flex-col gap-6 cursor-default ${
                 i === 0 ? 'bg-[#0A0A0A]' : 'bg-white border border-black/10'
               }`}
             >
