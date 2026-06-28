@@ -47,7 +47,7 @@ export const translations = {
         { stat: '3 sec', text: 'Temps qu\'il faut à un visiteur pour partir si votre site rame. Définitivement.' },
         { stat: 'CHF 0', text: 'C\'est ce que rapporte un beau site que personne ne trouve sur Google. Zéro.' },
       ],
-      solution: 'WebAlp règle les deux en même temps. SEO qui attire + design qui convertit. En 14 jours.',
+      solution: 'WebAlp règle les deux. Un site que Google met en avant, des visiteurs qui passent à l\'action. En 14 jours garantis.',
       beforeLabel: 'Votre situation aujourd\'hui',
       afterLabel: 'Avec WebAlp, en 14 jours',
       before: ['Invisible sur Google', 'Site lent sur mobile', 'Zéro demande spontanée', 'Analytics inexistants', 'Textes plats qui n\'accrochent pas'],
@@ -55,8 +55,8 @@ export const translations = {
     },
     services: {
       label: 'Ce qu\'on fait',
-      h2: 'Tout ce qu\'il faut pour dominer.',
-      sub: 'Pas des heures facturées. Des résultats mesurables.',
+      h2: 'Fait pour que vous gagniez.',
+      sub: 'Pas des heures facturées. Des résultats que vous voyez.',
       cta: 'Demander un devis',
       items: [
         {
@@ -65,7 +65,7 @@ export const translations = {
           title: 'Site vitrine',
           price: 'dès CHF 890',
           sub: 'Votre meilleur commercial, 24h/24',
-          description: 'Votre carte de visite digitale pensée pour convertir, pas juste pour être belle. Chaque élément guide votre visiteur vers un seul objectif : vous contacter.',
+          description: 'Votre site travaille quand vous dormez. On le conçoit pour qu\'il capte l\'attention, inspire confiance et pousse votre visiteur à décrocher son téléphone.',
           features: ['Design 100% sur mesure', 'Mobile-first', 'SEO technique inclus', 'Formulaire de contact', 'Google Analytics', 'Code livré & documenté'],
         },
         {
@@ -74,7 +74,7 @@ export const translations = {
           title: 'SEO & Visibilité',
           price: 'dès CHF 290/mois',
           sub: 'Soyez trouvé avant vos concurrents',
-          description: 'Être beau c\'est bien. Être trouvé c\'est mieux. On optimise votre site pour que vos clients idéaux vous trouvent en premier sur Google.',
+          description: 'Apparaître en premier sur Google n\'est pas de la magie. C\'est une méthode. On l\'applique sur chaque aspect de votre site pour que vos clients arrivent d\'eux-mêmes.',
           features: ['Audit SEO complet', 'Recherche mots-clés', 'Optimisation On-Page', 'Google Business', 'Rapport mensuel', 'Suivi des positions'],
         },
         {
@@ -83,7 +83,7 @@ export const translations = {
           title: 'Application web',
           price: 'dès CHF 1\'990',
           sub: 'Vos concurrents n\'ont pas ça',
-          description: 'Réservations en ligne, boutique e-commerce, plateforme sur mesure. On code vos fonctionnalités. Vous prenez de l\'avance.',
+          description: 'Réservations, e-commerce, portail client — on développe ce qui vous permet de faire des choses que vos concurrents font encore à la main. Et ça change tout.',
           features: ['E-commerce ou sur mesure', 'Système de réservation', 'Paiement en ligne', 'Dashboard admin', 'Emails automatiques', 'Tests complets'],
         },
         {
@@ -92,7 +92,7 @@ export const translations = {
           title: 'Maintenance & Support',
           price: 'dès CHF 89/mois',
           sub: 'On s\'occupe de tout',
-          description: 'Vous gérez votre business. On gère votre site. Mises à jour, sauvegardes, sécurité 24/7. Et on répond sous 24h, pas dans 3 semaines.',
+          description: 'Votre site ne doit jamais être un souci. Mises à jour, sauvegardes, surveillance et corrections — on gère tout. Et si vous avez une question, on répond sous 24 heures.',
           features: ['Mises à jour plateforme', 'Sauvegardes quotidiennes', 'Certificat SSL', 'Support sous 24h', 'Rapport mensuel', 'Monitoring 24/7'],
         },
       ],
@@ -236,8 +236,8 @@ export const translations = {
     },
     testimonials: {
       label: 'Ce qu\'ils disent',
-      h2a: '100% de clients',
-      h2b: 'satisfaits.',
+      h2a: 'Chaque client',
+      h2b: 'recommande WebAlp.',
       items: [
         { quote: 'WebAlp a complètement transformé notre présence en ligne. Notre nouveau site reflète parfaitement notre identité et a considérablement augmenté nos demandes de devis.', author: 'Drone Valais Production', role: 'Entreprise · Site web 2025', initial: 'D' },
         { quote: 'Service impeccable et résultat qui dépasse nos attentes. Notre site est désormais rapide, moderne et convertit beaucoup mieux qu\'avant.', author: 'Golden Bulls', role: 'Entreprise · Site web 2024', initial: 'G' },
@@ -249,8 +249,8 @@ export const translations = {
       label: 'L\'équipe',
       h2a: 'Notre studio.',
       h2b: 'Deux experts, pas une usine.',
-      p1: 'On a créé WebAlp parce qu\'on en avait marre de voir des petites entreprises se faire surfacturer pour des sites médiocres. La règle ici : qualité grande marque, prix honnête, relation directe.',
-      p2: 'Chaque projet est suivi personnellement, de A à Z. Pas d\'intermédiaire, pas de stagiaire à la livraison. Vous parlez directement à ceux qui créent votre site.',
+      p1: 'WebAlp est né d\'une certitude : une petite entreprise mérite un site aussi soigné qu\'une grande marque. Pas un template vendu comme "sur mesure". Un vrai travail, pensé pour vos clients, à un prix qui ne vous met pas en difficulté.',
+      p2: 'Du premier échange à la mise en ligne, vous parlez aux mêmes personnes. Pas de chef de projet qui transmet, pas de prestataire externe qui disparaît. Juste nous — entièrement concentrés sur votre projet.',
       cta: 'Nous contacter directement',
       badge: 'Disponibles maintenant ✓',
       b_role: 'Design & Stratégie',
@@ -266,9 +266,9 @@ export const translations = {
       contactLink: 'Écrivez-nous directement',
       items: [
         { q: 'Combien de temps pour avoir mon site ?', a: '14 jours ouvrés, garantis. Pour les projets complexes (e-commerce, app), comptez 3 à 4 semaines. On respecte nos délais — c\'est notre réputation qui est en jeu.' },
-        { q: 'Est-ce que je peux changer mon site tout seul ?', a: 'Cela dépend de la technologie choisie. Sur mesure (Next.js) : modifications via nous ou un dev. Webflow : éditions visuelles autonomes. CMS (WordPress) : contenu entièrement gérable. On vous conseille la bonne option selon votre situation lors de la consultation.' },
-        { q: 'Pourquoi vous coûtez moins cher que d\'autres agences ?', a: 'Parce qu\'on est deux, sans bureau fixe ni chaîne de production. Pas de directeur artistique "senior" à CHF 350/h. On répercute ces économies sur votre devis. La qualité, elle, reste.' },
-        { q: 'Le SEO est vraiment inclus dès le départ ?', a: 'Oui — balises, structure URLs, Core Web Vitals, sitemap, schema markup. C\'est dans le code, pas une option payante. Pour aller plus loin (mots-clés, contenu, liens), on a nos forfaits SEO mensuels.' },
+        { q: 'Est-ce que je peux modifier mon site tout seul ?', a: 'Ça dépend de la solution choisie. Avec Next.js, les modifications passent par nous ou un développeur. Avec Webflow, vous éditez textes et images vous-même via une interface visuelle sans toucher au code. Avec WordPress, tout le contenu est gérable en autonomie. On vous recommande l\'option adaptée à votre situation lors de la consultation.' },
+        { q: 'Pourquoi vos tarifs sont inférieurs à ceux de grandes agences ?', a: 'Parce qu\'on est deux, sans structure lourde. Pas de directeur de compte, pas de réunions hebdomadaires facturées, pas de marge sur sous-traitants. Ce que vous payez va directement dans votre site — pas dans notre organigramme.' },
+        { q: 'Le SEO est vraiment inclus dès le départ ?', a: 'Oui, entièrement. Balises méta, structure des URL, Core Web Vitals, plan de site, données structurées : tout est dans le code dès la première ligne. Le SEO technique est un fondement, pas un supplément. Pour aller plus loin sur les mots-clés et la création de contenu, on a des forfaits mensuels dédiés.' },
         { q: 'Et si je ne suis pas satisfait ?', a: 'Ça ne nous est jamais arrivé. Mais en théorie : on retravaille jusqu\'à ce que vous soyez fier de montrer votre site. Les révisions sont incluses dans chaque plan. On arrête quand c\'est parfait.' },
         { q: 'Vous travaillez aussi hors du Valais ?', a: 'Absolument. On a des clients à Genève, Lausanne, Berne, Zurich, Fribourg. Tout se passe en ligne. Par contre, on est suisses — et ça se voit dans le soin apporté à chaque projet.' },
       ],
@@ -377,7 +377,7 @@ export const translations = {
         { stat: '3 sec', text: 'Time it takes a visitor to leave if your site is slow. For good.' },
         { stat: 'CHF 0', text: 'That\'s what a beautiful site nobody finds on Google earns you. Literally zero.' },
       ],
-      solution: 'WebAlp solves both at once. SEO that attracts + design that converts. In 14 days.',
+      solution: 'WebAlp fixes both. A site Google puts in front of people, with visitors who actually take action. In 14 days, guaranteed.',
       beforeLabel: 'Your situation today',
       afterLabel: 'With WebAlp, in 14 days',
       before: ['Invisible on Google', 'Slow on mobile', 'Zero spontaneous inquiries', 'No reliable analytics', 'Flat copy that doesn\'t hook'],
@@ -385,8 +385,8 @@ export const translations = {
     },
     services: {
       label: 'What we do',
-      h2: 'Everything to dominate.',
-      sub: 'Not billed hours. Measurable results.',
+      h2: 'Built for you to win.',
+      sub: 'No billed hours. Results you can see.',
       cta: 'Get a quote',
       items: [
         {
@@ -395,7 +395,7 @@ export const translations = {
           title: 'Showcase website',
           price: 'from CHF 890',
           sub: 'Your best salesperson, 24/7',
-          description: 'Your digital business card, built to convert — not just to look good. Every element guides your visitor toward one goal: contacting you.',
+          description: 'Your site works while you sleep. We design it to capture attention, build trust, and push your visitor to pick up the phone.',
           features: ['100% custom design', 'Mobile-first', 'SEO included', 'Contact form', 'Google Analytics', 'Clean code delivered'],
         },
         {
@@ -404,7 +404,7 @@ export const translations = {
           title: 'SEO & Visibility',
           price: 'from CHF 290/mo',
           sub: 'Be found before your competitors',
-          description: 'Looking good is fine. Being found is better. We optimize your site so your ideal clients find you first on Google.',
+          description: 'Ranking first on Google isn\'t magic. It\'s a method. We apply it to every aspect of your site so the right clients find you on their own.',
           features: ['Full SEO audit', 'Keyword research', 'On-page optimization', 'Google Business', 'Monthly report', 'Position tracking'],
         },
         {
@@ -413,7 +413,7 @@ export const translations = {
           title: 'Web application',
           price: 'from CHF 1\'990',
           sub: 'Your competitors don\'t have this',
-          description: 'Online bookings, e-commerce, custom platform. We code your features. You get ahead.',
+          description: 'Bookings, e-commerce, client portal — we build what lets you do things your competitors are still doing by hand. And that changes everything.',
           features: ['E-commerce or custom', 'Booking system', 'Online payments', 'Admin dashboard', 'Automated emails', 'Full testing'],
         },
         {
@@ -422,7 +422,7 @@ export const translations = {
           title: 'Maintenance & Support',
           price: 'from CHF 89/mo',
           sub: 'We handle everything',
-          description: 'You run your business. We run your website. Updates, backups, security 24/7. And we reply within 24h, not in 3 weeks.',
+          description: 'Your site should never be a source of stress. Updates, backups, monitoring, fixes — we handle all of it. And if you have a question, we respond within 24 hours.',
           features: ['Platform updates', 'Daily backups', 'SSL certificate', 'Support under 24h', 'Monthly report', '24/7 monitoring'],
         },
       ],
@@ -566,8 +566,8 @@ export const translations = {
     },
     testimonials: {
       label: 'What they say',
-      h2a: '100% of clients',
-      h2b: 'satisfied.',
+      h2a: 'Every client',
+      h2b: 'recommends WebAlp.',
       items: [
         { quote: 'WebAlp completely transformed our online presence. Our new website perfectly reflects our identity and has significantly increased our quote requests.', author: 'Drone Valais Production', role: 'Company · Website 2025', initial: 'D' },
         { quote: 'Impeccable service and results beyond our expectations. Our site is now fast, modern and converts much better than before.', author: 'Golden Bulls', role: 'Company · Website 2024', initial: 'G' },
@@ -579,8 +579,8 @@ export const translations = {
       label: 'The team',
       h2a: 'Our studio.',
       h2b: 'Two experts, not a factory.',
-      p1: 'We created WebAlp because we were tired of seeing small businesses overcharged for mediocre sites. The rule here: top-brand quality, honest pricing, direct relationship.',
-      p2: 'Every project is personally handled from start to finish. No middleman, no intern at delivery. You talk directly to the people building your site.',
+      p1: 'WebAlp was born from a conviction: a small business deserves a site as polished as a major brand. Not a template sold as "custom." Real work, built for your clients, at a price that doesn\'t put you in a difficult position.',
+      p2: 'From the first conversation to launch, you deal with the same people. No project manager passing things on, no external contractor who disappears. Just us — entirely focused on your project.',
       cta: 'Contact us directly',
       badge: 'Available now ✓',
       b_role: 'Design & Strategy',
@@ -596,9 +596,9 @@ export const translations = {
       contactLink: 'Write to us directly',
       items: [
         { q: 'How long does it take to build my site?', a: '14 business days, guaranteed. For complex projects (e-commerce, app), allow 3 to 4 weeks. We respect our deadlines — our reputation depends on it.' },
-        { q: 'Can I update my site myself?', a: 'It depends on the technology chosen. Custom (Next.js): updates via us or a developer. Webflow: fully autonomous visual editing. CMS (WordPress): all content self-manageable. We advise the right option for your situation during the consultation.' },
-        { q: 'Why are you cheaper than other agencies?', a: 'Because we\'re two people with no fixed office or production chain. No "senior" creative director at CHF 350/h. We pass these savings on to your quote. The quality stays.' },
-        { q: 'Is SEO really included from the start?', a: 'Yes — meta tags, URL structure, Core Web Vitals, sitemap, schema markup. It\'s in the code, not a paid option. For deeper work (keywords, content, links), we have our monthly SEO plans.' },
+        { q: 'Can I update my site myself?', a: 'It depends on the technology chosen. With Next.js, changes go through us or a developer. With Webflow, you edit text and images yourself through a visual interface without touching code. With WordPress, all content is self-manageable. We recommend the right option for your situation during the consultation.' },
+        { q: 'Why are your rates lower than larger agencies?', a: 'Because we\'re a two-person team with no heavy overhead. No account director, no weekly meetings billed by the hour, no margin on subcontractors. What you pay goes directly into your website, not our org chart.' },
+        { q: 'Is SEO really included from the start?', a: 'Yes, fully. Meta tags, URL structure, Core Web Vitals, sitemap, structured data: all of it is in the code from the very first line. Technical SEO is a foundation, not an add-on. For deeper keyword research and content creation, we offer dedicated monthly plans.' },
         { q: 'What if I\'m not satisfied?', a: 'That\'s never happened to us. But in theory: we rework until you\'re proud to show your site. Revisions are included in every plan. We stop when it\'s perfect.' },
         { q: 'Do you work outside Valais?', a: 'Absolutely. We have clients in Geneva, Lausanne, Bern, Zurich, Fribourg. Everything happens online. But we\'re Swiss — and you can see the care in every project.' },
       ],

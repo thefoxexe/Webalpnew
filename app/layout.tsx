@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import { LanguageProvider } from '@/contexts/LanguageContext'
+import Loader from '@/components/Loader'
 import './globals.css'
 
 const inter = Inter({
@@ -161,6 +162,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="font-sans bg-white text-black overflow-x-hidden">
+        <Loader />
         <LanguageProvider>
           {children}
         </LanguageProvider>
