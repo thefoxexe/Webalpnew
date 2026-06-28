@@ -44,11 +44,11 @@ export default function Stats() {
   return (
     <section className="bg-[#F5F4F0] py-6" aria-label="Stats">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-2 md:gap-3">
           {t.stats.items.map((stat, i) => {
             const style = cardStyles[i] ?? cardStyles[0]
             return (
-              <div key={stat.label} className={`rounded-xl p-8 md:p-12 flex flex-col justify-between min-h-[160px] md:min-h-[200px] ${style.bg}`}>
+              <div key={stat.label} className={`rounded-xl p-6 md:p-12 flex flex-col justify-between min-h-[140px] md:min-h-[200px] ${style.bg}`}>
                 <Counter value={stat.value} suffix={stat.suffix} dark={style.dark} accent={style.accent} />
                 <p className={`font-mono text-[10px] uppercase tracking-widest mt-4 ${
                   style.accent ? 'text-[#0A0A0A]/50' : style.dark ? 'text-white/25' : 'text-black/30'

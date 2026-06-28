@@ -9,6 +9,7 @@ export default function FAQ() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [selected, setSelected] = useState(0)
+  const [mobileOpen, setMobileOpen] = useState<number | null>(0)
 
   const faqStructuredData = {
     '@context': 'https://schema.org',
@@ -25,7 +26,7 @@ export default function FAQ() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
 
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-24 pb-14 border-b border-white/[0.06]">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-20 md:pt-24 pb-12 md:pb-14 border-b border-white/[0.06]">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -33,9 +34,9 @@ export default function FAQ() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
           <div>
-            <p className="font-mono text-[10px] text-white/20 tracking-[0.25em] uppercase mb-8">— {t.faq.label}</p>
+            <p className="font-mono text-[10px] text-white/20 tracking-[0.25em] uppercase mb-6 md:mb-8">— {t.faq.label}</p>
             <h2 id="faq-title" className="font-display font-extrabold text-white leading-[0.9] tracking-tight"
-              style={{ fontSize: 'clamp(36px, 6vw, 80px)' }}>
+              style={{ fontSize: 'clamp(32px, 6vw, 80px)' }}>
               {t.faq.h2}
             </h2>
           </div>
@@ -48,8 +49,48 @@ export default function FAQ() {
         </motion.div>
       </div>
 
-      {/* 2-col: question list left + answer panel right */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
+      {/* ── MOBILE: accordion ── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.6, delay: 0.15 }}
+        className="md:hidden max-w-7xl mx-auto px-6 py-8"
+      >
+        {t.faq.items.map((faq, i) => (
+          <div key={i} className="border-b border-white/[0.06]">
+            <button
+              onClick={() => setMobileOpen(mobileOpen === i ? null : i)}
+              className="w-full flex items-center justify-between gap-4 py-5 text-left"
+              aria-expanded={mobileOpen === i}
+            >
+              <span className={`text-sm font-medium leading-snug transition-colors ${mobileOpen === i ? 'text-white' : 'text-white/40'}`}>
+                {faq.q}
+              </span>
+              <span className={`font-mono text-[10px] shrink-0 w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-300 ${
+                mobileOpen === i ? 'border-accent text-accent rotate-45' : 'border-white/15 text-white/20'
+              }`}>
+                +
+              </span>
+            </button>
+            <AnimatePresence initial={false}>
+              {mobileOpen === i && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                >
+                  <p className="pb-6 text-white/40 text-sm leading-[1.9]">{faq.a}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        ))}
+      </motion.div>
+
+      {/* ── DESKTOP: 2-col selected panel ── */}
+      <div className="hidden md:block max-w-7xl mx-auto px-6 md:px-12 py-12">
         <div className="grid md:grid-cols-[1fr_1.3fr] gap-3 items-start">
 
           {/* Left: question list */}

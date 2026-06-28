@@ -22,7 +22,7 @@ export default function Hero() {
       />
 
       {/* ── Left: headline + CTAs ── */}
-      <div className="relative z-10 flex-1 flex flex-col px-6 md:px-14 lg:px-20 pt-28 md:pt-36 pb-10">
+      <div className="relative z-10 flex-1 flex flex-col px-6 md:px-14 lg:px-20 pt-24 md:pt-36 pb-10 min-w-0">
 
         <motion.p
           initial={{ opacity: 0 }}
@@ -37,8 +37,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 70 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="font-display font-extrabold text-white tracking-[-0.045em] leading-[0.87] my-10 md:my-14"
-          style={{ fontSize: 'clamp(54px, 10vw, 148px)' }}
+          className="font-display font-extrabold text-white tracking-[-0.045em] leading-[0.87] my-8 md:my-14"
+          style={{ fontSize: 'clamp(46px, 10vw, 148px)' }}
         >
           {t.hero.h1}<br />
           <span style={{ color: '#B3FF47', textShadow: '0 0 100px rgba(179,255,71,0.2)' }}>
@@ -50,17 +50,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45 }}
-          className="flex flex-col sm:flex-row sm:items-end justify-between gap-6"
+          className="flex flex-col gap-6"
         >
-          <div>
-            <p className="text-white/38 text-sm md:text-base leading-[1.75] max-w-xs">
-              {t.hero.body}{' '}
-              <span className="text-white/75 font-medium">{t.hero.bold}</span>
-            </p>
-            <p className="font-mono text-[11px] text-white/15 mt-2">{t.hero.price}</p>
-          </div>
+          <p className="text-white/38 text-sm md:text-base leading-[1.75] max-w-sm">
+            {t.hero.body}{' '}
+            <span className="text-white/75 font-medium">{t.hero.bold}</span>
+          </p>
 
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex flex-wrap items-center gap-3">
             <Link href="#contact"
               className="inline-flex items-center gap-2 bg-accent text-[#0A0A0A] font-bold text-sm px-7 py-4 rounded-full hover:brightness-110 active:scale-95 transition-all accent-glow">
               {t.hero.cta1}
@@ -73,6 +70,8 @@ export default function Hero() {
               {t.hero.cta2} →
             </Link>
           </div>
+
+          <p className="font-mono text-[11px] text-white/15">{t.hero.price}</p>
         </motion.div>
       </div>
 

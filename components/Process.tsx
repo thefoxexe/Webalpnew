@@ -30,7 +30,7 @@ export default function Process() {
         </motion.div>
 
         {/* Steps — grid on desktop, stacked on mobile */}
-        <div className="grid md:grid-cols-4 gap-3">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
           {t.process.steps.map((step, i) => (
             <motion.div
               key={step.number}
