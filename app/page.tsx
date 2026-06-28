@@ -1,6 +1,5 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
-import TrustBar from '@/components/TrustBar'
 import Problem from '@/components/Problem'
 import Services from '@/components/Services'
 import TechStack from '@/components/TechStack'
@@ -21,7 +20,6 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <TrustBar />
       <Problem />
       <Services />
       <TechStack />

@@ -71,6 +71,9 @@ export default function Pricing() {
               </div>
 
               <div className="mb-8">
+                <p className={`text-[10px] font-mono uppercase tracking-[0.15em] mb-1 ${plan.popular ? 'text-white/30' : 'text-black/30'}`}>
+                  dès
+                </p>
                 <p className={`font-display text-5xl font-extrabold tracking-tight leading-none ${plan.popular ? 'text-white' : 'text-black'}`}>
                   CHF {plan.price}
                 </p>
