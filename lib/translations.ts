@@ -106,7 +106,7 @@ export const translations = {
           number: '01',
           title: 'On écoute. Vraiment.',
           duration: 'Jour 1',
-          description: 'Pas de powerpoint de 80 slides. 45 minutes de vrai dialogue pour comprendre votre business, vos clients, vos objectifs. Un brief clair, un devis détaillé sous 2h.',
+          description: 'Un appel rapide pour comprendre votre business, vos clients, vos objectifs. On pose les bonnes questions, on élabore le devis et vous le recevez par mail sous 2h.',
           deliverable: 'Brief validé + devis',
         },
         {
@@ -134,9 +134,9 @@ export const translations = {
           deliverable: 'Site live + rapport',
         },
       ],
-      consultCta: 'Réserver ma consultation gratuite',
-      consultTitle: 'Consultation gratuite — 45 minutes',
-      consultSub: 'On analyse votre situation et vous montre exactement ce qu\'on peut faire. Sans baratin.',
+      consultCta: 'Demander un devis gratuit',
+      consultTitle: 'Un échange simple, un devis sous 2h',
+      consultSub: 'Appelez-nous, écrivez-nous ou passez par WhatsApp. On regarde votre situation ensemble et on vous envoie un devis clair par mail. Pas de rendez-vous imposé, pas de déplacement.',
     },
     portfolio: {
       label: 'Nos réalisations',
@@ -151,7 +151,7 @@ export const translations = {
       h2a: 'Vous choisissez',
       h2b: 'votre stack.',
       sub: 'On maîtrise les trois options. On vous conseille la bonne selon votre projet.',
-      note: 'Le choix est discuté lors de votre consultation gratuite, sans engagement.',
+      note: 'Le choix est discuté lors de notre premier échange, sans engagement.',
       options: [
         {
           name: 'Sur mesure',
@@ -185,7 +185,7 @@ export const translations = {
     pricing: {
       label: 'Nos tarifs',
       h2: 'Transparent. Simple. Suisse.',
-      sub: 'Ces tarifs sont des repères, pas des forfaits figés. Chaque projet se construit sur devis, adapté à ce que vous voulez faire. On vous oriente vers la bonne formule lors de la consultation gratuite.',
+      sub: 'Ces tarifs sont des repères, pas des forfaits figés. Chaque projet se construit sur devis, adapté à ce que vous voulez faire. On vous oriente vers la bonne formule lors de notre premier échange.',
       urgency: '3 projets max par mois · 2 places disponibles en juillet',
       popular: 'Le plus demandé',
       period: 'indicatif · sur devis',
@@ -257,7 +257,7 @@ export const translations = {
       contactLink: 'Écrivez-nous directement',
       items: [
         { q: 'Combien de temps pour avoir mon site ?', a: '14 jours ouvrés, garantis. Pour les projets complexes (e-commerce, app), comptez 3 à 4 semaines. On respecte nos délais. Notre réputation est en jeu.' },
-        { q: 'Est-ce que je peux modifier mon site tout seul ?', a: 'Ça dépend de la solution choisie. Avec Next.js, les modifications passent par nous ou un développeur. Avec Webflow, vous éditez textes et images vous-même via une interface visuelle sans toucher au code. Avec WordPress, tout le contenu est gérable en autonomie. On vous recommande l\'option adaptée à votre situation lors de la consultation.' },
+        { q: 'Est-ce que je peux modifier mon site tout seul ?', a: 'Ça dépend de la solution choisie. Avec Next.js, les modifications passent par nous ou un développeur. Avec Webflow, vous éditez textes et images vous-même via une interface visuelle sans toucher au code. Avec WordPress, tout le contenu est gérable en autonomie. On vous recommande la bonne option lors de notre premier échange.' },
         { q: 'Pourquoi vos tarifs sont inférieurs à ceux de grandes agences ?', a: 'Parce qu\'on est deux, sans structure lourde. Pas de directeur de compte, pas de réunions hebdomadaires facturées, pas de marge sur sous-traitants. Ce que vous payez va directement dans votre site. Pas dans notre organigramme.' },
         { q: 'Le SEO est vraiment inclus dès le départ ?', a: 'Oui, entièrement. Balises méta, structure des URL, Core Web Vitals, plan de site, données structurées : tout est dans le code dès la première ligne. Le SEO technique est un fondement, pas un supplément. Pour aller plus loin sur les mots-clés et la création de contenu, on a des forfaits mensuels dédiés.' },
         { q: 'Et si je ne suis pas satisfait ?', a: 'Ça ne nous est jamais arrivé. Mais en théorie : on retravaille jusqu\'à ce que vous soyez fier de montrer votre site. Les révisions sont incluses dans chaque plan. On arrête quand c\'est parfait.' },
@@ -304,10 +304,10 @@ export const translations = {
       badge: '3 projets/mois · 2 places en juillet',
       h2a: 'Votre concurrent a lancé son site hier.',
       h2b: 'Qu\'attendez-vous ?',
-      body: '45 minutes. Gratuit. On analyse votre présence en ligne actuelle et on vous dit exactement ce qu\'on peut faire pour vous. Sans baratin.',
-      cta: 'Vérifier ma disponibilité',
-      sub: 'ou écrivez à contact@webalp.ch',
-      trust: ['Réponse sous 2h', 'Sans engagement', '100% gratuit'],
+      body: 'Un appel, un mail ou un message WhatsApp suffit. On regarde votre situation, on construit le devis et vous le recevez sous 2h. Simple, direct, sans déplacement.',
+      cta: 'Demander un devis gratuit',
+      sub: 'ou écrivez à contact@webalp.ch · aussi par WhatsApp',
+      trust: ['Devis sous 2h', 'Sans engagement', '100% gratuit'],
     },
     footer: {
       tagline: 'Agence web à Sion, Valais. On crée des sites qui convertissent pour les PME suisses.',
@@ -427,7 +427,7 @@ export const translations = {
           number: '01',
           title: 'We listen. Really.',
           duration: 'Day 1',
-          description: 'No 80-slide decks. A real 45-minute conversation to understand your business, your clients, your goals. Clear brief, detailed quote within 2 hours.',
+          description: 'A quick call to understand your business, your clients, your goals. We ask the right questions, build the quote, and send it to you by email within 2 hours.',
           deliverable: 'Validated brief + quote',
         },
         {
@@ -455,9 +455,9 @@ export const translations = {
           deliverable: 'Live site + report',
         },
       ],
-      consultCta: 'Book my free consultation',
-      consultTitle: 'Free consultation — 45 minutes',
-      consultSub: 'We analyze your situation and show you exactly what we can do. Straight talk, no fluff.',
+      consultCta: 'Request a free quote',
+      consultTitle: 'One conversation, a quote within 2 hours',
+      consultSub: 'Call us, email us, or message on WhatsApp. We look at your situation together and send you a clear quote by email. No scheduled meeting required, no travel.',
     },
     portfolio: {
       label: 'Our work',
@@ -472,7 +472,7 @@ export const translations = {
       h2a: 'You choose',
       h2b: 'your stack.',
       sub: 'We master all three options. We advise the right one for your project.',
-      note: 'The choice is discussed during your free consultation, with no commitment.',
+      note: 'The choice is discussed during our first exchange, with no commitment.',
       options: [
         {
           name: 'Custom',
@@ -506,7 +506,7 @@ export const translations = {
     pricing: {
       label: 'Pricing',
       h2: 'Transparent. Simple. Swiss.',
-      sub: 'These prices are reference points, not fixed packages. Every project is built on a custom quote. We\'ll guide you to the right fit during the free consultation.',
+      sub: 'These prices are reference points, not fixed packages. Every project is built on a custom quote. We\'ll guide you to the right fit during our first exchange.',
       urgency: '3 projects max per month · 2 spots available in July',
       popular: 'Most requested',
       period: 'indicative · custom quote',
@@ -578,7 +578,7 @@ export const translations = {
       contactLink: 'Write to us directly',
       items: [
         { q: 'How long does it take to build my site?', a: '14 business days, guaranteed. For complex projects (e-commerce, app), allow 3 to 4 weeks. We respect our deadlines. Our reputation depends on it.' },
-        { q: 'Can I update my site myself?', a: 'It depends on the technology chosen. With Next.js, changes go through us or a developer. With Webflow, you edit text and images yourself through a visual interface without touching code. With WordPress, all content is self-manageable. We recommend the right option for your situation during the consultation.' },
+        { q: 'Can I update my site myself?', a: 'It depends on the technology chosen. With Next.js, changes go through us or a developer. With Webflow, you edit text and images yourself through a visual interface without touching code. With WordPress, all content is self-manageable. We recommend the right option for your situation during our first exchange.' },
         { q: 'Why are your rates lower than larger agencies?', a: 'Because we\'re a two-person team with no heavy overhead. No account director, no weekly meetings billed by the hour, no margin on subcontractors. What you pay goes directly into your website, not our org chart.' },
         { q: 'Is SEO really included from the start?', a: 'Yes, fully. Meta tags, URL structure, Core Web Vitals, sitemap, structured data: all of it is in the code from the very first line. Technical SEO is a foundation, not an add-on. For deeper keyword research and content creation, we offer dedicated monthly plans.' },
         { q: 'What if I\'m not satisfied?', a: 'That\'s never happened to us. But in theory: we rework until you\'re proud to show your site. Revisions are included in every plan. We stop when it\'s perfect.' },
@@ -625,10 +625,10 @@ export const translations = {
       badge: '3 projects/month · 2 spots in July',
       h2a: 'Your competitor launched their site yesterday.',
       h2b: 'What are you waiting for?',
-      body: '45 minutes. Free. We analyze your current online presence and tell you exactly what we can do for you. Straight talk.',
-      cta: 'Check my availability',
-      sub: 'or write to contact@webalp.ch',
-      trust: ['Reply in 2h', 'No commitment', '100% free'],
+      body: 'A call, an email, or a WhatsApp message is all it takes. We look at your situation, build your quote, and send it within 2 hours. Simple, direct, no travel needed.',
+      cta: 'Request a free quote',
+      sub: 'or write to contact@webalp.ch · also on WhatsApp',
+      trust: ['Quote within 2h', 'No commitment', '100% free'],
     },
     footer: {
       tagline: 'Web agency in Sion, Valais. We build converting websites for Swiss SMEs.',
