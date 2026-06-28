@@ -14,79 +14,89 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-[#0A0A0A] border-t border-white/[0.05]" role="contentinfo">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
+    <footer className="bg-[#0A0A0A] overflow-hidden" role="contentinfo">
 
-        <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 pb-16 border-b border-white/[0.06]">
+      {/* Giant wordmark zone */}
+      <div className="border-t border-white/[0.05] pt-16 pb-8 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-6">
+          <p className="font-mono text-[10px] text-white/15 tracking-[0.25em] uppercase">
+            — Valais, Suisse
+          </p>
+        </div>
+        <div className="px-4 md:px-10 overflow-hidden" aria-hidden="true">
+          <p
+            className="font-display font-extrabold leading-[0.85] tracking-tight select-none whitespace-nowrap"
+            style={{ fontSize: 'clamp(80px, 20vw, 260px)' }}
+          >
+            <span className="text-white/8">WEB</span><span className="text-accent/10">ALP</span>
+          </p>
+        </div>
+      </div>
 
-          {/* Brand */}
-          <div>
-            <Link href="/" aria-label="WebAlp" className="inline-block mb-5">
-              <span className="font-display font-extrabold text-2xl text-white">WebAlp</span>
+      {/* Bottom bar */}
+      <div className="border-t border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row gap-10 md:gap-16 justify-between">
+
+          {/* Tagline + socials */}
+          <div className="shrink-0 max-w-xs">
+            <Link href="/" className="inline-block mb-5" aria-label="WebAlp">
+              <span className="font-display font-extrabold text-xl text-white">
+                Web<span className="text-accent">Alp</span>
+              </span>
             </Link>
-            <p className="text-sm text-white/30 leading-relaxed mb-8 max-w-xs">{t.footer.tagline}</p>
-            <div className="flex items-center gap-2.5">
+            <p className="text-white/25 text-sm leading-relaxed mb-6">{t.footer.tagline}</p>
+            <div className="flex items-center gap-2">
               {[
-                {
-                  href: 'mailto:contact@webalp.ch', label: 'Email',
-                  icon: <><rect x="1" y="3" width="12" height="8" rx="1" stroke="currentColor" strokeWidth="1.2"/><path d="M1 5l6 4 6-4" stroke="currentColor" strokeWidth="1.2"/></>,
-                },
-                {
-                  href: 'tel:+41772741726', label: 'Téléphone',
-                  icon: <path d="M2 2.5h3l1.5 3-2 1c.83 1.67 2 2.83 3.5 3.5l1-2 3 1.5V13c-5 .33-9-4-10-10.5z" stroke="currentColor" strokeWidth="1.1"/>,
-                },
-                {
-                  href: 'https://www.linkedin.com/company/webalp', label: 'LinkedIn',
-                  icon: <><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><circle cx="4" cy="4" r="2" stroke="currentColor" strokeWidth="1.8"/></>,
-                  viewBox: '0 0 24 24',
-                },
+                { href: 'mailto:contact@webalp.ch', label: 'Email', text: '@' },
+                { href: 'tel:+41772741726', label: 'Tel', text: '✆' },
+                { href: 'https://www.linkedin.com/company/webalp', label: 'LinkedIn', text: 'in' },
               ].map(item => (
                 <a key={item.label} href={item.href}
                   target={item.href.startsWith('http') ? '_blank' : undefined}
                   rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-white hover:border-white/25 transition-all"
+                  className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center font-mono text-[11px] text-white/25 hover:text-white hover:border-white/30 transition-all"
                   aria-label={item.label}>
-                  <svg width="13" height="13" viewBox={item.viewBox ?? '0 0 14 14'} fill="none" aria-hidden="true">
-                    {item.icon}
-                  </svg>
+                  {item.text}
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Links */}
-          {footerSections.map(([category, links], sectionIndex) => (
-            <div key={category}>
-              <h3 className="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase mb-5">{category}</h3>
-              <ul className="space-y-3">
-                {links.map((label, linkIndex) => (
-                  <li key={label}>
-                    <Link href={sectionHrefs[sectionIndex]?.[linkIndex] ?? '#'}
-                      className="text-sm text-white/35 hover:text-white transition-colors">
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+          {/* Nav sections */}
+          <div className="flex flex-wrap gap-x-12 gap-y-8 flex-1">
+            {footerSections.map(([category, links], sectionIndex) => (
+              <div key={category}>
+                <h3 className="font-mono text-[9px] text-white/15 tracking-[0.2em] uppercase mb-4">{category}</h3>
+                <ul className="space-y-2.5">
+                  {links.map((label, linkIndex) => (
+                    <li key={label}>
+                      <Link href={sectionHrefs[sectionIndex]?.[linkIndex] ?? '#'}
+                        className="font-mono text-[11px] text-white/30 hover:text-white/60 transition-colors">
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
 
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-mono text-[11px] text-white/18">
-            {t.footer.rights.replace('{year}', String(new Date().getFullYear()))}
-          </p>
-          <div className="flex items-center gap-5">
-            <Link href="/mentions-legales" className="font-mono text-[11px] text-white/18 hover:text-white/45 transition-colors">
+          {/* Legal */}
+          <div className="shrink-0 flex flex-col gap-2.5 md:text-right">
+            <Link href="/mentions-legales" className="font-mono text-[10px] text-white/18 hover:text-white/45 transition-colors">
               {t.footer.legal}
             </Link>
-            <Link href="/confidentialite" className="font-mono text-[11px] text-white/18 hover:text-white/45 transition-colors">
+            <Link href="/confidentialite" className="font-mono text-[10px] text-white/18 hover:text-white/45 transition-colors">
               {t.footer.privacy}
             </Link>
+            <p className="font-mono text-[10px] text-white/12 mt-2">
+              {t.footer.rights.replace('{year}', String(new Date().getFullYear()))}
+            </p>
           </div>
-        </div>
 
+        </div>
       </div>
+
     </footer>
   )
 }

@@ -10,69 +10,69 @@ export default function Process() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="process" className="py-32 bg-white" ref={ref} aria-labelledby="process-title">
+    <section id="process" className="py-24 bg-white overflow-hidden" ref={ref} aria-labelledby="process-title">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7 }}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
         >
           <div>
-            <p className="font-mono text-[10px] text-black/30 tracking-[0.25em] uppercase mb-6">— {t.process.label}</p>
-            <h2 id="process-title" className="font-display font-extrabold text-black leading-[0.92] tracking-tight"
-              style={{ fontSize: 'clamp(32px, 5vw, 68px)' }}>
+            <p className="font-mono text-[10px] text-black/30 tracking-[0.25em] uppercase mb-5">— {t.process.label}</p>
+            <h2 id="process-title" className="font-display font-extrabold text-black leading-[0.9] tracking-tight"
+              style={{ fontSize: 'clamp(36px, 6vw, 80px)' }}>
               {t.process.h2}
             </h2>
           </div>
-          <p className="text-black/35 text-sm max-w-xs md:text-right leading-relaxed">{t.process.sub}</p>
+          <p className="text-black/35 text-sm max-w-xs leading-relaxed md:text-right">{t.process.sub}</p>
         </motion.div>
 
-        <div className="border-t border-black/8">
+        {/* Steps — grid on desktop, stacked on mobile */}
+        <div className="grid md:grid-cols-4 gap-3">
           {t.process.steps.map((step, i) => (
             <motion.div
               key={step.number}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
-              className="grid md:grid-cols-[80px_1fr_1fr] gap-4 md:gap-8 py-7 border-b border-black/6 items-start"
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+              className="bg-[#F5F4F0] rounded-xl p-6 flex flex-col"
             >
-              <div className="flex items-center gap-3 md:block">
-                <span className="w-8 h-8 rounded-full bg-accent text-[#0A0A0A] flex items-center justify-center font-mono text-[11px] font-bold shrink-0 accent-glow">
-                  {step.number}
-                </span>
-                <span className="font-mono text-[10px] text-black/25 md:hidden">{step.duration}</span>
+              {/* Number badge */}
+              <div className="w-9 h-9 rounded-full bg-accent text-[#0A0A0A] flex items-center justify-center font-mono text-[11px] font-bold mb-6 accent-glow shrink-0">
+                {step.number}
               </div>
 
-              <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <h3 className="font-display font-extrabold text-xl text-black">{step.title}</h3>
-                  <span className="hidden md:block font-mono text-[10px] text-black/25 bg-black/5 px-2.5 py-1 rounded-full">{step.duration}</span>
-                </div>
-                <p className="text-sm text-black/50 leading-[1.75]">{step.description}</p>
-              </div>
+              {/* Duration */}
+              <span className="font-mono text-[10px] text-black/30 border border-black/8 rounded-full px-2.5 py-1 self-start mb-4">
+                {step.duration}
+              </span>
 
-              <div className="md:flex md:items-start md:justify-end">
-                <span className="inline-flex items-center gap-2 font-mono text-[11px] text-black/45 border border-black/8 rounded-full px-3.5 py-2">
-                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                    <path d="M2 6l3 3 5-5" stroke="#0A0A0A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  {step.deliverable}
-                </span>
+              {/* Title + description */}
+              <h3 className="font-display font-extrabold text-black text-lg leading-tight mb-2">{step.title}</h3>
+              <p className="text-black/50 text-sm leading-[1.7] mb-5 flex-1">{step.description}</p>
+
+              {/* Deliverable */}
+              <div className="flex items-center gap-2 pt-4 border-t border-black/6">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M2 6l3 3 5-5" stroke="#0A0A0A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                <span className="font-mono text-[10px] text-black/40">{step.deliverable}</span>
               </div>
             </motion.div>
           ))}
         </div>
 
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-10 bg-[#0A0A0A] rounded-xl px-8 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-5"
+          transition={{ duration: 0.6, delay: 0.55 }}
+          className="mt-4 bg-[#0A0A0A] rounded-xl px-8 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-5"
         >
           <div>
-            <p className="font-display font-extrabold text-white text-lg mb-1">{t.process.consultTitle}</p>
+            <p className="font-display font-extrabold text-white text-xl mb-1">{t.process.consultTitle}</p>
             <p className="text-white/35 text-sm">{t.process.consultSub}</p>
           </div>
           <a href="#contact"
