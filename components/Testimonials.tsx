@@ -4,10 +4,12 @@ import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 
+const spring = { type: 'spring', stiffness: 260, damping: 24 } as const
+
 export default function Testimonials() {
   const { t } = useLanguage()
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-60px' })
   const [active, setActive] = useState(0)
   const items = t.testimonials.items
 
@@ -20,33 +22,33 @@ export default function Testimonials() {
   return (
     <section className="bg-[#F5F4F0]" ref={ref} aria-labelledby="testimonials-title">
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-20 sm:pt-24 pb-12">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
+          animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+          transition={{ type: 'spring', stiffness: 240, damping: 22 }}
           className="mb-10"
         >
           <p className="text-xs text-black/45 uppercase tracking-widest mb-4" id="testimonials-title">
             — {t.testimonials.label}
           </p>
           <h2 className="font-display font-extrabold text-black leading-[0.9] tracking-tight"
-            style={{ fontSize: 'clamp(36px, 6vw, 80px)' }}>
+            style={{ fontSize: 'clamp(32px, 6vw, 80px)' }}>
             {t.testimonials.h2a}<br />
             <span className="text-black/20">{t.testimonials.h2b}</span>
           </h2>
         </motion.div>
 
-        <div className="relative min-h-[140px] md:min-h-[180px]">
+        <div className="relative min-h-[120px] sm:min-h-[160px] md:min-h-[180px]">
           <AnimatePresence mode="wait">
             <motion.blockquote
               key={active}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, y: -16, filter: 'blur(4px)' }}
+              transition={{ type: 'spring', stiffness: 280, damping: 26 }}
               className="font-display font-extrabold text-black leading-[1.05] tracking-tight"
-              style={{ fontSize: 'clamp(22px, 4vw, 52px)' }}
+              style={{ fontSize: 'clamp(20px, 4vw, 52px)' }}
             >
               {'"'}{items[active].quote}{'"'}
             </motion.blockquote>
@@ -59,10 +61,10 @@ export default function Testimonials() {
           <AnimatePresence mode="wait">
             <motion.div
               key={`a-${active}`}
-              initial={{ opacity: 0, x: -8 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 8 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, x: -12, filter: 'blur(4px)' }}
+              animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, x: 10, filter: 'blur(4px)' }}
+              transition={{ type: 'spring', stiffness: 340, damping: 28 }}
               className="flex items-center gap-3"
             >
               <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center font-display font-extrabold text-sm shrink-0">
@@ -85,8 +87,12 @@ export default function Testimonials() {
 
           <div className="flex gap-1.5 sm:ml-4">
             {items.map((_, i) => (
-              <button key={i} onClick={() => setActive(i)}
-                className={`h-1.5 rounded-full transition-all duration-400 ${i === active ? 'w-8 bg-black' : 'w-3 bg-black/25 hover:bg-black/45'}`}
+              <motion.button
+                key={i}
+                onClick={() => setActive(i)}
+                animate={{ width: i === active ? 28 : 12, opacity: i === active ? 1 : 0.3 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                className={`h-1.5 rounded-full bg-black`}
                 aria-label={`Avis ${i + 1}`}
               />
             ))}

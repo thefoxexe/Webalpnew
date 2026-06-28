@@ -4,46 +4,48 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 
+const spring = { type: 'spring', stiffness: 260, damping: 22 } as const
+
 export default function Hero() {
   const { t } = useLanguage()
 
   return (
-    <section className="relative min-h-screen bg-[#0A0A0A] flex overflow-hidden" aria-label="Hero">
+    <section className="relative min-h-[100svh] bg-[#0A0A0A] flex overflow-hidden" aria-label="Hero">
 
       <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px)',
           backgroundSize: '48px 48px',
         }}
       />
 
       {/* Left: headline + CTAs */}
-      <div className="relative z-10 flex-1 flex flex-col px-6 md:px-14 lg:px-20 pt-24 md:pt-36 pb-12 min-w-0">
+      <div className="relative z-10 flex-1 flex flex-col px-6 sm:px-10 md:px-14 lg:px-20 pt-24 sm:pt-28 md:pt-36 pb-12 min-w-0">
 
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ...spring, delay: 0.05 }}
           className="text-xs text-white/50 tracking-widest uppercase mb-auto"
         >
           Agence web · Sion, Valais · Suisse
         </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          initial={{ opacity: 0, y: 48, filter: 'blur(12px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.1 }}
           className="font-display font-extrabold text-white tracking-[-0.04em] leading-[0.87] my-10 md:my-14"
-          style={{ fontSize: 'clamp(48px, 10vw, 148px)' }}
+          style={{ fontSize: 'clamp(42px, 10vw, 148px)' }}
         >
           {t.hero.h1}<br />
           <span className="text-accent">{t.hero.h2}</span>
         </motion.h1>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.45 }}
+          transition={{ ...spring, delay: 0.28 }}
           className="flex flex-col gap-5"
         >
           <p className="text-white/65 text-base leading-relaxed max-w-sm">
@@ -65,14 +67,29 @@ export default function Hero() {
           </div>
 
           <p className="text-white/40 text-sm">{t.hero.price}</p>
+
+          {/* Mini stats — visible on mobile only */}
+          <div className="flex gap-6 mt-2 lg:hidden">
+            {t.hero.bottomStats.slice(0, 3).map((s, i) => (
+              <motion.div
+                key={s.l}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ ...spring, delay: 0.4 + i * 0.06 }}
+              >
+                <p className="font-display font-extrabold text-white leading-none text-xl">{s.n}</p>
+                <p className="text-xs text-white/40 mt-0.5">{s.l}</p>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
 
       {/* Right: stats sidebar */}
       <motion.aside
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ ...spring, delay: 0.35 }}
         className="hidden lg:flex w-72 xl:w-80 shrink-0 border-l border-white/10 flex-col pt-36 pb-12 px-8"
       >
         <div className="flex items-center gap-2 mb-auto">
@@ -81,14 +98,20 @@ export default function Hero() {
         </div>
 
         <div className="border-t border-white/10">
-          {t.hero.bottomStats.map(s => (
-            <div key={s.l} className="py-6 border-b border-white/10">
+          {t.hero.bottomStats.map((s, i) => (
+            <motion.div
+              key={s.l}
+              initial={{ opacity: 0, x: 16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ ...spring, delay: 0.45 + i * 0.08 }}
+              className="py-6 border-b border-white/10"
+            >
               <p className="font-display font-extrabold text-white leading-none mb-2"
                 style={{ fontSize: 'clamp(28px, 3vw, 42px)' }}>
                 {s.n}
               </p>
               <p className="text-sm text-white/50">{s.l}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
 

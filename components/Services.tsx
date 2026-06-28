@@ -5,24 +5,26 @@ import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
 
+const spring = { type: 'spring', stiffness: 280, damping: 24 } as const
+
 export default function Services() {
   const { t } = useLanguage()
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section id="services" className="py-20 bg-[#F5F4F0]" ref={ref} aria-labelledby="services-title">
+    <section id="services" className="py-20 sm:py-24 bg-[#F5F4F0]" ref={ref} aria-labelledby="services-title">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
+          animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+          transition={{ type: 'spring', stiffness: 240, damping: 22 }}
           className="mb-12"
         >
           <p className="text-xs text-black/45 uppercase tracking-widest mb-4">— {t.services.label}</p>
           <h2 id="services-title" className="font-display font-extrabold text-black leading-[0.9] tracking-tight"
-            style={{ fontSize: 'clamp(36px, 6vw, 80px)' }}>
+            style={{ fontSize: 'clamp(32px, 6vw, 80px)' }}>
             {t.services.h2}
           </h2>
           <p className="text-black/60 text-base mt-4 max-w-lg">{t.services.sub}</p>
@@ -32,10 +34,11 @@ export default function Services() {
           {t.services.items.map((s, i) => (
             <motion.div
               key={s.number}
-              initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
-              className={`rounded-2xl p-8 flex flex-col gap-6 ${
+              initial={{ opacity: 0, y: 32, scale: 0.96 }}
+              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ ...spring, delay: 0.1 + i * 0.1 }}
+              whileHover={{ y: -4, transition: { type: 'spring', stiffness: 400, damping: 28 } }}
+              className={`rounded-2xl p-7 md:p-8 flex flex-col gap-6 cursor-default ${
                 i === 0 ? 'bg-[#0A0A0A]' : 'bg-white border border-black/10'
               }`}
             >
@@ -50,7 +53,7 @@ export default function Services() {
 
               <div>
                 <h3 className={`font-display font-extrabold leading-tight mb-3 ${i === 0 ? 'text-white' : 'text-black'}`}
-                  style={{ fontSize: 'clamp(22px, 2.5vw, 32px)' }}>
+                  style={{ fontSize: 'clamp(20px, 2.5vw, 32px)' }}>
                   {s.title}
                 </h3>
                 <p className={`text-sm leading-relaxed ${i === 0 ? 'text-white/65' : 'text-black/60'}`}>

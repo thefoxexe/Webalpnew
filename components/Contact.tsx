@@ -4,10 +4,12 @@ import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 
+const spring = { type: 'spring', stiffness: 280, damping: 24 } as const
+
 export default function Contact() {
   const { t } = useLanguage()
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-80px' })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -51,15 +53,15 @@ export default function Contact() {
     <section id="contact" className="bg-[#0A0A0A]" ref={ref} aria-labelledby="contact-title">
 
       {/* Headline */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-12 border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-20 sm:pt-24 pb-12 border-b border-white/10">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 32, filter: 'blur(10px)' }}
+          animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+          transition={{ type: 'spring', stiffness: 220, damping: 22 }}
         >
           <p className="text-xs text-white/50 uppercase tracking-widest mb-6">— {t.contact.label}</p>
           <h2 id="contact-title" className="font-display font-extrabold text-white leading-[0.88] tracking-tight"
-            style={{ fontSize: 'clamp(40px, 8vw, 120px)' }}>
+            style={{ fontSize: 'clamp(36px, 8vw, 120px)' }}>
             {t.contact.h2a}<br />
             <span className="text-white/25">{t.contact.h2b}</span>
           </h2>
@@ -67,16 +69,16 @@ export default function Contact() {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-14">
-        <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 items-start">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-14">
+        <div className="grid md:grid-cols-[1fr_1.5fr] gap-10 md:gap-12 items-start">
 
           {/* Left: contact info */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.15 }}
+            transition={{ ...spring, delay: 0.18 }}
           >
-            <p className="text-white/65 text-base leading-relaxed mb-10">{t.contact.body}</p>
+            <p className="text-white/65 text-base leading-relaxed mb-8 md:mb-10">{t.contact.body}</p>
 
             <div className="space-y-0">
               {[
@@ -94,7 +96,7 @@ export default function Contact() {
               ))}
             </div>
 
-            <div className="mt-10">
+            <div className="mt-8 md:mt-10">
               <div className="flex gap-0.5 mb-3">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} width="12" height="12" viewBox="0 0 16 16" fill="#B3FF47" aria-hidden="true">
@@ -109,12 +111,12 @@ export default function Contact() {
 
           {/* Right: form */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.25 }}
+            initial={{ opacity: 0, y: 28, scale: 0.98 }}
+            animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+            transition={{ ...spring, delay: 0.28 }}
           >
             {submitted ? (
-              <div className="border border-white/15 rounded-2xl p-12 text-center">
+              <div className="border border-white/15 rounded-2xl p-10 sm:p-12 text-center">
                 <div className="w-14 h-14 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center mx-auto mb-6">
                   <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true">
                     <path d="M4 14l7 7 13-13" stroke="#B3FF47" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -125,7 +127,7 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
                     { id: 'name', label: f.name, type: 'text', placeholder: f.namePlaceholder, required: true },
                     { id: 'email', label: f.email, type: 'email', placeholder: f.emailPlaceholder, required: true },
@@ -142,7 +144,7 @@ export default function Contact() {
                         value={form[field.id as keyof typeof form]}
                         onChange={handleChange}
                         placeholder={field.placeholder}
-                        className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/35 transition-colors"
+                        className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/40 transition-colors"
                       />
                     </div>
                   ))}
@@ -152,13 +154,13 @@ export default function Contact() {
                   <label htmlFor="company" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.company}</label>
                   <input id="company" name="company" type="text" value={form.company} onChange={handleChange}
                     placeholder={f.companyPlaceholder}
-                    className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/35 transition-colors" />
+                    className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/40 transition-colors" />
                 </div>
 
                 <div>
                   <label htmlFor="budget" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.budget}</label>
                   <select id="budget" name="budget" value={form.budget} onChange={handleChange}
-                    className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-white/35 transition-colors appearance-none cursor-pointer">
+                    className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white focus:outline-none focus:border-white/40 transition-colors appearance-none cursor-pointer">
                     <option value="" className="bg-[#1a1a1a]">{f.budgetDefault}</option>
                     {f.budgets.map(b => <option key={b.value} value={b.value} className="bg-[#1a1a1a]">{b.label}</option>)}
                   </select>
@@ -168,7 +170,7 @@ export default function Contact() {
                   <label htmlFor="message" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.message}</label>
                   <textarea id="message" name="message" required value={form.message} onChange={handleChange}
                     rows={4} placeholder={f.messagePlaceholder}
-                    className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/35 transition-colors resize-none" />
+                    className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/40 transition-colors resize-none" />
                 </div>
 
                 <button type="submit" disabled={loading}
