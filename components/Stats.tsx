@@ -11,43 +11,34 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
   useEffect(() => {
     if (!inView) return
-    const duration = 1500
     const steps = 60
     const increment = value / steps
     let current = 0
     const timer = setInterval(() => {
       current += increment
-      if (current >= value) {
-        setCount(value)
-        clearInterval(timer)
-      } else {
-        setCount(Math.floor(current))
-      }
-    }, duration / steps)
+      if (current >= value) { setCount(value); clearInterval(timer) }
+      else setCount(Math.floor(current))
+    }, 1500 / steps)
     return () => clearInterval(timer)
   }, [inView, value])
 
-  return (
-    <span ref={ref} className="tabular-nums">
-      {count}{suffix}
-    </span>
-  )
+  return <span ref={ref} className="tabular-nums">{count}{suffix}</span>
 }
 
 export default function Stats() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-16 md:py-20 bg-[#0A0A0A] border-y border-white/6" aria-label="Stats">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
-          {t.stats.items.map((stat) => (
-            <div key={stat.label} className="text-center group px-4 py-6 rounded-2xl hover:bg-white/4 transition-colors">
-              <p className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-2 tracking-tight">
+    <section className="border-y border-white/[0.06] bg-[#0A0A0A]" aria-label="Stats">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.06]">
+          {t.stats.items.map(stat => (
+            <div key={stat.label} className="px-6 md:px-10 py-12 text-center first:pl-0 last:pr-0">
+              <p className="font-display font-extrabold text-white leading-none mb-2"
+                style={{ fontSize: 'clamp(36px, 4vw, 56px)' }}>
                 <Counter value={stat.value} suffix={stat.suffix} />
               </p>
-              <p className="text-xs font-bold text-white/50 uppercase tracking-wider mb-1">{stat.label}</p>
-              <p className="text-xs text-white/25 leading-snug hidden md:block">{stat.desc}</p>
+              <p className="font-mono text-[10px] text-white/25 uppercase tracking-widest">{stat.label}</p>
             </div>
           ))}
         </div>

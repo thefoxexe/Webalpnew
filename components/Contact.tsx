@@ -11,13 +11,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    company: '',
-    budget: '',
-    message: '',
-  })
+  const [form, setForm] = useState({ name: '', email: '', company: '', budget: '', message: '' })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -30,29 +24,21 @@ export default function Contact() {
 
     try {
       const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID
-
       if (!formspreeId) {
         const subject = encodeURIComponent(`Nouveau projet — ${form.name}`)
-        const body = encodeURIComponent(
-          `Nom: ${form.name}\nEmail: ${form.email}\nEntreprise: ${form.company}\nBudget: ${form.budget}\n\n${form.message}`
-        )
+        const body = encodeURIComponent(`Nom: ${form.name}\nEmail: ${form.email}\nEntreprise: ${form.company}\nBudget: ${form.budget}\n\n${form.message}`)
         window.location.href = `mailto:contact@webalp.ch?subject=${subject}&body=${body}`
         setSubmitted(true)
         setLoading(false)
         return
       }
-
       const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(form),
       })
-
-      if (res.ok) {
-        setSubmitted(true)
-      } else {
-        setError(t.contact.fields.errorMsg)
-      }
+      if (res.ok) setSubmitted(true)
+      else setError(t.contact.fields.errorMsg)
     } catch {
       setError(t.contact.fields.errorMsg)
     } finally {
@@ -62,219 +48,138 @@ export default function Contact() {
 
   const f = t.contact.fields
 
+  const inputClass = "w-full bg-transparent border-0 border-b border-black/12 py-3 text-sm text-black placeholder:text-black/25 focus:outline-none focus:border-black transition-colors"
+
   return (
-    <section
-      id="contact"
-      className="py-28 bg-white"
-      ref={ref}
-      aria-labelledby="contact-title"
-    >
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
-          {/* Left: Info */}
+    <section id="contact" className="py-32 bg-[#F5F4F0]" ref={ref} aria-labelledby="contact-title">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid md:grid-cols-2 gap-20 items-start">
+
+          {/* Left */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-xs font-semibold tracking-widest uppercase text-black/40 mb-5">
-              {t.contact.label}
-            </p>
-            <h2
-              id="contact-title"
-              className="font-display text-4xl md:text-5xl font-extrabold text-black leading-tight mb-6"
-            >
-              {t.contact.h2a}<br />{t.contact.h2b}
+            <p className="font-mono text-[10px] text-black/30 tracking-[0.25em] uppercase mb-8">— {t.contact.label}</p>
+            <h2 id="contact-title" className="font-display font-extrabold text-black leading-[0.92] tracking-tight mb-8"
+              style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}>
+              {t.contact.h2a}<br />
+              <span className="text-black/20">{t.contact.h2b}</span>
             </h2>
-            <p className="text-black/55 text-lg leading-relaxed mb-10">{t.contact.body}</p>
+            <p className="text-black/45 text-sm leading-[1.8] mb-12">{t.contact.body}</p>
 
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center flex-shrink-0">
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                    <path d="M9 1C5.69 1 3 3.69 3 7c0 4 6 10 6 10s6-6 6-10c0-3.31-2.69-6-6-6zm0 8a2 2 0 100-4 2 2 0 000 4z" stroke="#0A0A0A" strokeWidth="1.2"/>
-                  </svg>
+            <div className="border-t border-black/8 space-y-0">
+              {[
+                { label: t.contact.location, sub: t.contact.locationSub },
+                { label: 'contact@webalp.ch', sub: t.contact.emailSub },
+                { label: '+41 77 274 17 26', sub: t.contact.phoneSub },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-5 py-4 border-b border-black/6">
+                  <span className="font-mono text-[10px] text-black/20 w-4 pt-0.5">{String(i + 1).padStart(2, '0')}</span>
+                  <div>
+                    <p className="text-sm font-semibold text-black">{item.label}</p>
+                    <p className="font-mono text-[11px] text-black/35 mt-0.5">{item.sub}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm font-semibold text-black">{t.contact.location}</p>
-                  <p className="text-xs text-black/45">{t.contact.locationSub}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center flex-shrink-0">
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                    <path d="M2 4a1 1 0 011-1h12a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" stroke="#0A0A0A" strokeWidth="1.2"/>
-                    <path d="M2 5l7 5 7-5" stroke="#0A0A0A" strokeWidth="1.2"/>
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-black">contact@webalp.ch</p>
-                  <p className="text-xs text-black/45">{t.contact.emailSub}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center flex-shrink-0">
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                    <path d="M3 3h3l1.5 4-2 1c1 2 2.5 3.5 4.5 4.5l1-2 4 1.5V15c0 .55-.45 1-1 1C5.5 16 2 9.5 2 4c0-.55.45-1 1-1z" stroke="#0A0A0A" strokeWidth="1.2"/>
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-black">+41 77 274 17 26</p>
-                  <p className="text-xs text-black/45">{t.contact.phoneSub}</p>
-                </div>
-              </div>
+              ))}
             </div>
 
-            <div className="mt-10 p-6 bg-[#F5F5F5] rounded-2xl border border-black/6">
-              <div className="flex gap-1 mb-2" aria-label="5 stars">
+            {/* Quote */}
+            <div className="mt-10 pt-8 border-t border-black/8">
+              <div className="flex gap-0.5 mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} width="14" height="14" viewBox="0 0 16 16" fill="#0A0A0A" aria-hidden="true">
+                  <svg key={i} width="12" height="12" viewBox="0 0 16 16" fill="#0A0A0A" aria-hidden="true">
                     <path d="M8 1l1.76 3.57L14 5.27l-3 2.92.7 4.1L8 10.16l-3.7 2.13.7-4.1L2 5.27l4.24-.7z"/>
                   </svg>
                 ))}
               </div>
-              <p className="text-sm text-black/65 italic mb-3">{t.contact.quoteText}</p>
-              <p className="text-xs font-semibold text-black/45">{t.contact.quoteAuthor}</p>
+              <p className="text-sm text-black/55 italic leading-relaxed mb-3">{t.contact.quoteText}</p>
+              <p className="font-mono text-[11px] text-black/35">{t.contact.quoteAuthor}</p>
             </div>
           </motion.div>
 
           {/* Right: Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
           >
             {submitted ? (
-              <div className="bg-black text-white rounded-3xl p-10 text-center">
-                <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-6">
-                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                    <path d="M4 14l7 7 13-13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <div className="bg-[#0A0A0A] rounded-2xl p-12 text-center">
+                <div className="w-14 h-14 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center mx-auto mb-6">
+                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                    <path d="M4 14l7 7 13-13" stroke="#B3FF47" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-                <h3 className="font-display text-2xl font-extrabold text-white mb-3">{f.successTitle}</h3>
-                <p className="text-white/60 text-sm leading-relaxed">{f.successBody}</p>
+                <h3 className="font-display font-extrabold text-white text-2xl mb-3">{f.successTitle}</h3>
+                <p className="text-white/45 text-sm leading-relaxed">{f.successBody}</p>
               </div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-4 bg-[#F5F5F5] rounded-3xl p-8 border border-black/8"
-                noValidate
-              >
-                <div className="grid sm:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-xs font-semibold text-black/60 mb-1.5">
-                      {f.name}
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder={f.namePlaceholder}
-                      className="w-full bg-white border border-black/12 rounded-xl px-4 py-3 text-sm text-black placeholder:text-black/30 focus:outline-none focus:border-black transition-colors"
-                    />
+                    <label htmlFor="name" className="block font-mono text-[10px] text-black/35 tracking-widest uppercase mb-3">{f.name}</label>
+                    <input id="name" name="name" type="text" required value={form.name} onChange={handleChange}
+                      placeholder={f.namePlaceholder} className={inputClass} />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-xs font-semibold text-black/60 mb-1.5">
-                      {f.email}
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder={f.emailPlaceholder}
-                      className="w-full bg-white border border-black/12 rounded-xl px-4 py-3 text-sm text-black placeholder:text-black/30 focus:outline-none focus:border-black transition-colors"
-                    />
+                    <label htmlFor="email" className="block font-mono text-[10px] text-black/35 tracking-widest uppercase mb-3">{f.email}</label>
+                    <input id="email" name="email" type="email" required value={form.email} onChange={handleChange}
+                      placeholder={f.emailPlaceholder} className={inputClass} />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block text-xs font-semibold text-black/60 mb-1.5">
-                    {f.company}
-                  </label>
-                  <input
-                    id="company"
-                    name="company"
-                    type="text"
-                    value={form.company}
-                    onChange={handleChange}
-                    placeholder={f.companyPlaceholder}
-                    className="w-full bg-white border border-black/12 rounded-xl px-4 py-3 text-sm text-black placeholder:text-black/30 focus:outline-none focus:border-black transition-colors"
-                  />
+                  <label htmlFor="company" className="block font-mono text-[10px] text-black/35 tracking-widest uppercase mb-3">{f.company}</label>
+                  <input id="company" name="company" type="text" value={form.company} onChange={handleChange}
+                    placeholder={f.companyPlaceholder} className={inputClass} />
                 </div>
 
                 <div>
-                  <label htmlFor="budget" className="block text-xs font-semibold text-black/60 mb-1.5">
-                    {f.budget}
-                  </label>
-                  <select
-                    id="budget"
-                    name="budget"
-                    value={form.budget}
-                    onChange={handleChange}
-                    className="w-full bg-white border border-black/12 rounded-xl px-4 py-3 text-sm text-black focus:outline-none focus:border-black transition-colors appearance-none"
-                  >
+                  <label htmlFor="budget" className="block font-mono text-[10px] text-black/35 tracking-widest uppercase mb-3">{f.budget}</label>
+                  <select id="budget" name="budget" value={form.budget} onChange={handleChange}
+                    className={`${inputClass} appearance-none cursor-pointer`}>
                     <option value="">{f.budgetDefault}</option>
-                    {f.budgets.map((b) => (
-                      <option key={b.value} value={b.value}>{b.label}</option>
-                    ))}
+                    {f.budgets.map(b => <option key={b.value} value={b.value}>{b.label}</option>)}
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-xs font-semibold text-black/60 mb-1.5">
-                    {f.message}
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    value={form.message}
-                    onChange={handleChange}
-                    rows={4}
-                    placeholder={f.messagePlaceholder}
-                    className="w-full bg-white border border-black/12 rounded-xl px-4 py-3 text-sm text-black placeholder:text-black/30 focus:outline-none focus:border-black transition-colors resize-none"
-                  />
+                  <label htmlFor="message" className="block font-mono text-[10px] text-black/35 tracking-widest uppercase mb-3">{f.message}</label>
+                  <textarea id="message" name="message" required value={form.message} onChange={handleChange}
+                    rows={4} placeholder={f.messagePlaceholder}
+                    className="w-full bg-transparent border-0 border-b border-black/12 py-3 text-sm text-black placeholder:text-black/25 focus:outline-none focus:border-black transition-colors resize-none" />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full flex items-center justify-center gap-2 bg-black text-white font-semibold text-sm px-6 py-4 rounded-xl hover:bg-black/85 active:scale-[0.99] disabled:opacity-60 transition-all duration-150"
-                >
-                  {loading ? (
-                    <>
-                      <svg className="animate-spin" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <circle cx="8" cy="8" r="6" stroke="white" strokeOpacity="0.25" strokeWidth="2"/>
-                        <path d="M14 8a6 6 0 01-6 6" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                      </svg>
-                      {f.submitting}
-                    </>
-                  ) : (
-                    <>
-                      {f.submit}
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </>
-                  )}
-                </button>
+                <div className="pt-2">
+                  <button type="submit" disabled={loading}
+                    className="w-full flex items-center justify-center gap-2 bg-black text-white font-semibold text-sm px-6 py-4 rounded-full hover:bg-black/85 active:scale-[0.99] disabled:opacity-50 transition-all duration-150">
+                    {loading ? (
+                      <>
+                        <svg className="animate-spin" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <circle cx="8" cy="8" r="6" stroke="white" strokeOpacity="0.25" strokeWidth="2"/>
+                          <path d="M14 8a6 6 0 01-6 6" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                        </svg>
+                        {f.submitting}
+                      </>
+                    ) : (
+                      <>
+                        {f.submit}
+                        <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                          <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </>
+                    )}
+                  </button>
+                </div>
 
-                {error && (
-                  <p className="text-xs text-red-600 text-center font-medium">{error}</p>
-                )}
-
-                <p className="text-xs text-black/35 text-center">{f.privacy}</p>
+                {error && <p className="font-mono text-xs text-red-500 text-center">{error}</p>}
+                <p className="font-mono text-[10px] text-black/25 text-center">{f.privacy}</p>
               </form>
             )}
           </motion.div>
+
         </div>
       </div>
     </section>

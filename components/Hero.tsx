@@ -1,164 +1,97 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
-
-function RotatingStat() {
-  const { t } = useLanguage()
-  const stats = t.hero.rotating
-  const [i, setI] = useState(0)
-  useEffect(() => {
-    const id = setInterval(() => setI(n => (n + 1) % stats.length), 2800)
-    return () => clearInterval(id)
-  }, [stats.length])
-  return (
-    <AnimatePresence mode="wait">
-      <motion.span key={i} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.3 }} className="inline-flex items-baseline gap-1.5">
-        <span className="font-display font-extrabold text-accent text-sm accent-text-glow">{stats[i].value}</span>
-        <span className="text-white/35 text-xs">{stats[i].label}</span>
-      </motion.span>
-    </AnimatePresence>
-  )
-}
 
 export default function Hero() {
   const { t } = useLanguage()
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-    let animId: number, tick = 0
-    const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight }
-    resize()
-    window.addEventListener('resize', resize)
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      ctx.strokeStyle = 'rgba(255,255,255,0.045)'
-      ctx.lineWidth = 1
-      const sp = 68
-      for (let r = 0; r <= Math.ceil(canvas.height / sp) + 1; r++) {
-        for (let c = 0; c <= Math.ceil(canvas.width / sp) + 1; c++) {
-          const wave = Math.sin(tick * 0.6 + c * 0.42 + r * 0.28) * 4.5
-          ctx.beginPath()
-          ctx.arc(c * sp, r * sp + wave, 1.1, 0, Math.PI * 2)
-          ctx.stroke()
-        }
-      }
-      tick += 0.01
-      animId = requestAnimationFrame(draw)
-    }
-    draw()
-    return () => { window.removeEventListener('resize', resize); cancelAnimationFrame(animId) }
-  }, [])
 
   return (
-    <section className="relative min-h-screen bg-[#0A0A0A] overflow-hidden flex flex-col" aria-label="Hero WebAlp">
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" aria-hidden="true" />
+    <section className="relative min-h-screen bg-[#0A0A0A] flex flex-col overflow-hidden" aria-label="Hero">
 
-      {/* Green radial glow at bottom */}
-      <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-[45%] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at center bottom, rgba(179,255,71,0.055) 0%, rgba(179,255,71,0.01) 50%, transparent 75%)' }}
-        aria-hidden="true"
-      />
-      <div className="absolute top-0 right-[30%] w-px h-2/3 bg-gradient-to-b from-transparent via-white/5 to-transparent pointer-events-none" aria-hidden="true" />
-      {/* Left accent line */}
-      <div className="absolute top-[20%] left-0 w-px h-[30%] bg-gradient-to-b from-transparent via-accent/20 to-transparent pointer-events-none" aria-hidden="true" />
+      {/* Static grid */}
+      <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true" style={{
+        backgroundImage: 'linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px)',
+        backgroundSize: '100px 100px',
+      }} />
 
-      {/* Content — 3 zones: tag / headline+CTAs / stat bar */}
-      <div className="relative z-10 flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 pt-24 md:pt-28 pb-0">
+      {/* Green ambient */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none" aria-hidden="true"
+        style={{ background: 'radial-gradient(ellipse at 50% 100%, rgba(179,255,71,0.07) 0%, transparent 70%)' }} />
 
-        {/* Top: tag */}
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
+      {/* Main content */}
+      <div className="relative z-10 flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 pt-32 md:pt-36">
+
+        <motion.p
+          initial={{ opacity: 0, y: -6 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex flex-wrap items-center gap-3 mb-auto"
+          transition={{ duration: 0.7, delay: 0.05 }}
+          className="font-mono text-[10px] text-white/20 tracking-[0.3em] uppercase mb-14 md:mb-20"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-white/40 flex-shrink-0" />
-          <span className="text-xs font-mono text-white/30 tracking-widest uppercase">{t.hero.tag}</span>
-          <span className="ml-auto hidden md:flex items-center gap-2 border border-accent/20 rounded-full px-3 py-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" style={{ boxShadow: '0 0 6px #B3FF47' }} />
-            <span className="text-xs text-white/40 font-mono">{t.hero.available}</span>
-          </span>
-        </motion.div>
+          Agence web · Sion, Valais · CH
+        </motion.p>
 
-        {/* Middle: Headline */}
-        <div className="pt-10 pb-8 md:py-12 overflow-hidden">
-          <motion.h1
-            initial={{ opacity: 0, y: 70 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-            className="font-display font-extrabold text-white tracking-[-0.04em]"
-            style={{ fontSize: 'clamp(42px, 7vw, 108px)', lineHeight: 0.92 }}
-          >
-            {t.hero.h1}<br />
-            <span className="text-accent" style={{ textShadow: '0 0 60px rgba(179,255,71,0.25)' }}>{t.hero.h2}</span><br />
-            <span className="text-white/12">{t.hero.h3}</span>
-          </motion.h1>
-        </div>
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          className="font-display font-extrabold text-white tracking-[-0.04em] leading-[0.88] mb-auto"
+          style={{ fontSize: 'clamp(54px, 9.5vw, 148px)' }}
+        >
+          {t.hero.h1}<br />
+          <span style={{ color: '#B3FF47', textShadow: '0 0 120px rgba(179,255,71,0.18)' }}>{t.hero.h2}</span><br />
+          <span className="text-white/[0.07]">{t.hero.h3}</span>
+        </motion.h1>
 
-        {/* Bottom of flex: Sub + CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
-          className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 pb-10 md:pb-14"
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.45 }}
+          className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 pt-12 pb-14 md:pb-16"
         >
-          <div className="max-w-sm md:max-w-md">
-            <p className="text-white/50 text-sm md:text-base leading-relaxed">
+          <div className="max-w-xs md:max-w-sm">
+            <p className="text-white/40 text-sm md:text-[15px] leading-[1.7]">
               {t.hero.body}{' '}
-              <span className="text-white/85 font-semibold">{t.hero.bold}</span>
+              <span className="text-white/75 font-medium">{t.hero.bold}</span>
             </p>
-            <p className="text-white/25 text-xs mt-2 font-mono">{t.hero.price}</p>
+            <p className="font-mono text-[11px] text-white/18 mt-2">{t.hero.price}</p>
           </div>
 
-          <div className="flex items-center gap-3 flex-shrink-0">
-            <Link
-              href="#contact"
-              className="group inline-flex items-center gap-2 bg-accent text-[#0A0A0A] text-sm font-bold px-5 md:px-6 py-3 md:py-3.5 rounded-full hover:brightness-110 active:scale-95 transition-all duration-150 accent-glow"
-            >
+          <div className="flex items-center gap-3 shrink-0">
+            <Link href="#contact"
+              className="inline-flex items-center gap-2 bg-accent text-[#0A0A0A] font-bold text-sm px-6 py-3.5 rounded-full hover:brightness-110 active:scale-95 transition-all duration-150 accent-glow">
               {t.hero.cta1}
-              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </Link>
-            <Link
-              href="#portfolio"
-              className="inline-flex items-center gap-2 border border-white/15 text-white/55 text-sm font-medium px-5 md:px-6 py-3 md:py-3.5 rounded-full hover:border-white/40 hover:text-white/90 active:scale-95 transition-all duration-150"
-            >
+            <Link href="#portfolio"
+              className="inline-flex items-center gap-2 border border-white/12 text-white/40 text-sm font-medium px-6 py-3.5 rounded-full hover:border-white/30 hover:text-white/70 active:scale-95 transition-all duration-150">
               {t.hero.cta2}
             </Link>
           </div>
         </motion.div>
       </div>
 
-      {/* Bottom stat bar */}
+      {/* Stat strip */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.55 }}
-        className="relative z-10 border-t border-white/8"
+        transition={{ duration: 0.6, delay: 0.8 }}
+        className="relative z-10 border-t border-white/[0.06]"
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <span className="text-white/15 text-xs font-mono">{t.hero.statPrefix}</span>
-            <RotatingStat />
-          </div>
-          <div className="flex items-center gap-5 md:gap-10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-5 flex items-center gap-8 md:gap-14 justify-between">
+          <div className="flex items-center gap-6 md:gap-12">
             {t.hero.bottomStats.map(s => (
-              <div key={s.l} className="text-center">
+              <div key={s.l}>
                 <p className="font-display font-extrabold text-white text-sm leading-none">{s.n}</p>
-                <p className="text-white/25 text-[10px] font-mono uppercase tracking-wider mt-0.5">{s.l}</p>
+                <p className="font-mono text-[9px] text-white/18 uppercase tracking-widest mt-1">{s.l}</p>
               </div>
             ))}
           </div>
-          <a href="tel:+41772741726" className="hidden md:block text-white/20 text-xs font-mono hover:text-white/50 transition-colors">
+          <a href="tel:+41772741726"
+            className="hidden md:block font-mono text-[11px] text-white/15 hover:text-white/40 transition-colors">
             +41 77 274 17 26
           </a>
         </div>
