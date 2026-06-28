@@ -39,7 +39,7 @@ export default function FloatingCTA() {
           </svg>
         </Link>
         <a
-          href="tel:+41772741726"
+          href="tel:+41798235862"
           tabIndex={visible ? 0 : -1}
           className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:bg-white/10 transition-colors flex-shrink-0"
           aria-label="Appeler WebAlp"

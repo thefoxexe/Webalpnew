@@ -95,7 +95,7 @@ const structuredData = {
       description:
         'Agence web à Sion, Valais. Création de sites web professionnels pour startups et PME suisses.',
       url: 'https://webalp.ch',
-      telephone: '+41772741726',
+      telephone: '+41798235862',
       email: 'contact@webalp.ch',
       foundingDate: '2025',
       priceRange: 'CHF 890 – CHF 2490',

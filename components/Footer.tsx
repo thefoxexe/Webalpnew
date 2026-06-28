@@ -10,51 +10,47 @@ export default function Footer() {
   const sectionHrefs: Record<number, string[]> = {
     0: ['#services', '#services', '#services', '#services'],
     1: ['#process', '#portfolio', '#tarifs', '#testimonials'],
-    2: ['#contact', 'mailto:contact@webalp.ch', 'tel:+41772741726', '#'],
+    2: ['#contact', 'mailto:contact@webalp.ch', 'tel:+41798235862', '#'],
   }
 
   return (
-    <footer className="bg-[#0A0A0A] overflow-hidden" role="contentinfo">
+    <footer className="bg-[#0A0A0A]" role="contentinfo">
 
-      {/* Giant wordmark zone */}
-      <div className="border-t border-white/[0.05] pt-16 pb-8 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-6">
-          <p className="font-mono text-[10px] text-white/15 tracking-[0.25em] uppercase">
-            — Valais, Suisse
-          </p>
+      {/* Wordmark */}
+      <div className="border-t border-white/10 overflow-hidden pt-14 pb-6">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-4">
+          <p className="text-xs text-white/40 uppercase tracking-widest">— Valais, Suisse</p>
         </div>
         <div className="px-4 md:px-10 overflow-hidden" aria-hidden="true">
-          <p
-            className="font-display font-extrabold leading-[0.85] tracking-tight select-none whitespace-nowrap"
-            style={{ fontSize: 'clamp(80px, 20vw, 260px)' }}
-          >
-            <span className="text-white/8">WEB</span><span className="text-accent/10">ALP</span>
+          <p className="font-display font-extrabold leading-[0.85] tracking-tight select-none whitespace-nowrap text-white/[0.04]"
+            style={{ fontSize: 'clamp(80px, 20vw, 260px)' }}>
+            WEBALP
           </p>
         </div>
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/[0.06]">
+      <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row gap-10 md:gap-16 justify-between">
 
-          {/* Tagline + socials */}
+          {/* Brand */}
           <div className="shrink-0 max-w-xs">
-            <Link href="/" className="inline-block mb-5" aria-label="WebAlp">
+            <Link href="/" className="inline-block mb-4" aria-label="WebAlp">
               <span className="font-display font-extrabold text-xl text-white">
                 Web<span className="text-accent">Alp</span>
               </span>
             </Link>
-            <p className="text-white/25 text-sm leading-relaxed mb-6">{t.footer.tagline}</p>
+            <p className="text-white/50 text-sm leading-relaxed mb-5">{t.footer.tagline}</p>
             <div className="flex items-center gap-2">
               {[
                 { href: 'mailto:contact@webalp.ch', label: 'Email', text: '@' },
-                { href: 'tel:+41772741726', label: 'Tel', text: '✆' },
+                { href: 'tel:+41798235862', label: 'Téléphone', text: '✆' },
                 { href: 'https://www.linkedin.com/company/webalp', label: 'LinkedIn', text: 'in' },
               ].map(item => (
                 <a key={item.label} href={item.href}
                   target={item.href.startsWith('http') ? '_blank' : undefined}
                   rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center font-mono text-[11px] text-white/25 hover:text-white hover:border-white/30 transition-all"
+                  className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-sm text-white/45 hover:text-white hover:border-white/35 transition-all"
                   aria-label={item.label}>
                   {item.text}
                 </a>
@@ -62,16 +58,16 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Nav sections */}
+          {/* Nav */}
           <div className="flex flex-wrap gap-x-12 gap-y-8 flex-1">
             {footerSections.map(([category, links], sectionIndex) => (
               <div key={category}>
-                <h3 className="font-mono text-[9px] text-white/15 tracking-[0.2em] uppercase mb-4">{category}</h3>
+                <h3 className="text-xs text-white/40 uppercase tracking-widest mb-4">{category}</h3>
                 <ul className="space-y-2.5">
                   {links.map((label, linkIndex) => (
                     <li key={label}>
                       <Link href={sectionHrefs[sectionIndex]?.[linkIndex] ?? '#'}
-                        className="font-mono text-[11px] text-white/30 hover:text-white/60 transition-colors">
+                        className="text-sm text-white/50 hover:text-white transition-colors">
                         {label}
                       </Link>
                     </li>
@@ -83,13 +79,13 @@ export default function Footer() {
 
           {/* Legal */}
           <div className="shrink-0 flex flex-col gap-2.5 md:text-right">
-            <Link href="/mentions-legales" className="font-mono text-[10px] text-white/18 hover:text-white/45 transition-colors">
+            <Link href="/mentions-legales" className="text-sm text-white/40 hover:text-white/70 transition-colors">
               {t.footer.legal}
             </Link>
-            <Link href="/confidentialite" className="font-mono text-[10px] text-white/18 hover:text-white/45 transition-colors">
+            <Link href="/confidentialite" className="text-sm text-white/40 hover:text-white/70 transition-colors">
               {t.footer.privacy}
             </Link>
-            <p className="font-mono text-[10px] text-white/12 mt-2">
+            <p className="text-xs text-white/30 mt-2">
               {t.footer.rights.replace('{year}', String(new Date().getFullYear()))}
             </p>
           </div>

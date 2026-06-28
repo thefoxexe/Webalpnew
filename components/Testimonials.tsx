@@ -18,54 +18,50 @@ export default function Testimonials() {
   }, [items.length])
 
   return (
-    <section className="bg-[#F5F4F0] overflow-hidden" ref={ref} aria-labelledby="testimonials-title">
+    <section className="bg-[#F5F4F0]" ref={ref} aria-labelledby="testimonials-title">
 
-      {/* Giant quote zone */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-24 pb-14">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-12">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-12"
+          className="mb-10"
         >
-          <p className="font-mono text-[10px] text-black/30 tracking-[0.25em] uppercase mb-6" id="testimonials-title">
+          <p className="text-xs text-black/45 uppercase tracking-widest mb-4" id="testimonials-title">
             — {t.testimonials.label}
           </p>
           <h2 className="font-display font-extrabold text-black leading-[0.9] tracking-tight"
             style={{ fontSize: 'clamp(36px, 6vw, 80px)' }}>
             {t.testimonials.h2a}<br />
-            <span className="text-black/18">{t.testimonials.h2b}</span>
+            <span className="text-black/20">{t.testimonials.h2b}</span>
           </h2>
         </motion.div>
 
-        {/* Quote block */}
-        <div className="relative min-h-[160px] md:min-h-[200px]">
-          <span className="absolute -top-6 -left-3 font-display text-[12rem] leading-none text-black/[0.05] select-none pointer-events-none" aria-hidden="true">&ldquo;</span>
+        <div className="relative min-h-[140px] md:min-h-[180px]">
           <AnimatePresence mode="wait">
             <motion.blockquote
               key={active}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10 font-display font-extrabold text-black leading-[1.05] tracking-tight"
-              style={{ fontSize: 'clamp(24px, 4.5vw, 58px)' }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display font-extrabold text-black leading-[1.05] tracking-tight"
+              style={{ fontSize: 'clamp(22px, 4vw, 52px)' }}
             >
-              &ldquo;{items[active].quote}&rdquo;
+              {'"'}{items[active].quote}{'"'}
             </motion.blockquote>
           </AnimatePresence>
         </div>
       </div>
 
-      {/* Bottom bar: author + stars + nav */}
-      <div className="border-t border-black/8">
+      <div className="border-t border-black/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-6 flex flex-col sm:flex-row items-start sm:items-center gap-5">
           <AnimatePresence mode="wait">
             <motion.div
               key={`a-${active}`}
-              initial={{ opacity: 0, x: -10 }}
+              initial={{ opacity: 0, x: -8 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 10 }}
+              exit={{ opacity: 0, x: 8 }}
               transition={{ duration: 0.3 }}
               className="flex items-center gap-3"
             >
@@ -74,7 +70,7 @@ export default function Testimonials() {
               </div>
               <div>
                 <p className="text-sm font-bold text-black">{items[active].author}</p>
-                <p className="font-mono text-[10px] text-black/35">{items[active].role}</p>
+                <p className="text-xs text-black/50">{items[active].role}</p>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -90,7 +86,7 @@ export default function Testimonials() {
           <div className="flex gap-1.5 sm:ml-4">
             {items.map((_, i) => (
               <button key={i} onClick={() => setActive(i)}
-                className={`h-1 rounded-full transition-all duration-400 ${i === active ? 'w-8 bg-black' : 'w-3 bg-black/20 hover:bg-black/40'}`}
+                className={`h-1.5 rounded-full transition-all duration-400 ${i === active ? 'w-8 bg-black' : 'w-3 bg-black/25 hover:bg-black/45'}`}
                 aria-label={`Avis ${i + 1}`}
               />
             ))}

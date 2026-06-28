@@ -323,7 +323,7 @@ export const translations = {
       sections: {
         Services: ['Site vitrine', 'SEO & Référencement', 'E-commerce', 'Maintenance'],
         Entreprise: ['Notre processus', 'Réalisations', 'Tarifs', 'Témoignages'],
-        Contact: ['Démarrer un projet', 'contact@webalp.ch', '+41 77 274 17 26', 'Sion, Valais, Suisse'],
+        Contact: ['Démarrer un projet', 'contact@webalp.ch', '079 823 58 62', 'Sion, Valais, Suisse'],
       },
       rights: '© {year} WebAlp. Tous droits réservés. Sion, Valais, Suisse.',
       legal: 'Mentions légales',
@@ -653,7 +653,7 @@ export const translations = {
       sections: {
         Services: ['Showcase website', 'SEO & Visibility', 'E-commerce', 'Maintenance'],
         Company: ['Our process', 'Work', 'Pricing', 'Testimonials'],
-        Contact: ['Start a project', 'contact@webalp.ch', '+41 77 274 17 26', 'Sion, Valais, Switzerland'],
+        Contact: ['Start a project', 'contact@webalp.ch', '079 823 58 62', 'Sion, Valais, Switzerland'],
       },
       rights: '© {year} WebAlp. All rights reserved. Sion, Valais, Switzerland.',
       legal: 'Legal notice',

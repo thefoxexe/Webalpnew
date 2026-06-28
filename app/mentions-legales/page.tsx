@@ -26,7 +26,7 @@ export default function MentionsLegales() {
             <p>WebAlp<br />
             Sion, 1950 Valais, Suisse<br />
             Email : contact@webalp.ch<br />
-            Téléphone : +41 77 274 17 26</p>
+            Téléphone : 079 823 58 62</p>
           </section>
 
           <section>

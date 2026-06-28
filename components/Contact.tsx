@@ -48,47 +48,47 @@ export default function Contact() {
   const f = t.contact.fields
 
   return (
-    <section id="contact" className="bg-[#0A0A0A] overflow-hidden" ref={ref} aria-labelledby="contact-title">
+    <section id="contact" className="bg-[#0A0A0A]" ref={ref} aria-labelledby="contact-title">
 
-      {/* Big headline */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-24 pb-14 border-b border-white/[0.06]">
+      {/* Headline */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-12 border-b border-white/10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="font-mono text-[10px] text-white/20 tracking-[0.25em] uppercase mb-8">— {t.contact.label}</p>
+          <p className="text-xs text-white/50 uppercase tracking-widest mb-6">— {t.contact.label}</p>
           <h2 id="contact-title" className="font-display font-extrabold text-white leading-[0.88] tracking-tight"
-            style={{ fontSize: 'clamp(44px, 9vw, 130px)' }}>
+            style={{ fontSize: 'clamp(40px, 8vw, 120px)' }}>
             {t.contact.h2a}<br />
-            <span className="text-white/15">{t.contact.h2b}</span>
+            <span className="text-white/25">{t.contact.h2b}</span>
           </h2>
         </motion.div>
       </div>
 
-      {/* Content: left info + right form */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16">
-        <div className="grid md:grid-cols-[1fr_1.4fr] gap-16 items-start">
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-14">
+        <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 items-start">
 
-          {/* Left: info */}
+          {/* Left: contact info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <p className="text-white/35 text-sm leading-[1.8] mb-10">{t.contact.body}</p>
+            <p className="text-white/65 text-base leading-relaxed mb-10">{t.contact.body}</p>
 
             <div className="space-y-0">
               {[
                 { label: t.contact.location, sub: t.contact.locationSub },
                 { label: 'contact@webalp.ch', sub: t.contact.emailSub },
-                { label: '+41 77 274 17 26', sub: t.contact.phoneSub },
+                { label: '079 823 58 62', sub: t.contact.phoneSub },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4 py-4 border-b border-white/[0.06]">
-                  <span className="font-mono text-[10px] text-white/15 w-4 pt-0.5 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                <div key={i} className="flex items-start gap-4 py-4 border-b border-white/10">
+                  <span className="text-xs text-white/35 w-5 pt-0.5 shrink-0 tabular-nums">{String(i + 1).padStart(2, '0')}</span>
                   <div>
-                    <p className="text-sm font-medium text-white/75">{item.label}</p>
-                    <p className="font-mono text-[10px] text-white/25 mt-0.5">{item.sub}</p>
+                    <p className="text-sm font-medium text-white">{item.label}</p>
+                    <p className="text-xs text-white/45 mt-0.5">{item.sub}</p>
                   </div>
                 </div>
               ))}
@@ -97,13 +97,13 @@ export default function Contact() {
             <div className="mt-10">
               <div className="flex gap-0.5 mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} width="11" height="11" viewBox="0 0 16 16" fill="#B3FF47" aria-hidden="true">
+                  <svg key={i} width="12" height="12" viewBox="0 0 16 16" fill="#B3FF47" aria-hidden="true">
                     <path d="M8 1l1.76 3.57L14 5.27l-3 2.92.7 4.1L8 10.16l-3.7 2.13.7-4.1L2 5.27l4.24-.7z"/>
                   </svg>
                 ))}
               </div>
-              <p className="text-white/35 text-sm leading-relaxed italic mb-3">{t.contact.quoteText}</p>
-              <p className="font-mono text-[10px] text-white/20">{t.contact.quoteAuthor}</p>
+              <p className="text-white/60 text-sm leading-relaxed italic mb-2">{t.contact.quoteText}</p>
+              <p className="text-xs text-white/40">{t.contact.quoteAuthor}</p>
             </div>
           </motion.div>
 
@@ -114,24 +114,24 @@ export default function Contact() {
             transition={{ duration: 0.7, delay: 0.25 }}
           >
             {submitted ? (
-              <div className="border border-white/8 rounded-xl p-12 text-center">
-                <div className="w-14 h-14 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center mx-auto mb-6">
+              <div className="border border-white/15 rounded-2xl p-12 text-center">
+                <div className="w-14 h-14 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center mx-auto mb-6">
                   <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true">
                     <path d="M4 14l7 7 13-13" stroke="#B3FF47" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
                 <h3 className="font-display font-extrabold text-white text-2xl mb-3">{f.successTitle}</h3>
-                <p className="text-white/40 text-sm leading-relaxed">{f.successBody}</p>
+                <p className="text-white/60 text-sm leading-relaxed">{f.successBody}</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                <div className="grid sm:grid-cols-2 gap-5">
+              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                <div className="grid sm:grid-cols-2 gap-4">
                   {[
                     { id: 'name', label: f.name, type: 'text', placeholder: f.namePlaceholder, required: true },
                     { id: 'email', label: f.email, type: 'email', placeholder: f.emailPlaceholder, required: true },
                   ].map(field => (
                     <div key={field.id}>
-                      <label htmlFor={field.id} className="block font-mono text-[9px] text-white/20 tracking-[0.2em] uppercase mb-2.5">
+                      <label htmlFor={field.id} className="block text-xs text-white/55 uppercase tracking-widest mb-2">
                         {field.label}
                       </label>
                       <input
@@ -142,37 +142,37 @@ export default function Contact() {
                         value={form[field.id as keyof typeof form]}
                         onChange={handleChange}
                         placeholder={field.placeholder}
-                        className="w-full bg-white/[0.04] border border-white/8 rounded-lg px-4 py-3 text-sm text-white placeholder:text-white/18 focus:outline-none focus:border-white/25 transition-colors"
+                        className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/35 transition-colors"
                       />
                     </div>
                   ))}
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block font-mono text-[9px] text-white/20 tracking-[0.2em] uppercase mb-2.5">{f.company}</label>
+                  <label htmlFor="company" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.company}</label>
                   <input id="company" name="company" type="text" value={form.company} onChange={handleChange}
                     placeholder={f.companyPlaceholder}
-                    className="w-full bg-white/[0.04] border border-white/8 rounded-lg px-4 py-3 text-sm text-white placeholder:text-white/18 focus:outline-none focus:border-white/25 transition-colors" />
+                    className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/35 transition-colors" />
                 </div>
 
                 <div>
-                  <label htmlFor="budget" className="block font-mono text-[9px] text-white/20 tracking-[0.2em] uppercase mb-2.5">{f.budget}</label>
+                  <label htmlFor="budget" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.budget}</label>
                   <select id="budget" name="budget" value={form.budget} onChange={handleChange}
-                    className="w-full bg-white/[0.04] border border-white/8 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-white/25 transition-colors appearance-none cursor-pointer">
+                    className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-white/35 transition-colors appearance-none cursor-pointer">
                     <option value="" className="bg-[#1a1a1a]">{f.budgetDefault}</option>
                     {f.budgets.map(b => <option key={b.value} value={b.value} className="bg-[#1a1a1a]">{b.label}</option>)}
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block font-mono text-[9px] text-white/20 tracking-[0.2em] uppercase mb-2.5">{f.message}</label>
+                  <label htmlFor="message" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.message}</label>
                   <textarea id="message" name="message" required value={form.message} onChange={handleChange}
                     rows={4} placeholder={f.messagePlaceholder}
-                    className="w-full bg-white/[0.04] border border-white/8 rounded-lg px-4 py-3 text-sm text-white placeholder:text-white/18 focus:outline-none focus:border-white/25 transition-colors resize-none" />
+                    className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/35 transition-colors resize-none" />
                 </div>
 
                 <button type="submit" disabled={loading}
-                  className="w-full flex items-center justify-center gap-2 bg-accent text-[#0A0A0A] font-bold text-sm px-6 py-4 rounded-full hover:brightness-110 active:scale-[0.99] disabled:opacity-50 transition-all accent-glow">
+                  className="w-full flex items-center justify-center gap-2 bg-accent text-[#0A0A0A] font-bold text-sm px-6 py-4 rounded-full hover:brightness-110 active:scale-[0.99] disabled:opacity-50 transition-all">
                   {loading ? (
                     <>
                       <svg className="animate-spin" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -191,8 +191,8 @@ export default function Contact() {
                   )}
                 </button>
 
-                {error && <p className="font-mono text-xs text-red-400 text-center">{error}</p>}
-                <p className="font-mono text-[10px] text-white/18 text-center">{f.privacy}</p>
+                {error && <p className="text-xs text-red-400 text-center">{error}</p>}
+                <p className="text-xs text-white/40 text-center">{f.privacy}</p>
               </form>
             )}
           </motion.div>

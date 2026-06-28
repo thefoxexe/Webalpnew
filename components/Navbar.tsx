@@ -115,7 +115,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          <p className="mt-8 font-mono text-xs text-black/25">contact@webalp.ch · +41 77 274 17 26</p>
+          <p className="mt-8 text-sm text-black/45">contact@webalp.ch · 079 823 58 62</p>
         </div>
       </div>
     </>
