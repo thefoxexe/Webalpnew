@@ -151,7 +151,7 @@ export const translations = {
       h2a: 'Des résultats,',
       h2b: 'pas des promesses.',
       sub: 'Chaque projet est une collaboration unique avec un objectif clair : vous faire gagner des clients.',
-      total: '8 projets réalisés · Suisse romande & alémanique',
+      total: '5 projets présentés · et bien plus encore',
       cta: 'Démarrer votre projet',
     },
     techStack: {
@@ -480,7 +480,7 @@ export const translations = {
       h2a: 'Results,',
       h2b: 'not promises.',
       sub: 'Every project is a unique collaboration with a clear goal: help you win more clients.',
-      total: '8 projects delivered · French & German-speaking Switzerland',
+      total: '5 projects featured · and many more',
       cta: 'Start your project',
     },
     techStack: {
