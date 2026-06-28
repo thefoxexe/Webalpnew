@@ -69,7 +69,7 @@ export default function Pricing() {
                       <p className={`text-sm ${plan.popular ? 'text-white/55' : 'text-black/50'}`}>{plan.tagline}</p>
                     </div>
                     <div className="text-right shrink-0">
-                      <p className={`text-xs uppercase tracking-wider mb-0.5 ${plan.popular ? 'text-white/50' : 'text-black/40'}`}>dès</p>
+                      <p className={`text-xs uppercase tracking-wider mb-0.5 ${plan.popular ? 'text-white/50' : 'text-black/40'}`}>à partir de</p>
                       <p className={`font-display font-extrabold text-2xl leading-none ${plan.popular ? 'text-white' : 'text-black'}`}>
                         CHF {plan.price}
                       </p>
@@ -114,7 +114,7 @@ export default function Pricing() {
                   </div>
 
                   <div className={`w-40 lg:w-44 shrink-0 pl-8 border-l ${plan.popular ? 'border-white/15' : 'border-black/12'}`}>
-                    <p className={`text-xs uppercase tracking-wider mb-1 ${plan.popular ? 'text-white/50' : 'text-black/40'}`}>dès</p>
+                    <p className={`text-xs uppercase tracking-wider mb-1 ${plan.popular ? 'text-white/50' : 'text-black/40'}`}>à partir de</p>
                     <p className={`font-display font-extrabold leading-none ${plan.popular ? 'text-white' : 'text-black'}`}
                       style={{ fontSize: 'clamp(24px, 2.5vw, 38px)' }}>
                       CHF {plan.price}
@@ -160,11 +160,11 @@ export default function Pricing() {
           className="bg-[#F5F4F0] rounded-2xl p-7 md:p-8"
         >
           <p className="text-xs text-black/45 uppercase tracking-widest mb-6">{t.pricing.addonsTitle}</p>
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 md:divide-x divide-black/8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-0 md:divide-x divide-black/8">
             {t.pricing.addons.map(addon => (
-              <div key={addon.name} className="md:px-6 first:md:pl-0 last:md:pr-0 flex flex-col gap-0.5">
-                <p className="text-sm text-black/65">{addon.name}</p>
-                <p className="text-sm font-bold text-black/50">{addon.price}</p>
+              <div key={addon.name} className="md:px-6 first:md:pl-0 last:md:pr-0 flex items-start gap-2">
+                <span className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full bg-accent" />
+                <p className="text-sm text-black/65 leading-snug">{addon.name}</p>
               </div>
             ))}
           </div>
