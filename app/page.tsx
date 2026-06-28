@@ -15,12 +15,11 @@ import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 
-// Smooth color gradient bridges between sections
-function Blend({ from, to, size = 'md' }: { from: string; to: string; size?: 'sm' | 'md' | 'lg' }) {
-  const h = size === 'sm' ? '40px' : size === 'lg' ? '100px' : '72px'
+// Narrow gradient seam — only used at high-contrast color boundaries
+function Blend({ from, to }: { from: string; to: string }) {
   return (
     <div
-      style={{ height: h, background: `linear-gradient(to bottom, ${from}, ${to})` }}
+      style={{ height: '32px', background: `linear-gradient(to bottom, ${from}, ${to})` }}
       aria-hidden="true"
     />
   )
@@ -32,31 +31,29 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Problem />
-      {/* dark → beige */}
-      <Blend from="#0A0A0A" to="#F5F4F0" size="lg" />
+      {/* #0A0A0A → #F5F4F0 */}
+      <Blend from="#0A0A0A" to="#F5F4F0" />
       <Services />
       <TechStack />
       <Stats />
       <Process />
       <Portfolio />
       <Pricing />
-      {/* white → beige */}
-      <Blend from="#FFFFFF" to="#F5F4F0" size="sm" />
       <Testimonials />
-      {/* beige → dark */}
-      <Blend from="#F5F4F0" to="#0A0A0A" size="lg" />
+      {/* #F5F4F0 → #0A0A0A */}
+      <Blend from="#F5F4F0" to="#0A0A0A" />
       <About />
-      {/* dark → white */}
-      <Blend from="#0A0A0A" to="#FFFFFF" size="lg" />
+      {/* #0A0A0A → #FFFFFF */}
+      <Blend from="#0A0A0A" to="#FFFFFF" />
       <FAQ />
-      {/* white → dark */}
-      <Blend from="#FFFFFF" to="#0A0A0A" size="lg" />
+      {/* #FFFFFF → #0A0A0A */}
+      <Blend from="#FFFFFF" to="#0A0A0A" />
       <Contact />
-      {/* dark → accent green */}
-      <Blend from="#0A0A0A" to="#B3FF47" size="lg" />
+      {/* #0A0A0A → #B3FF47 */}
+      <Blend from="#0A0A0A" to="#B3FF47" />
       <CTA />
-      {/* accent green → dark */}
-      <Blend from="#B3FF47" to="#0A0A0A" size="lg" />
+      {/* #B3FF47 → #0A0A0A */}
+      <Blend from="#B3FF47" to="#0A0A0A" />
       <Footer />
       <FloatingCTA />
     </main>
