@@ -87,6 +87,22 @@ const PROJECTS: Project[] = [
     bg: '#0F0F0F',
     dark: true,
   },
+  {
+    index: '05',
+    slug: 'vestedwear',
+    url: 'https://vestedwear.com',
+    name: 'Vestedwear',
+    type: 'Boutique Shopify · E-commerce',
+    year: '2025',
+    sector: 'Mode · Streetwear',
+    enjeu: 'Une marque de mode avait besoin d\'une boutique en ligne complète et performante — de zéro à une expérience d\'achat fluide, avec un design à l\'image de la marque et un tunnel de conversion optimisé.',
+    description: 'Mise en place intégrale de la boutique Shopify : configuration technique, thème personnalisé, catalogue produits structuré, paiements sécurisés et optimisation UX pour maximiser le taux de conversion.',
+    deliverables: ['Configuration Shopify complète', 'Thème sur mesure & design marque', 'Catalogue produits + variantes', 'Paiements & checkout optimisé', 'Expérience mobile-first'],
+    result: 'E-com live',
+    resultLabel: 'boutique opérationnelle',
+    bg: '#0B0E17',
+    dark: true,
+  },
 ]
 
 // ─── Visual placeholder (when no real screenshot) ────────────────────────────
@@ -259,6 +275,7 @@ export default function Portfolio() {
 
   const row1 = PROJECTS.slice(0, 2)
   const row2 = PROJECTS.slice(2, 4)
+  const spotlight = PROJECTS[4]
 
   return (
     <>
@@ -299,11 +316,14 @@ export default function Portfolio() {
           </div>
 
           {/* Row 2 */}
-          <div className="grid md:grid-cols-2 gap-3">
+          <div className="grid md:grid-cols-2 gap-3 mb-3">
             {row2.map((p, i) => (
               <ProjectCard key={p.index} project={p} delay={0.16 + i * 0.08} inView={inView} onClick={() => setSelected(p)} />
             ))}
           </div>
+
+          {/* Spotlight — full width */}
+          <SpotlightCard project={spotlight} delay={0.32} inView={inView} onClick={() => setSelected(spotlight)} />
 
           {/* Bottom CTA */}
           <motion.div
@@ -327,6 +347,54 @@ export default function Portfolio() {
         {selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}
       </AnimatePresence>
     </>
+  )
+}
+
+// ─── Spotlight card (full-width) ─────────────────────────────────────────────
+
+function SpotlightCard({ project: p, delay, inView, onClick }: { project: Project; delay: number; inView: boolean; onClick: () => void }) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay }}
+      onClick={onClick}
+      className="group cursor-pointer rounded-2xl overflow-hidden"
+      style={{ background: p.bg }}
+    >
+      <div className="flex flex-col md:flex-row items-stretch min-h-[240px]">
+        {/* Left: content */}
+        <div className="flex-1 flex flex-col justify-between px-7 py-7 md:px-10 md:py-10">
+          <div className="flex items-center justify-between mb-6">
+            <span className="font-mono text-[10px] font-bold text-white/30">{p.index}</span>
+            <span className="text-[10px] font-semibold px-2.5 py-1 rounded-full border border-white/8 bg-white/6 text-white/40">{p.type}</span>
+          </div>
+          <div>
+            <h3 className="font-display font-extrabold text-white leading-tight mb-2" style={{ fontSize: 'clamp(24px, 3.5vw, 42px)' }}>
+              {p.name}
+            </h3>
+            <p className="font-mono text-[11px] text-white/30 mb-4">{p.url.replace('https://', '')}</p>
+            <p className="text-sm leading-relaxed text-white/50 max-w-lg">{p.enjeu}</p>
+          </div>
+        </div>
+
+        {/* Right: result + sector */}
+        <div className="flex-shrink-0 flex flex-col justify-between border-t md:border-t-0 md:border-l border-white/6 px-7 py-7 md:px-10 md:py-10 md:w-64">
+          <div>
+            <p className="font-display font-extrabold leading-none text-accent mb-1" style={{ fontSize: 'clamp(36px, 5vw, 56px)', textShadow: '0 0 30px rgba(179,255,71,0.35)' }}>
+              {p.result}
+            </p>
+            <p className="text-white/30 text-xs">{p.resultLabel}</p>
+          </div>
+          <div className="mt-6 flex items-center justify-between">
+            <p className="text-white/20 text-[10px] font-mono">{p.sector} · {p.year}</p>
+            <span className="text-xs font-bold text-white/25 group-hover:text-accent transition-colors">
+              Voir →
+            </span>
+          </div>
+        </div>
+      </div>
+    </motion.article>
   )
 }
 
