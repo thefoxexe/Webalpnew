@@ -60,13 +60,15 @@ export default function Hero() {
     <section className="relative min-h-screen bg-[#0A0A0A] overflow-hidden flex flex-col" aria-label="Hero WebAlp">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" aria-hidden="true" />
 
-      {/* Subtle radial glow at bottom */}
+      {/* Green radial glow at bottom */}
       <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[40%] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at center bottom, rgba(255,255,255,0.035) 0%, transparent 70%)' }}
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-[45%] pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at center bottom, rgba(179,255,71,0.055) 0%, rgba(179,255,71,0.01) 50%, transparent 75%)' }}
         aria-hidden="true"
       />
       <div className="absolute top-0 right-[30%] w-px h-2/3 bg-gradient-to-b from-transparent via-white/5 to-transparent pointer-events-none" aria-hidden="true" />
+      {/* Left accent line */}
+      <div className="absolute top-[20%] left-0 w-px h-[30%] bg-gradient-to-b from-transparent via-accent/20 to-transparent pointer-events-none" aria-hidden="true" />
 
       {/* Content — 3 zones: tag / headline+CTAs / stat bar */}
       <div className="relative z-10 flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 pt-24 md:pt-28 pb-0">
@@ -96,8 +98,8 @@ export default function Hero() {
             style={{ fontSize: 'clamp(42px, 7vw, 108px)', lineHeight: 0.92 }}
           >
             {t.hero.h1}<br />
-            {t.hero.h2}<br />
-            <span className="text-white/15">{t.hero.h3}</span>
+            <span className="text-accent" style={{ textShadow: '0 0 60px rgba(179,255,71,0.25)' }}>{t.hero.h2}</span><br />
+            <span className="text-white/12">{t.hero.h3}</span>
           </motion.h1>
         </div>
 
