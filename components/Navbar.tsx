@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Navbar() {
@@ -38,10 +39,15 @@ export default function Navbar() {
       }`}>
         <nav className="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between gap-8">
 
-          <Link href="/"
-            className={`font-display font-extrabold text-lg tracking-tight shrink-0 transition-colors duration-300 ${dark ? 'text-white' : 'text-black'}`}
-            aria-label="WebAlp">
-            WebAlp
+          <Link href="/" className="shrink-0" aria-label="WebAlp">
+            <Image
+              src={dark ? '/logos/webalp-blanc-vert.svg' : '/logos/webalp-noir-vert.svg'}
+              alt="WebAlp"
+              width={120}
+              height={34}
+              priority
+              className="h-8 w-auto transition-opacity duration-300"
+            />
           </Link>
 
           <ul className="hidden md:flex items-center gap-7">

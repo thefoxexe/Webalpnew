@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Footer() {
@@ -36,9 +37,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="shrink-0 max-w-xs">
             <Link href="/" className="inline-block mb-4" aria-label="WebAlp">
-              <span className="font-display font-extrabold text-xl text-white">
-                Web<span className="text-accent">Alp</span>
-              </span>
+              <Image
+                src="/logos/webalp-blanc-vert.svg"
+                alt="WebAlp"
+                width={120}
+                height={34}
+                className="h-8 w-auto"
+              />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed mb-5">{t.footer.tagline}</p>
             <div className="flex items-center gap-2">

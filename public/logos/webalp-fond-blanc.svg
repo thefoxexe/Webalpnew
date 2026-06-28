@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 100" fill="none" role="img" aria-label="WebAlp">
+  <title>WebAlp</title>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@800&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Fond blanc -->
+  <rect width="360" height="100" rx="12" fill="#FFFFFF"/>
+  <text
+    x="30"
+    y="68"
+    font-family="'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif"
+    font-weight="800"
+    font-size="62"
+    letter-spacing="-2.5"
+    dominant-baseline="auto"
+  >
+    <tspan fill="#0A0A0A">Web</tspan><tspan fill="#B3FF47">Alp</tspan>
+  </text>
+</svg>
