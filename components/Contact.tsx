@@ -30,10 +30,11 @@ export default function Contact() {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch('/api/contact', {
+      const body = new URLSearchParams({ 'form-name': 'contactv2', ...form }).toString()
+      const res = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
       })
       if (res.ok) setSubmitted(true)
       else setError(t.contact.fields.errorMsg)
