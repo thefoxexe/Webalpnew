@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from 'next/font/google'
 import Script from 'next/script'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import Loader from '@/components/Loader'
+import WhatsAppButton from '@/components/WhatsAppButton'
 import './globals.css'
 
 const inter = Inter({
@@ -211,6 +212,7 @@ export default function RootLayout({
         <LanguageProvider>
           {children}
         </LanguageProvider>
+        <WhatsAppButton />
       </body>
     </html>
   )
