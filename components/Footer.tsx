@@ -89,7 +89,7 @@ export default function Footer() {
                   ),
                 },
                 {
-                  href: 'https://www.linkedin.com/company/webalp',
+                  href: 'https://www.linkedin.com/company/webalpch/',
                   label: 'LinkedIn',
                   icon: (
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
