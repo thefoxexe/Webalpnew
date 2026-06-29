@@ -31,7 +31,7 @@ export default function Contact() {
     setError(null)
     try {
       const body = new URLSearchParams({ 'form-name': 'contactv2', ...form }).toString()
-      const res = await fetch('/', {
+      const res = await fetch('/netlify-forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body,

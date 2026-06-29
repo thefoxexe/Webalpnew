@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"></head>
+<head><meta charset="UTF-8"><title>Forms</title></head>
 <body>
-<!-- Netlify Forms detection fallback for Next.js -->
-<form name="contactv2" netlify data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+<form name="contactv2" netlify data-netlify="true" data-netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="contactv2" />
   <input type="text" name="name" />
   <input type="email" name="email" />
   <input type="text" name="company" />
   <select name="budget"><option value=""></option></select>
   <textarea name="message"></textarea>
+  <button type="submit">Send</button>
 </form>
 </body>
 </html>
