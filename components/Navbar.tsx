@@ -8,15 +8,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Navbar() {
   const { t, lang, setLang } = useLanguage()
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 40)
-    h()
-    window.addEventListener('scroll', h, { passive: true })
-    return () => window.removeEventListener('scroll', h)
-  }, [])
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
@@ -31,21 +23,14 @@ export default function Navbar() {
     { label: t.nav.contact, href: '#contact' },
   ]
 
-  // Dark mode: transparent header (top of page) AND menu closed
-  const dark = !scrolled && !menuOpen
-
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-        scrolled || menuOpen
-          ? 'bg-white/98 backdrop-blur-xl border-b border-black/6'
-          : 'bg-transparent'
-      }`}>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A] border-b border-white/8">
         <nav className="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between gap-8">
 
           <Link href="/" className="shrink-0" aria-label="WebAlp">
             <Image
-              src={dark ? '/logos/webalp-blanc-vert.svg' : '/logos/webalp-noir-vert.svg'}
+              src="/logos/webalp-blanc-vert.svg"
               alt="WebAlp"
               width={120}
               height={34}
@@ -57,8 +42,7 @@ export default function Navbar() {
           <ul className="hidden md:flex items-center gap-7">
             {navLinks.map(l => (
               <li key={l.href}>
-                <Link href={l.href}
-                  className={`text-sm transition-colors duration-200 ${dark ? 'text-white/45 hover:text-white' : 'text-black/45 hover:text-black'}`}>
+                <Link href={l.href} className="text-sm text-white/45 hover:text-white transition-colors duration-200">
                   {l.label}
                 </Link>
               </li>
@@ -68,21 +52,19 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
-              className={`hidden md:block font-mono text-[11px] tracking-widest transition-colors ${dark ? 'text-white/25 hover:text-white/55' : 'text-black/25 hover:text-black/55'}`}
+              className="hidden md:block font-mono text-[11px] tracking-widest text-white/25 hover:text-white/55 transition-colors"
               aria-label={`Switch to ${lang === 'fr' ? 'English' : 'Français'}`}
             >
               {lang === 'fr' ? 'EN' : 'FR'}
             </button>
 
             <Link href="#contact"
-              className={`hidden md:inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full transition-all duration-200 active:scale-95 ${
-                dark ? 'bg-white text-black hover:bg-white/90' : 'bg-black text-white hover:bg-black/80'
-              }`}
+              className="hidden md:inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full bg-accent text-[#0A0A0A] hover:brightness-110 transition-all duration-200 active:scale-95"
             >
               {t.nav.cta}
             </Link>
 
-            {/* Hamburger — Framer Motion bars */}
+            {/* Hamburger */}
             <button
               className="md:hidden relative flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -90,17 +72,17 @@ export default function Navbar() {
               aria-expanded={menuOpen}
             >
               <motion.span
-                className={`block h-[1.5px] w-5 rounded-full origin-center ${dark ? 'bg-white' : 'bg-black'}`}
+                className="block h-[1.5px] w-5 rounded-full origin-center bg-white"
                 animate={menuOpen ? { rotate: 45, y: 6.5 } : { rotate: 0, y: 0 }}
                 transition={{ type: 'spring', stiffness: 380, damping: 26 }}
               />
               <motion.span
-                className={`block h-[1.5px] w-5 rounded-full ${dark ? 'bg-white' : 'bg-black'}`}
+                className="block h-[1.5px] w-5 rounded-full bg-white"
                 animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
                 transition={{ type: 'spring', stiffness: 380, damping: 26 }}
               />
               <motion.span
-                className={`block h-[1.5px] w-5 rounded-full origin-center ${dark ? 'bg-white' : 'bg-black'}`}
+                className="block h-[1.5px] w-5 rounded-full origin-center bg-white"
                 animate={menuOpen ? { rotate: -45, y: -6.5 } : { rotate: 0, y: 0 }}
                 transition={{ type: 'spring', stiffness: 380, damping: 26 }}
               />
