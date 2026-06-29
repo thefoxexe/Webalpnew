@@ -212,7 +212,7 @@ export const translations = {
         },
         {
           name: 'Sur mesure',
-          price: '2\'490',
+          price: '1\'990',
           tagline: 'Fonctionnalités avancées et projets complexes',
           features: ['Tout ce que comprend Croissance', 'E-commerce ou application web', 'Fonctionnalités sur mesure', 'Portail client ou réservation', 'Audit concurrents', 'Suivi de performance'],
           popular: false,
@@ -286,7 +286,7 @@ export const translations = {
         budgets: [
           { value: 'starter', label: "Starter — CHF 690" },
           { value: 'croissance', label: "Croissance — CHF 1'490" },
-          { value: 'sur-mesure', label: "Sur mesure — CHF 2'490+" },
+          { value: 'sur-mesure', label: "Sur mesure — CHF 1'990+" },
           { value: 'webapp', label: "Application web — dès CHF 1'990" },
         ],
         message: 'Décrivez votre projet *',
@@ -532,7 +532,7 @@ export const translations = {
         },
         {
           name: 'Custom',
-          price: '2\'490',
+          price: '1\'990',
           tagline: 'Advanced features and complex projects',
           features: ['Everything in Growth', 'E-commerce or web app', 'Custom functionality', 'Client portal or booking system', 'Competitor audit', 'Performance tracking'],
           popular: false,
@@ -606,7 +606,7 @@ export const translations = {
         budgets: [
           { value: 'starter', label: "Starter — CHF 690" },
           { value: 'growth', label: "Growth — CHF 1'490" },
-          { value: 'custom', label: "Custom — CHF 2'490+" },
+          { value: 'custom', label: "Custom — CHF 1'990+" },
           { value: 'webapp', label: "Web app — from CHF 1'990" },
         ],
         message: 'Describe your project *',

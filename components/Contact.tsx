@@ -19,24 +19,20 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
+  const encode = (data: Record<string, string>) =>
+    Object.entries(data)
+      .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+      .join('&')
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setError(null)
     try {
-      const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID
-      if (!formspreeId) {
-        const subject = encodeURIComponent(`Nouveau projet — ${form.name}`)
-        const body = encodeURIComponent(`Nom: ${form.name}\nEmail: ${form.email}\nEntreprise: ${form.company}\nBudget: ${form.budget}\n\n${form.message}`)
-        window.location.href = `mailto:contact@webalp.ch?subject=${subject}&body=${body}`
-        setSubmitted(true)
-        setLoading(false)
-        return
-      }
-      const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+      const res = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'contact', ...form }),
       })
       if (res.ok) setSubmitted(true)
       else setError(t.contact.fields.errorMsg)
@@ -119,7 +115,15 @@ export default function Contact() {
                 <p className="text-white/60 text-sm leading-relaxed">{f.successBody}</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-4"
+                noValidate
+                name="contact"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+              >
+                <input type="hidden" name="form-name" value="contact" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
                     { id: 'name', label: f.name, type: 'text', placeholder: f.namePlaceholder, required: true },
