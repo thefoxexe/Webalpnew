@@ -96,16 +96,9 @@ export default function Contact() {
               ))}
             </div>
 
-            <div className="mt-8 md:mt-10">
-              <div className="flex gap-0.5 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} width="12" height="12" viewBox="0 0 16 16" fill="#B3FF47" aria-hidden="true">
-                    <path d="M8 1l1.76 3.57L14 5.27l-3 2.92.7 4.1L8 10.16l-3.7 2.13.7-4.1L2 5.27l4.24-.7z"/>
-                  </svg>
-                ))}
-              </div>
-              <p className="text-white/60 text-sm leading-relaxed italic mb-2">{t.contact.quoteText}</p>
-              <p className="text-xs text-white/40">{t.contact.quoteAuthor}</p>
+            <div className="mt-8 md:mt-10 border border-white/10 rounded-2xl p-5 flex flex-col gap-2">
+              <span className="w-2 h-2 rounded-full bg-accent" />
+              <p className="text-white/65 text-sm leading-relaxed">{t.contact.trustNote}</p>
             </div>
           </motion.div>
 

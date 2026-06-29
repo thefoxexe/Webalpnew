@@ -31,7 +31,7 @@ export const translations = {
       rotating: [
         { value: '45+', label: 'projets livrés' },
         { value: '+340%', label: 'trafic moyen gagné' },
-        { value: '14 jours', label: 'délai de livraison' },
+        { value: '3/mois', label: 'projets maximum' },
         { value: '98/100', label: 'score performance' },
       ],
     },
@@ -47,9 +47,9 @@ export const translations = {
         { stat: '3 sec', text: 'Temps qu\'il faut à un visiteur pour partir si votre site rame. Définitivement.' },
         { stat: 'CHF 0', text: 'C\'est ce que rapporte un beau site que personne ne trouve sur Google. Zéro.' },
       ],
-      solution: 'WebAlp règle les deux. Un site que Google met en avant, des visiteurs qui passent à l\'action. En 14 jours garantis.',
+      solution: 'WebAlp règle les deux. Un site que Google met en avant, des visiteurs qui passent à l\'action.',
       beforeLabel: 'Votre situation aujourd\'hui',
-      afterLabel: 'Avec WebAlp, en 14 jours',
+      afterLabel: 'Avec WebAlp',
       before: ['Invisible sur Google', 'Site lent sur mobile', 'Zéro demande spontanée', 'Analytics inexistants', 'Textes plats qui n\'accrochent pas'],
       after: ['Page 1 Google sur vos mots-clés', '98/100 en performance mobile', 'Formulaires & appels en hausse', 'Dashboard analytics clair', 'Copy qui pousse à l\'action'],
     },
@@ -92,14 +92,14 @@ export const translations = {
       items: [
         { value: 45, suffix: '+', label: 'Projets livrés', desc: 'Sites web lancés avec succès pour des clients suisses' },
         { value: 340, suffix: '%', label: 'Trafic moyen gagné', desc: 'Augmentation du trafic organique après 3 mois de SEO' },
-        { value: 14, suffix: 'j', label: 'Délai garanti', desc: 'Du brief signé à la mise en ligne, délais toujours respectés' },
+        { value: 3, suffix: '/mois', label: 'Projets max', desc: 'On limite notre volume pour rester disponibles, rapides et pleinement investis dans chaque projet' },
         { value: 98, suffix: '/100', label: 'Score performance', desc: 'Score moyen Google PageSpeed de nos sites en production' },
       ],
     },
     process: {
       label: 'Notre processus',
-      h2: 'De l\'idée au site en 14 jours.',
-      sub: 'Un processus clair, des délais respectés, un résultat dont vous serez fier.',
+      h2: 'Du brief à la mise en ligne, sans traîner.',
+      sub: 'Un processus clair, une communication directe, un résultat dont vous serez fier.',
       steps: [
         {
           icon: 'chat',
@@ -256,7 +256,7 @@ export const translations = {
       contactText: 'Une autre question ?',
       contactLink: 'Écrivez-nous directement',
       items: [
-        { q: 'Combien de temps pour avoir mon site ?', a: '14 jours ouvrés, garantis. Pour les projets complexes (e-commerce, app), comptez 3 à 4 semaines. On respecte nos délais. Notre réputation est en jeu.' },
+        { q: 'Combien de temps pour avoir mon site ?', a: 'Ça dépend du projet. Un site vitrine simple se fait vite. Une application web complète prend plus de temps. Ce qui ne change pas : on limite notre nombre de projets par mois pour rester disponibles et réactifs à chaque étape. Vous ne serez jamais laissé en attente.' },
         { q: 'Est-ce que je peux modifier mon site tout seul ?', a: 'Ça dépend de la solution choisie. Avec Next.js, les modifications passent par nous ou un développeur. Avec Webflow, vous éditez textes et images vous-même via une interface visuelle sans toucher au code. Avec WordPress, tout le contenu est gérable en autonomie. On vous recommande la bonne option lors de notre premier échange.' },
         { q: 'Pourquoi vos tarifs sont inférieurs à ceux de grandes agences ?', a: 'Parce qu\'on est deux, sans structure lourde. Pas de directeur de compte, pas de réunions hebdomadaires facturées, pas de marge sur sous-traitants. Ce que vous payez va directement dans votre site. Pas dans notre organigramme.' },
         { q: 'Le SEO est vraiment inclus dès le départ ?', a: 'Oui, entièrement. Balises méta, structure des URL, Core Web Vitals, plan de site, données structurées : tout est dans le code dès la première ligne. Le SEO technique est un fondement, pas un supplément. Pour aller plus loin sur les mots-clés et la création de contenu, on a des forfaits mensuels dédiés.' },
@@ -273,8 +273,7 @@ export const translations = {
       locationSub: 'Interventions dans toute la Suisse',
       emailSub: 'Réponse sous 24h',
       phoneSub: 'Lun-Ven, 9h-18h',
-      quoteText: '"On a eu notre devis sous 2 heures et le site en 12 jours. Impressionnant."',
-      quoteAuthor: '— Marc D., StartUp Sion',
+      trustNote: 'On répond vite, on travaille sérieusement, on ne prend que les projets qu\'on peut livrer bien. C\'est pour ça qu\'on limite notre volume.',
       fields: {
         name: 'Nom & prénom *',
         namePlaceholder: 'Jean Dupont',
@@ -352,7 +351,7 @@ export const translations = {
       rotating: [
         { value: '45+', label: 'projects delivered' },
         { value: '+340%', label: 'average traffic gain' },
-        { value: '14 days', label: 'delivery time' },
+        { value: '3/mo', label: 'projects maximum' },
         { value: '98/100', label: 'performance score' },
       ],
     },
@@ -368,9 +367,9 @@ export const translations = {
         { stat: '3 sec', text: 'Time it takes a visitor to leave if your site is slow. For good.' },
         { stat: 'CHF 0', text: 'That\'s what a beautiful site nobody finds on Google earns you. Literally zero.' },
       ],
-      solution: 'WebAlp fixes both. A site Google puts in front of people, with visitors who actually take action. In 14 days, guaranteed.',
+      solution: 'WebAlp fixes both. A site Google puts in front of people, with visitors who actually take action.',
       beforeLabel: 'Your situation today',
-      afterLabel: 'With WebAlp, in 14 days',
+      afterLabel: 'With WebAlp',
       before: ['Invisible on Google', 'Slow on mobile', 'Zero spontaneous inquiries', 'No reliable analytics', 'Flat copy that doesn\'t hook'],
       after: ['Page 1 Google on your keywords', '98/100 mobile performance', 'Forms & calls on the rise', 'Clear analytics dashboard', 'Copy that drives action'],
     },
@@ -413,14 +412,14 @@ export const translations = {
       items: [
         { value: 45, suffix: '+', label: 'Projects delivered', desc: 'Websites successfully launched for Swiss clients' },
         { value: 340, suffix: '%', label: 'Average traffic gain', desc: 'Organic traffic increase after 3 months of SEO' },
-        { value: 14, suffix: 'd', label: 'Guaranteed deadline', desc: 'From signed brief to launch, deadlines always met' },
+        { value: 3, suffix: '/mo', label: 'Projects max', desc: 'We cap our volume to stay available, fast, and fully focused on each project' },
         { value: 98, suffix: '/100', label: 'Performance score', desc: 'Average Google PageSpeed score across our sites' },
       ],
     },
     process: {
       label: 'Our process',
-      h2: 'From idea to live site in 14 days.',
-      sub: 'A clear process, respected deadlines, a result you\'ll be proud of.',
+      h2: 'From brief to live site, without dragging it out.',
+      sub: 'A clear process, direct communication, a result you\'ll be proud of.',
       steps: [
         {
           icon: 'chat',
@@ -577,7 +576,7 @@ export const translations = {
       contactText: 'Another question?',
       contactLink: 'Write to us directly',
       items: [
-        { q: 'How long does it take to build my site?', a: '14 business days, guaranteed. For complex projects (e-commerce, app), allow 3 to 4 weeks. We respect our deadlines. Our reputation depends on it.' },
+        { q: 'How long does it take to build my site?', a: 'It depends on the project. A simple showcase site moves fast. A full web application takes longer. What never changes: we cap our project intake each month so we stay available and responsive at every step. You\'ll never be left waiting.' },
         { q: 'Can I update my site myself?', a: 'It depends on the technology chosen. With Next.js, changes go through us or a developer. With Webflow, you edit text and images yourself through a visual interface without touching code. With WordPress, all content is self-manageable. We recommend the right option for your situation during our first exchange.' },
         { q: 'Why are your rates lower than larger agencies?', a: 'Because we\'re a two-person team with no heavy overhead. No account director, no weekly meetings billed by the hour, no margin on subcontractors. What you pay goes directly into your website, not our org chart.' },
         { q: 'Is SEO really included from the start?', a: 'Yes, fully. Meta tags, URL structure, Core Web Vitals, sitemap, structured data: all of it is in the code from the very first line. Technical SEO is a foundation, not an add-on. For deeper keyword research and content creation, we offer dedicated monthly plans.' },
@@ -594,8 +593,7 @@ export const translations = {
       locationSub: 'Working across all of Switzerland',
       emailSub: 'Reply within 24h',
       phoneSub: 'Mon-Fri, 9am-6pm',
-      quoteText: '"We got our quote in 2 hours and the site in 12 days. Impressive."',
-      quoteAuthor: '— Marc D., StartUp Sion',
+      trustNote: 'We respond fast, work seriously, and only take on projects we can deliver well. That\'s why we cap our volume.',
       fields: {
         name: 'Full name *',
         namePlaceholder: 'John Smith',
