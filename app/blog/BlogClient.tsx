@@ -83,7 +83,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
           <div className="grid md:grid-cols-2 gap-3">
             {featured.map((post, i) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
-                <article className={`rounded-2xl p-8 md:p-10 flex flex-col justify-between min-h-[360px] transition-all duration-300 group-hover:scale-[1.01] ${
+                <article className={`rounded-2xl p-7 md:p-10 flex flex-col justify-between min-h-[280px] md:min-h-[360px] transition-all duration-300 group-hover:scale-[1.01] ${
                   i === 0 ? 'bg-[#0A0A0A]' : 'bg-white border border-black/8'
                 }`}>
                   <div>
@@ -138,8 +138,8 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                 href={`/blog/${post.slug}`}
                 className="group block border-b last:border-b-0 border-black/6 hover:bg-[#F5F4F0] transition-colors"
               >
-                <div className="flex items-start gap-6 px-6 py-6">
-                  <span className="font-mono text-[10px] text-black/20 pt-0.5 w-12 flex-shrink-0">
+                <div className="flex items-start gap-4 px-5 py-5 md:px-6 md:py-6">
+                  <span className="hidden sm:block font-mono text-[10px] text-black/20 pt-0.5 w-8 flex-shrink-0">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <div className="flex-1 min-w-0">
@@ -148,14 +148,14 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                         {post.category}
                       </span>
                       <span className="text-[10px] font-mono text-black/20">{post.readTime} min</span>
+                      <span className="hidden md:inline text-[10px] font-mono text-black/15">{formatDate(post.date)}</span>
                     </div>
-                    <h2 className="font-display font-extrabold text-black text-base md:text-lg leading-tight mb-1">
+                    <h2 className="font-display font-extrabold text-black text-sm md:text-base lg:text-lg leading-tight mb-1">
                       {post.title}
                     </h2>
-                    <p className="text-black/40 text-sm line-clamp-1">{post.excerpt}</p>
+                    <p className="text-black/40 text-xs md:text-sm line-clamp-1 hidden sm:block">{post.excerpt}</p>
                   </div>
-                  <div className="flex-shrink-0 flex flex-col items-end gap-2">
-                    <span className="text-[10px] font-mono text-black/20">{formatDate(post.date)}</span>
+                  <div className="flex-shrink-0 flex items-center">
                     <svg className="text-black/15 group-hover:text-accent transition-colors" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                       <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>

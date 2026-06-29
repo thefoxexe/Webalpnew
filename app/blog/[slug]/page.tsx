@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { getPost, getAllSlugs, BLOG_POSTS, type Block } from '@/lib/blog-posts'
 import ReadingProgress from './ReadingProgress'
 import ArticleActions from './ArticleActions'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 export function generateStaticParams() {
   return getAllSlugs().map(slug => ({ slug }))
@@ -138,10 +140,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ReadingProgress />
+      <Navbar />
 
       <div className="min-h-screen bg-white">
         {/* Navbar spacer */}
-        <div className="h-20" />
+        <div className="h-16" />
 
         {/* Article header */}
         <div className="bg-[#F5F4F0] pb-0">
@@ -242,6 +245,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

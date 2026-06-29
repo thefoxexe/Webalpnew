@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import { BLOG_POSTS } from '@/lib/blog-posts'
 import BlogClient from './BlogClient'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Blog — Conseils web & SEO pour PME suisses | WebAlp',
@@ -10,14 +12,28 @@ export const metadata: Metadata = {
     description: 'Guides et conseils concrets pour optimiser votre présence en ligne en Suisse.',
     url: 'https://webalp.ch/blog',
     siteName: 'WebAlp',
+    type: 'website',
   },
+  alternates: { canonical: 'https://webalp.ch/blog' },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Blog WebAlp',
+  description: 'Guides et conseils concrets pour les PME suisses sur le web, le SEO et la stratégie digitale.',
+  url: 'https://webalp.ch/blog',
+  publisher: { '@type': 'Organization', name: 'WebAlp', url: 'https://webalp.ch' },
 }
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-[#F5F4F0]">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <Navbar />
+      <div className="min-h-screen bg-[#F5F4F0]">
       {/* Navbar spacer */}
-      <div className="h-20" />
+      <div className="h-16" />
 
       {/* Hero */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-16 pb-10">
@@ -63,5 +79,7 @@ export default function BlogPage() {
         </div>
       </div>
     </div>
+      <Footer />
+    </>
   )
 }
