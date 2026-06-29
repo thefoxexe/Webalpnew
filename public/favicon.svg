@@ -1,14 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-label="WebAlp favicon">
-  <rect width="32" height="32" rx="7" fill="#0A0A0A"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-label="WebAlp">
+  <rect width="32" height="32" rx="6" fill="#0A0A0A"/>
   <text
-    x="16"
-    y="23"
+    x="15"
+    y="24"
     text-anchor="middle"
-    font-family="'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif"
-    font-weight="800"
-    font-size="22"
-    fill="#B3FF47"
-    dominant-baseline="auto"
-    letter-spacing="-1"
+    font-family="'Space Grotesk', 'Arial Black', Arial, Helvetica, sans-serif"
+    font-weight="900"
+    font-size="20"
+    fill="#FFFFFF"
   >W</text>
+  <rect x="25.5" y="21.5" width="3.5" height="3.5" fill="#B3FF47"/>
 </svg>
