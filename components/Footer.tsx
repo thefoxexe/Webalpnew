@@ -38,7 +38,7 @@ export default function Footer() {
             initial={{ x: '-8%' }}
             animate={inView ? { x: '0%' } : {}}
             transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.1 }}
-            className="font-display font-extrabold leading-[0.85] tracking-tight select-none whitespace-nowrap text-white/[0.09]"
+            className="font-display font-extrabold leading-[0.85] tracking-tight select-none whitespace-nowrap text-white/[0.14]"
             style={{ fontSize: 'clamp(80px, 20vw, 260px)' }}
           >
             WEBALP
@@ -69,23 +69,50 @@ export default function Footer() {
             <p className="text-white/50 text-sm leading-relaxed mb-5">{t.footer.tagline}</p>
             <div className="flex items-center gap-2">
               {[
-                { href: 'mailto:contact@webalp.ch', label: 'Email', text: '@' },
-                { href: 'tel:+41798235862', label: 'Téléphone', text: '✆' },
-                { href: 'https://www.linkedin.com/company/webalp', label: 'LinkedIn', text: 'in' },
+                {
+                  href: 'mailto:contact@webalp.ch',
+                  label: 'Email',
+                  icon: (
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <rect x="2" y="4" width="20" height="16" rx="2"/>
+                      <path d="M2 7l10 7 10-7"/>
+                    </svg>
+                  ),
+                },
+                {
+                  href: 'https://www.linkedin.com/company/webalp',
+                  label: 'LinkedIn',
+                  icon: (
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M6.94 5a2 2 0 11-4 0 2 2 0 014 0zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/>
+                    </svg>
+                  ),
+                },
+                {
+                  href: 'https://www.instagram.com/webalp.ch',
+                  label: 'Instagram',
+                  icon: (
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <rect x="2" y="2" width="20" height="20" rx="5"/>
+                      <circle cx="12" cy="12" r="4"/>
+                      <circle cx="17.5" cy="6.5" r="0.75" fill="currentColor" stroke="none"/>
+                    </svg>
+                  ),
+                },
               ].map((item, i) => (
                 <motion.a
                   key={item.label}
                   href={item.href}
-                  target={item.href.startsWith('http') ? '_blank' : undefined}
-                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ ...spring, delay: 0.25 + i * 0.07 }}
                   whileHover={{ scale: 1.12, transition: { type: 'spring', stiffness: 500, damping: 28 } }}
-                  className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-sm text-white/45 hover:text-white hover:border-white/35 transition-colors"
+                  className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/45 hover:text-white hover:border-white/35 transition-colors"
                   aria-label={item.label}
                 >
-                  {item.text}
+                  {item.icon}
                 </motion.a>
               ))}
             </div>
