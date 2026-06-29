@@ -15,11 +15,16 @@ import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 
-// Narrow gradient seam — only used at high-contrast color boundaries
-function Blend({ from, to }: { from: string; to: string }) {
+// Subtle radial line — fades in from centre, invisible at edges.
+// Only used between same-palette sections (beige ↔ white).
+// High-contrast boundaries (dark ↔ light) need no separator: the colour shift speaks for itself.
+function Divider() {
   return (
     <div
-      style={{ height: '32px', background: `linear-gradient(to bottom, ${from}, ${to})` }}
+      style={{
+        height: '1px',
+        background: 'radial-gradient(ellipse 55% 100% at 50% 0%, rgba(0,0,0,0.10) 0%, transparent 100%)',
+      }}
       aria-hidden="true"
     />
   )
@@ -31,29 +36,27 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Problem />
-      {/* #0A0A0A → #F5F4F0 */}
-      <Blend from="#0A0A0A" to="#F5F4F0" />
+      {/* #0A0A0A → #F5F4F0 : hard cut, contrast carries it */}
       <Services />
+      <Divider />
       <TechStack />
+      <Divider />
       <Stats />
+      <Divider />
       <Process />
       <Portfolio />
       <Pricing />
+      <Divider />
       <Testimonials />
-      {/* #F5F4F0 → #0A0A0A */}
-      <Blend from="#F5F4F0" to="#0A0A0A" />
+      {/* #F5F4F0 → #0A0A0A : hard cut */}
       <About />
-      {/* #0A0A0A → #FFFFFF */}
-      <Blend from="#0A0A0A" to="#FFFFFF" />
+      {/* #0A0A0A → #FFFFFF : hard cut */}
       <FAQ />
-      {/* #FFFFFF → #0A0A0A */}
-      <Blend from="#FFFFFF" to="#0A0A0A" />
+      {/* #FFFFFF → #0A0A0A : hard cut */}
       <Contact />
-      {/* #0A0A0A → #B3FF47 */}
-      <Blend from="#0A0A0A" to="#B3FF47" />
+      {/* #0A0A0A → #B3FF47 : hard cut */}
       <CTA />
-      {/* #B3FF47 → #0A0A0A */}
-      <Blend from="#B3FF47" to="#0A0A0A" />
+      {/* #B3FF47 → #0A0A0A : hard cut */}
       <Footer />
       <FloatingCTA />
     </main>

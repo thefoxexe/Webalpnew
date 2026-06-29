@@ -38,7 +38,7 @@ export default function Footer() {
             initial={{ x: '-8%' }}
             animate={inView ? { x: '0%' } : {}}
             transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.1 }}
-            className="font-display font-extrabold leading-[0.85] tracking-tight select-none whitespace-nowrap text-white/[0.04]"
+            className="font-display font-extrabold leading-[0.85] tracking-tight select-none whitespace-nowrap text-white/[0.09]"
             style={{ fontSize: 'clamp(80px, 20vw, 260px)' }}
           >
             WEBALP
