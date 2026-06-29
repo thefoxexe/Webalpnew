@@ -13,7 +13,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [form, setForm] = useState({ name: '', email: '', company: '', budget: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', budget: '', message: '' })
 
   useEffect(() => {
     if (submitted) {
@@ -142,6 +142,8 @@ export default function Contact() {
                 {[
                   { id: 'name', label: f.name, type: 'text', placeholder: f.namePlaceholder, required: true },
                   { id: 'email', label: f.email, type: 'email', placeholder: f.emailPlaceholder, required: true },
+                  { id: 'phone', label: f.phone, type: 'tel', placeholder: f.phonePlaceholder, required: false },
+                  { id: 'company', label: f.company, type: 'text', placeholder: f.companyPlaceholder, required: false },
                 ].map(field => (
                   <div key={field.id}>
                     <label htmlFor={field.id} className="block text-xs text-white/55 uppercase tracking-widest mb-2">
@@ -159,13 +161,6 @@ export default function Contact() {
                     />
                   </div>
                 ))}
-              </div>
-
-              <div>
-                <label htmlFor="company" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.company}</label>
-                <input id="company" name="company" type="text" value={form.company} onChange={handleChange}
-                  placeholder={f.companyPlaceholder}
-                  className={fieldClass} />
               </div>
 
               <div>
