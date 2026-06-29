@@ -32,7 +32,7 @@ export default function Contact() {
       const res = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'contact', ...form }),
+        body: encode({ 'form-name': 'contactv2', ...form }),
       })
       if (res.ok) setSubmitted(true)
       else setError(t.contact.fields.errorMsg)
@@ -131,11 +131,11 @@ export default function Contact() {
               onSubmit={handleSubmit}
               className="space-y-4"
               noValidate
-              name="contact"
+              name="contactv2"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
             >
-              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="form-name" value="contactv2" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   { id: 'name', label: f.name, type: 'text', placeholder: f.namePlaceholder, required: true },

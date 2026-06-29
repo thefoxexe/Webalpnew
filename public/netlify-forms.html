@@ -2,9 +2,8 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- Netlify form declaration — required for Next.js so Netlify detects the form at build time -->
-<form name="contact" netlify data-netlify="true" data-netlify-honeypot="bot-field" hidden>
-  <input type="hidden" name="form-name" value="contact" />
+<!-- Netlify Forms detection fallback for Next.js -->
+<form name="contactv2" netlify data-netlify="true" data-netlify-honeypot="bot-field" hidden>
   <input type="text" name="name" />
   <input type="email" name="email" />
   <input type="text" name="company" />

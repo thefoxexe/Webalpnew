@@ -163,6 +163,15 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="font-sans bg-white text-black overflow-x-hidden">
+        {/* Netlify Forms — déclaration statique server-rendered pour détection au build */}
+        <form name="contactv2" data-netlify="true" data-netlify-honeypot="bot-field" hidden aria-hidden="true">
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <input type="text" name="company" />
+          <select name="budget"><option value=""></option></select>
+          <textarea name="message"></textarea>
+        </form>
+
         {/* Google Ads */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-11013404464"
