@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { getPost, getAllSlugs, BLOG_POSTS, type Block } from '@/lib/blog-posts'
+import ReadingProgress from './ReadingProgress'
+import ArticleActions from './ArticleActions'
 
 export function generateStaticParams() {
   return getAllSlugs().map(slug => ({ slug }))
@@ -135,6 +137,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ReadingProgress />
 
       <div className="min-h-screen bg-white">
         {/* Navbar spacer */}
@@ -180,14 +183,17 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           ))}
         </article>
 
-        {/* Tags */}
+        {/* Likes + Views + Tags */}
         <div className="max-w-3xl mx-auto px-6 md:px-8 pb-14">
-          <div className="flex flex-wrap gap-2 pt-8 border-t border-black/6">
-            {post.tags.map(tag => (
-              <span key={tag} className="text-[10px] font-mono text-black/35 border border-black/8 px-3 py-1.5 rounded-full">
-                #{tag}
-              </span>
-            ))}
+          <div className="pt-8 border-t border-black/6 space-y-6">
+            <ArticleActions slug={post.slug} />
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map(tag => (
+                <span key={tag} className="text-[10px] font-mono text-black/35 border border-black/8 px-3 py-1.5 rounded-full">
+                  #{tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
