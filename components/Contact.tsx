@@ -43,7 +43,30 @@ export default function Contact() {
     }
   }
 
+  const fieldClass = "w-full bg-[#141414] border border-white/12 rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/40 transition-colors [color-scheme:dark]"
+
   const f = t.contact.fields
+
+  if (submitted) {
+    return (
+      <section id="contact" className="bg-[#0A0A0A] min-h-screen flex items-center justify-center px-6">
+        <motion.div
+          className="text-center max-w-md"
+          initial={{ opacity: 0, y: 24, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+        >
+          <div className="w-16 h-16 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center mx-auto mb-8">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+              <path d="M4 14l7 7 13-13" stroke="#B3FF47" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <h3 className="font-display font-extrabold text-white text-3xl mb-4">{f.successTitle}</h3>
+          <p className="text-white/55 text-base leading-relaxed">{f.successBody}</p>
+        </motion.div>
+      </section>
+    )
+  }
 
   return (
     <section id="contact" className="bg-[#0A0A0A]" ref={ref} aria-labelledby="contact-title">
@@ -104,96 +127,84 @@ export default function Contact() {
             animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
             transition={{ ...spring, delay: 0.28 }}
           >
-            {submitted ? (
-              <div className="border border-white/15 rounded-2xl p-10 sm:p-12 text-center">
-                <div className="w-14 h-14 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center mx-auto mb-6">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                    <path d="M4 14l7 7 13-13" stroke="#B3FF47" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <h3 className="font-display font-extrabold text-white text-2xl mb-3">{f.successTitle}</h3>
-                <p className="text-white/60 text-sm leading-relaxed">{f.successBody}</p>
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4"
+              noValidate
+              name="contact"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { id: 'name', label: f.name, type: 'text', placeholder: f.namePlaceholder, required: true },
+                  { id: 'email', label: f.email, type: 'email', placeholder: f.emailPlaceholder, required: true },
+                ].map(field => (
+                  <div key={field.id}>
+                    <label htmlFor={field.id} className="block text-xs text-white/55 uppercase tracking-widest mb-2">
+                      {field.label}
+                    </label>
+                    <input
+                      id={field.id}
+                      name={field.id}
+                      type={field.type}
+                      required={field.required}
+                      value={form[field.id as keyof typeof form]}
+                      onChange={handleChange}
+                      placeholder={field.placeholder}
+                      className={fieldClass}
+                    />
+                  </div>
+                ))}
               </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-4"
-                noValidate
-                name="contact"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-              >
-                <input type="hidden" name="form-name" value="contact" />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {[
-                    { id: 'name', label: f.name, type: 'text', placeholder: f.namePlaceholder, required: true },
-                    { id: 'email', label: f.email, type: 'email', placeholder: f.emailPlaceholder, required: true },
-                  ].map(field => (
-                    <div key={field.id}>
-                      <label htmlFor={field.id} className="block text-xs text-white/55 uppercase tracking-widest mb-2">
-                        {field.label}
-                      </label>
-                      <input
-                        id={field.id}
-                        name={field.id}
-                        type={field.type}
-                        required={field.required}
-                        value={form[field.id as keyof typeof form]}
-                        onChange={handleChange}
-                        placeholder={field.placeholder}
-                        className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/40 transition-colors"
-                      />
-                    </div>
-                  ))}
-                </div>
 
-                <div>
-                  <label htmlFor="company" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.company}</label>
-                  <input id="company" name="company" type="text" value={form.company} onChange={handleChange}
-                    placeholder={f.companyPlaceholder}
-                    className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/40 transition-colors" />
-                </div>
+              <div>
+                <label htmlFor="company" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.company}</label>
+                <input id="company" name="company" type="text" value={form.company} onChange={handleChange}
+                  placeholder={f.companyPlaceholder}
+                  className={fieldClass} />
+              </div>
 
-                <div>
-                  <label htmlFor="budget" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.budget}</label>
-                  <select id="budget" name="budget" value={form.budget} onChange={handleChange}
-                    className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white focus:outline-none focus:border-white/40 transition-colors appearance-none cursor-pointer">
-                    <option value="" className="bg-[#1a1a1a]">{f.budgetDefault}</option>
-                    {f.budgets.map(b => <option key={b.value} value={b.value} className="bg-[#1a1a1a]">{b.label}</option>)}
-                  </select>
-                </div>
+              <div>
+                <label htmlFor="budget" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.budget}</label>
+                <select id="budget" name="budget" value={form.budget} onChange={handleChange}
+                  className={`${fieldClass} appearance-none cursor-pointer`}>
+                  <option value="" className="bg-[#141414] text-white/50">{f.budgetDefault}</option>
+                  {f.budgets.map(b => <option key={b.value} value={b.value} className="bg-[#141414] text-white">{b.label}</option>)}
+                </select>
+              </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.message}</label>
-                  <textarea id="message" name="message" required value={form.message} onChange={handleChange}
-                    rows={4} placeholder={f.messagePlaceholder}
-                    className="w-full bg-white/6 border border-white/15 rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/40 transition-colors resize-none" />
-                </div>
+              <div>
+                <label htmlFor="message" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.message}</label>
+                <textarea id="message" name="message" required value={form.message} onChange={handleChange}
+                  rows={4} placeholder={f.messagePlaceholder}
+                  className={`${fieldClass} resize-none`} />
+              </div>
 
-                <button type="submit" disabled={loading}
-                  className="w-full flex items-center justify-center gap-2 bg-accent text-[#0A0A0A] font-bold text-sm px-6 py-4 rounded-full hover:brightness-110 active:scale-[0.99] disabled:opacity-50 transition-all">
-                  {loading ? (
-                    <>
-                      <svg className="animate-spin" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <circle cx="8" cy="8" r="6" stroke="#0A0A0A" strokeOpacity="0.25" strokeWidth="2"/>
-                        <path d="M14 8a6 6 0 01-6 6" stroke="#0A0A0A" strokeWidth="2" strokeLinecap="round"/>
-                      </svg>
-                      {f.submitting}
-                    </>
-                  ) : (
-                    <>
-                      {f.submit}
-                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </>
-                  )}
-                </button>
+              <button type="submit" disabled={loading}
+                className="w-full flex items-center justify-center gap-2 bg-accent text-[#0A0A0A] font-bold text-sm px-6 py-4 rounded-full hover:brightness-110 active:scale-[0.99] disabled:opacity-50 transition-all">
+                {loading ? (
+                  <>
+                    <svg className="animate-spin" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <circle cx="8" cy="8" r="6" stroke="#0A0A0A" strokeOpacity="0.25" strokeWidth="2"/>
+                      <path d="M14 8a6 6 0 01-6 6" stroke="#0A0A0A" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                    {f.submitting}
+                  </>
+                ) : (
+                  <>
+                    {f.submit}
+                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </>
+                )}
+              </button>
 
-                {error && <p className="text-xs text-red-400 text-center">{error}</p>}
-                <p className="text-xs text-white/40 text-center">{f.privacy}</p>
-              </form>
-            )}
+              {error && <p className="text-xs text-red-400 text-center">{error}</p>}
+              <p className="text-xs text-white/40 text-center">{f.privacy}</p>
+            </form>
           </motion.div>
 
         </div>
