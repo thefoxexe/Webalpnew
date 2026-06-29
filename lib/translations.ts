@@ -19,14 +19,14 @@ export const translations = {
       h3: 'Il ne vous trouve pas.',
       body: 'On crée des sites qui rapportent de vrais clients pour les PME suisses. Design, performance,',
       bold: 'résultats garantis.',
-      price: 'À partir de CHF 890.',
+      price: 'À partir de CHF 690.',
       cta1: 'Je veux des clients',
       cta2: 'Voir nos résultats',
       statPrefix: 'STAT →',
       bottomStats: [
         { n: '6', l: 'projets actifs' },
         { n: '2', l: 'fondateurs' },
-        { n: 'CHF 890', l: 'à partir de' },
+        { n: 'CHF 690', l: 'à partir de' },
       ],
       rotating: [
         { value: '45+', label: 'projets livrés' },
@@ -63,7 +63,7 @@ export const translations = {
           icon: 'monitor',
           number: '01',
           title: 'Site vitrine',
-          price: 'dès CHF 890',
+          price: 'dès CHF 690',
           sub: 'Votre meilleur commercial, 24h/24',
           description: 'Votre site travaille quand vous dormez. On le conçoit pour qu\'il capte l\'attention, inspire confiance et pousse votre visiteur à décrocher son téléphone.',
           features: ['Design 100% sur mesure', 'Mobile-first', 'SEO technique inclus', 'Formulaire de contact', 'Google Analytics', 'Code livré & documenté'],
@@ -198,7 +198,7 @@ export const translations = {
       plans: [
         {
           name: 'Starter',
-          price: '890',
+          price: '690',
           tagline: 'Site vitrine soigné pour démarrer proprement',
           features: ['Design sur mesure', 'Mobile-first', 'SEO technique inclus', 'Formulaire de contact', 'Google Analytics', 'Nom de domaine & email pro', 'Mise en ligne incluse'],
           popular: false,
@@ -284,7 +284,7 @@ export const translations = {
         budget: 'Budget approximatif',
         budgetDefault: 'Sélectionner un budget',
         budgets: [
-          { value: 'starter', label: "Starter — CHF 890" },
+          { value: 'starter', label: "Starter — CHF 690" },
           { value: 'croissance', label: "Croissance — CHF 1'490" },
           { value: 'sur-mesure', label: "Sur mesure — CHF 2'490+" },
           { value: 'webapp', label: "Application web — dès CHF 1'990" },
@@ -339,14 +339,14 @@ export const translations = {
       h3: 'They can\'t find you.',
       body: 'We build websites that generate real clients for Swiss businesses. Design, performance,',
       bold: 'guaranteed results.',
-      price: 'Starting at CHF 890.',
+      price: 'Starting at CHF 690.',
       cta1: 'I want more clients',
       cta2: 'See our work',
       statPrefix: 'STAT →',
       bottomStats: [
         { n: '6', l: 'active projects' },
         { n: '2', l: 'founders' },
-        { n: 'CHF 890', l: 'starting from' },
+        { n: 'CHF 690', l: 'starting from' },
       ],
       rotating: [
         { value: '45+', label: 'projects delivered' },
@@ -383,7 +383,7 @@ export const translations = {
           icon: 'monitor',
           number: '01',
           title: 'Showcase website',
-          price: 'from CHF 890',
+          price: 'from CHF 690',
           sub: 'Your best salesperson, 24/7',
           description: 'Your site works while you sleep. We design it to capture attention, build trust, and push your visitor to pick up the phone.',
           features: ['100% custom design', 'Mobile-first', 'SEO included', 'Contact form', 'Google Analytics', 'Clean code delivered'],
@@ -518,7 +518,7 @@ export const translations = {
       plans: [
         {
           name: 'Starter',
-          price: '890',
+          price: '690',
           tagline: 'A polished showcase site to start clean',
           features: ['Custom design', 'Mobile-first', 'Technical SEO included', 'Contact form', 'Google Analytics', 'Domain & professional email', 'Go-live included'],
           popular: false,
@@ -604,7 +604,7 @@ export const translations = {
         budget: 'Approximate budget',
         budgetDefault: 'Select a budget',
         budgets: [
-          { value: 'starter', label: "Starter — CHF 890" },
+          { value: 'starter', label: "Starter — CHF 690" },
           { value: 'growth', label: "Growth — CHF 1'490" },
           { value: 'custom', label: "Custom — CHF 2'490+" },
           { value: 'webapp', label: "Web app — from CHF 1'990" },
