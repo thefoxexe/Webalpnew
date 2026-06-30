@@ -84,7 +84,7 @@ const PROJECTS: Project[] = [
     deliverables: ['Configuration Shopify complète', 'Thème sur mesure & design marque', 'Catalogue produits + variantes', 'Paiements & checkout optimisé', 'Expérience mobile-first'],
     result: 'E-com live',
     resultLabel: 'boutique opérationnelle',
-    bg: '#0B0E17',
+    bg: '#0A0A0A',
     dark: true,
   },
   {

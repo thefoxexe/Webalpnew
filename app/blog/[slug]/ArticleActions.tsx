@@ -2,39 +2,45 @@
 
 import { useEffect, useState } from 'react'
 
+function baseLikesForSlug(slug: string, views: number): number {
+  const n = slug.split('').reduce((a, c, i) => a + c.charCodeAt(0) * (i + 1), 0)
+  const factor = 0.20 + (n % 130) / 1000
+  return Math.max(1, Math.floor(views * factor))
+}
+
 export default function ArticleActions({ slug }: { slug: string }) {
   const [liked, setLiked] = useState(false)
-  const [likes, setLikes] = useState(0)
+  const [baseLikes, setBaseLikes] = useState(0)
   const [views, setViews] = useState<number | null>(null)
   const [justLiked, setJustLiked] = useState(false)
 
   useEffect(() => {
     const storedLiked = localStorage.getItem(`like:${slug}`) === '1'
-    const storedLikes = parseInt(localStorage.getItem(`likes:${slug}`) ?? '0', 10)
     setLiked(storedLiked)
-    setLikes(storedLikes)
 
-    // Increment view on mount (once per session)
     const sessionKey = `viewed:${slug}`
+    const fetchViews = (method: 'GET' | 'POST') =>
+      fetch(`/api/views/${slug}`, { method })
+        .then(r => r.json())
+        .then(d => {
+          setViews(d.views)
+          setBaseLikes(baseLikesForSlug(slug, d.views))
+        })
+        .catch(() => {})
+
     if (!sessionStorage.getItem(sessionKey)) {
       sessionStorage.setItem(sessionKey, '1')
-      fetch(`/api/views/${slug}`, { method: 'POST' })
-        .then(r => r.json())
-        .then(d => setViews(d.views))
-        .catch(() => {})
+      fetchViews('POST')
     } else {
-      fetch(`/api/views/${slug}`)
-        .then(r => r.json())
-        .then(d => setViews(d.views))
-        .catch(() => {})
+      fetchViews('GET')
     }
   }, [slug])
 
+  const displayLikes = baseLikes + (liked ? 1 : 0)
+
   const handleLike = () => {
     const next = !liked
-    const nextCount = Math.max(0, likes + (next ? 1 : -1))
     setLiked(next)
-    setLikes(nextCount)
     if (next) {
       setJustLiked(true)
       setTimeout(() => setJustLiked(false), 600)
@@ -42,12 +48,10 @@ export default function ArticleActions({ slug }: { slug: string }) {
     } else {
       localStorage.removeItem(`like:${slug}`)
     }
-    localStorage.setItem(`likes:${slug}`, String(nextCount))
   }
 
   return (
     <div className="flex flex-wrap items-center gap-4">
-      {/* Thumbs up */}
       <button
         onClick={handleLike}
         className={`group flex items-center gap-2.5 px-5 py-3 rounded-full border font-semibold text-sm transition-all ${
@@ -68,10 +72,9 @@ export default function ArticleActions({ slug }: { slug: string }) {
           <path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z"/>
           <path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/>
         </svg>
-        <span>{likes > 0 ? `${likes} j'aime` : "J'aime"}</span>
+        <span>{displayLikes > 0 ? `${displayLikes} j'aime` : "J'aime"}</span>
       </button>
 
-      {/* Views */}
       {views !== null && (
         <div className="flex items-center gap-1.5 text-black/35 text-xs font-mono">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

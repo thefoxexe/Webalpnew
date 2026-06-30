@@ -109,10 +109,10 @@ export default function BriefForm() {
       <Section number="01" title="Vos coordonnées" />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
         <Field label="Prénom *">
-          <input name="firstName" type="text" required placeholder="Bastien" value={form.firstName} onChange={set} className={field} />
+          <input name="firstName" type="text" required placeholder="Lucas" value={form.firstName} onChange={set} className={field} />
         </Field>
         <Field label="Nom *">
-          <input name="lastName" type="text" required placeholder="Ryser" value={form.lastName} onChange={set} className={field} />
+          <input name="lastName" type="text" required placeholder="Favre" value={form.lastName} onChange={set} className={field} />
         </Field>
         <Field label="Email *">
           <input name="email" type="email" required placeholder="vous@entreprise.ch" value={form.email} onChange={set} className={field} />
@@ -122,7 +122,7 @@ export default function BriefForm() {
         </Field>
       </div>
       <Field label="Nom de l'entreprise / marque *">
-        <input name="company" type="text" required placeholder="WebAlp Sàrl" value={form.company} onChange={set} className={field} />
+        <input name="company" type="text" required placeholder="Maison Favre & Associés" value={form.company} onChange={set} className={field} />
       </Field>
 
       {/* 02 — Le projet */}
