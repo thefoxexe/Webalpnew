@@ -3,52 +3,50 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+const DISMISS_KEY = 'wa-bubble-dismissed'
+
 export default function WhatsAppButton() {
-  const [showBear, setShowBear] = useState(false)
+  const [showBubble, setShowBubble] = useState(false)
 
   useEffect(() => {
-    const show = () => {
-      setShowBear(true)
-      setTimeout(() => setShowBear(false), 4000)
-    }
-
-    const timer = setTimeout(show, 5000)
-    const interval = setInterval(show, 12000)
-
-    return () => {
-      clearTimeout(timer)
-      clearInterval(interval)
-    }
+    if (sessionStorage.getItem(DISMISS_KEY) === '1') return
+    const timer = setTimeout(() => setShowBubble(true), 1500)
+    return () => clearTimeout(timer)
   }, [])
+
+  const dismiss = () => {
+    setShowBubble(false)
+    sessionStorage.setItem(DISMISS_KEY, '1')
+  }
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
 
       <AnimatePresence>
-        {showBear && (
+        {showBubble && (
           <motion.div
             initial={{ y: 40, opacity: 0, scale: 0.8 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: 30, opacity: 0, scale: 0.85 }}
             transition={{ type: 'spring', stiffness: 320, damping: 22 }}
-            className="mb-3 flex flex-col items-end gap-2"
+            className="mb-3"
           >
-            <div className="relative bg-white rounded-2xl rounded-br-sm shadow-xl px-4 py-3 max-w-[200px]">
+            <div className="relative bg-white rounded-2xl rounded-br-sm shadow-xl pl-4 pr-7 py-3 max-w-[200px]">
+              <button
+                onClick={dismiss}
+                aria-label="Fermer"
+                className="absolute top-1.5 right-1.5 w-5 h-5 rounded-full flex items-center justify-center text-black/30 hover:text-black/60 hover:bg-black/5 transition-colors"
+              >
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M1 1l8 8M9 1l-8 8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                </svg>
+              </button>
               <p className="text-[#0A0A0A] text-xs leading-relaxed font-medium">
                 Écrivez-nous sur WhatsApp pour une réponse plus rapide&nbsp;⚡
               </p>
               <div className="absolute -bottom-2 right-3 w-3 h-3 bg-white"
                 style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%)' }} />
             </div>
-
-            <motion.span
-              animate={{ rotate: [0, -12, 12, -8, 8, 0] }}
-              transition={{ duration: 0.8, delay: 0.3, ease: 'easeInOut' }}
-              className="text-3xl select-none"
-              aria-hidden="true"
-            >
-              🧸
-            </motion.span>
           </motion.div>
         )}
       </AnimatePresence>
