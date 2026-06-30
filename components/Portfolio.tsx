@@ -118,7 +118,7 @@ function ProjectVisual({ slug, dark, name, url, variant = 'card' }: { slug: stri
           alt={`Aperçu ${name}`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover object-top"
+          className="object-contain"
           onError={() => setErr(true)}
         />
       </div>
@@ -190,9 +190,9 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         </div>
 
         <div className="p-6 md:p-8">
-          {/* Preview */}
+          {/* Preview — image principale */}
           <div className="rounded-xl overflow-hidden mb-8 border border-white/6" style={{ aspectRatio: '16/9', background: project.bg }}>
-            <ProjectVisual slug={project.slug} dark url={project.url} name={project.name} variant="modal" />
+            <ProjectVisual slug={project.slug} dark url={project.url} name={project.name} variant="card" />
           </div>
 
           <div className="mb-8">
@@ -218,6 +218,11 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               <div>
                 <p className="font-mono text-[9px] text-white/18 tracking-[0.2em] uppercase mb-3">La solution</p>
                 <p className="text-white/45 text-sm leading-[1.8]">{project.description}</p>
+              </div>
+
+              {/* Image détail feat */}
+              <div className="rounded-xl overflow-hidden border border-white/6" style={{ background: project.bg }}>
+                <ProjectVisual slug={project.slug} dark url={project.url} name={project.name} variant="modal" />
               </div>
             </div>
 
