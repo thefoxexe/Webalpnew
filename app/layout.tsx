@@ -5,6 +5,7 @@ import { LanguageProvider } from '@/contexts/LanguageContext'
 import Loader from '@/components/Loader'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import CustomCursor from '@/components/CustomCursor'
+import ScrollProgress from '@/components/ScrollProgress'
 import './globals.css'
 
 const inter = Inter({
@@ -211,6 +212,7 @@ export default function RootLayout({
         </LanguageProvider>
         <WhatsAppButton />
         <CustomCursor />
+        <ScrollProgress />
       </body>
     </html>
   )

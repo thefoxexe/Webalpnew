@@ -95,11 +95,11 @@ const PROJECTS: Project[] = [
     type: 'SaaS application complète',
     year: '2025',
     sector: 'B2B SaaS · Automatisation',
-    enjeu: 'Transformer une vision SaaS B2B en produit réel, monétisable et scalable — design, développement, paiements et back-office, livré de A à Z.',
+    enjeu: 'Transformer une vision SaaS B2B en produit réel, monétisable et scalable — design, développement, paiements et back-office, livré de A à Z. Aujourd\'hui, YourBizFlow génère plus de CHF 4\'000 de MRR.',
     description: 'Projet SaaS complet from scratch : design de la marque, architecture et développement de l\'application, gestion des abonnements, plans payants Stripe, dashboard client et admin.',
     deliverables: ['Design & branding complet', 'Application web (front + back)', 'Plans d\'abonnement + Stripe', 'Dashboard client & admin', 'Gestion des versions payantes'],
-    result: 'SaaS live',
-    resultLabel: 'en production',
+    result: 'CHF 4K+',
+    resultLabel: 'MRR mensuel',
     bg: '#0F0F0F',
     dark: true,
   },
@@ -215,14 +215,14 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 <p className="font-mono text-[9px] text-white/18 tracking-[0.2em] uppercase mb-3">{"L'enjeu"}</p>
                 <p className="text-white/65 text-sm leading-[1.8]">{project.enjeu}</p>
               </div>
+
+              <div className="rounded-xl overflow-hidden border border-white/6" style={{ background: project.bg, aspectRatio: '16/9' }}>
+                <ProjectVisual slug={project.slug} dark url={project.url} name={project.name} variant="modal" />
+              </div>
+
               <div>
                 <p className="font-mono text-[9px] text-white/18 tracking-[0.2em] uppercase mb-3">La solution</p>
                 <p className="text-white/45 text-sm leading-[1.8]">{project.description}</p>
-              </div>
-
-              {/* Image détail feat */}
-              <div className="rounded-xl overflow-hidden border border-white/6" style={{ background: project.bg }}>
-                <ProjectVisual slug={project.slug} dark url={project.url} name={project.name} variant="modal" />
               </div>
             </div>
 

@@ -107,13 +107,18 @@ export default function Contact() {
                 { label: 'contact@webalp.ch', sub: t.contact.emailSub },
                 { label: '079 823 58 62', sub: t.contact.phoneSub },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4 py-4 border-b border-white/10">
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ ...spring, delay: 0.3 + i * 0.1 }}
+                  className="flex items-start gap-4 py-4 border-b border-white/10">
                   <span className="text-xs text-white/35 w-5 pt-0.5 shrink-0 tabular-nums">{String(i + 1).padStart(2, '0')}</span>
                   <div>
                     <p className="text-sm font-medium text-white">{item.label}</p>
                     <p className="text-xs text-white/45 mt-0.5">{item.sub}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 

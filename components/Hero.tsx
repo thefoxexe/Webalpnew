@@ -1,13 +1,16 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 const spring = { type: 'spring', stiffness: 260, damping: 22 } as const
 
 export default function Hero() {
   const { t } = useLanguage()
+  const { scrollY } = useScroll()
+  const heroY = useTransform(scrollY, [0, 600], [0, -100])
+  const heroOpacity = useTransform(scrollY, [0, 400], [1, 0])
 
   return (
     <section className="relative min-h-[100svh] bg-[#0A0A0A] flex overflow-hidden" aria-label="Hero">
@@ -20,7 +23,7 @@ export default function Hero() {
       />
 
       {/* Left: headline + CTAs */}
-      <div className="relative z-10 flex-1 flex flex-col px-6 sm:px-10 md:px-14 lg:px-20 pt-24 sm:pt-28 md:pt-36 pb-12 min-w-0">
+      <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 flex-1 flex flex-col px-6 sm:px-10 md:px-14 lg:px-20 pt-24 sm:pt-28 md:pt-36 pb-12 min-w-0">
 
         <motion.p
           initial={{ opacity: 0, y: 12 }}
@@ -83,7 +86,7 @@ export default function Hero() {
             ))}
           </div>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Right: stats sidebar */}
       <motion.aside
