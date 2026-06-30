@@ -48,7 +48,7 @@ export default function Stats() {
   return (
     <section className="bg-[#F5F4F0] py-6" aria-label="Stats" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {t.stats.items.map((stat, i) => {
             const s = styles[i] ?? styles[0]
             return (
