@@ -89,7 +89,7 @@ export default function Pricing() {
                     ))}
                   </div>
 
-                  <Link href="#contact"
+                  <Link href={`/brief?plan=${encodeURIComponent(plan.name.toLowerCase().replace(/ /g, '-'))}`}
                     className={`inline-flex items-center justify-center gap-2 text-sm font-bold px-6 py-3.5 rounded-full transition-all active:scale-95 ${
                       plan.popular
                         ? 'bg-accent text-[#0A0A0A] hover:brightness-110'
@@ -138,7 +138,7 @@ export default function Pricing() {
                   </div>
 
                   <div className="shrink-0 pl-6">
-                    <Link href="#contact"
+                    <Link href={`/brief?plan=${encodeURIComponent(plan.name.toLowerCase().replace(/ /g, '-'))}`}
                       className={`inline-flex items-center gap-2 text-sm font-bold px-6 py-3.5 rounded-full transition-all active:scale-95 whitespace-nowrap ${
                         plan.popular
                           ? 'bg-accent text-[#0A0A0A] hover:brightness-110'
