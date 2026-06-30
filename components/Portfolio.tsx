@@ -108,7 +108,7 @@ const PROJECTS: Project[] = [
 
 function ProjectVisual({ slug, dark, name, url, variant = 'card' }: { slug: string; dark: boolean; name: string; url: string; variant?: 'card' | 'modal' }) {
   const [err, setErr] = useState(false)
-  const src = variant === 'modal' ? `/work/${slug}-fit.jpg` : `/work/${slug}.jpg`
+  const src = variant === 'modal' ? `/work/${slug}feat.png` : `/work/${slug}.png`
 
   if (!err) {
     return (
