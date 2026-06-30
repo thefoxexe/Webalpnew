@@ -164,7 +164,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="font-sans bg-white text-black overflow-x-hidden">
-        {/* Netlify Forms — déclaration statique server-rendered pour détection au build */}
         <form name="contactv2" data-netlify="true" data-netlify-honeypot="bot-field" hidden aria-hidden="true">
           <input type="text" name="name" />
           <input type="email" name="email" />
@@ -173,7 +172,6 @@ export default function RootLayout({
           <textarea name="message"></textarea>
         </form>
 
-        {/* Google Ads */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-11013404464"
           strategy="afterInteractive"
@@ -187,7 +185,6 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-F9FYQ9VRMH"
           strategy="afterInteractive"
@@ -201,7 +198,6 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Ahrefs Analytics */}
         <Script
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="Ugvicinbn0xcm6zDGOMYuQ"

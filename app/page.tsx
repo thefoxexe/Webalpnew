@@ -15,9 +15,6 @@ import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 
-// Subtle radial line — fades in from centre, invisible at edges.
-// Only used between same-palette sections (beige ↔ white).
-// High-contrast boundaries (dark ↔ light) need no separator: the colour shift speaks for itself.
 function Divider() {
   return (
     <div
@@ -36,7 +33,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Problem />
-      {/* #0A0A0A → #F5F4F0 : hard cut, contrast carries it */}
+
       <Services />
       <Divider />
       <TechStack />
@@ -48,15 +45,15 @@ export default function Home() {
       <Pricing />
       <Divider />
       <Testimonials />
-      {/* #F5F4F0 → #0A0A0A : hard cut */}
+
       <About />
-      {/* #0A0A0A → #FFFFFF : hard cut */}
+
       <FAQ />
-      {/* #FFFFFF → #0A0A0A : hard cut */}
+
       <Contact />
-      {/* #0A0A0A → #B3FF47 : hard cut */}
+
       <CTA />
-      {/* #B3FF47 → #0A0A0A : hard cut */}
+
       <Footer />
       <FloatingCTA />
     </main>

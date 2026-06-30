@@ -1,8 +1,3 @@
-// In-memory view counter — resets on serverless cold start.
-// To persist across instances, replace the Map with Vercel KV:
-// import { kv } from '@vercel/kv'
-// await kv.incr(`views:${slug}`)
-
 const counts = new Map<string, number>()
 
 function seed(slug: string): number {

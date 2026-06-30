@@ -105,7 +105,6 @@ const PROJECTS: Project[] = [
   },
 ]
 
-// ─── Visual placeholder ───────────────────────────────────────────────────────
 
 function ProjectVisual({ slug, dark, name, url }: { slug: string; dark: boolean; name: string; url: string }) {
   const [err, setErr] = useState(false)
@@ -142,7 +141,6 @@ function ProjectVisual({ slug, dark, name, url }: { slug: string; dark: boolean;
   )
 }
 
-// ─── Modal ────────────────────────────────────────────────────────────────────
 
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
   useEffect(() => {
@@ -263,7 +261,6 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
   )
 }
 
-// ─── Card ────────────────────────────────────────────────────────────────────
 
 function ProjectCard({ project: p, delay, inView, onClick }: { project: Project; delay: number; inView: boolean; onClick: () => void }) {
   const tc = p.dark ? 'text-white' : 'text-black'
@@ -311,7 +308,6 @@ function ProjectCard({ project: p, delay, inView, onClick }: { project: Project;
   )
 }
 
-// ─── Spotlight card (full-width, 5th project) ────────────────────────────────
 
 function SpotlightCard({ project: p, delay, inView, onClick }: { project: Project; delay: number; inView: boolean; onClick: () => void }) {
   return (
@@ -357,7 +353,6 @@ function SpotlightCard({ project: p, delay, inView, onClick }: { project: Projec
   )
 }
 
-// ─── Main ─────────────────────────────────────────────────────────────────────
 
 export default function Portfolio() {
   const { t } = useLanguage()

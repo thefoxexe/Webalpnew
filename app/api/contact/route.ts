@@ -48,7 +48,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: true })
     }
 
-    // Fallback: Netlify Forms server-side
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://webalp.ch'
     const encode = (d: Record<string, string>) =>
       Object.entries(d)
