@@ -43,8 +43,8 @@ export default function NotFound() {
         </h1>
 
         <p className="text-white/45 text-sm leading-relaxed">
-          Cette page n'existe pas ou a été déplacée.<br />
-          Revenez à l'accueil, on s'occupe du reste.
+          Cette page n&apos;existe pas ou a été déplacée.<br />
+          Revenez à l&apos;accueil, on s&apos;occupe du reste.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
@@ -52,7 +52,7 @@ export default function NotFound() {
             href="/"
             className="inline-flex items-center gap-2 bg-accent text-[#0A0A0A] font-bold text-sm px-6 py-3.5 rounded-full hover:brightness-110 active:scale-95 transition-all"
           >
-            ← Retour à l'accueil
+            ← Retour à l&apos;accueil
           </Link>
           <Link
             href="/#contact"

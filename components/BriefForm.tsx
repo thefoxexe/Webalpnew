@@ -212,7 +212,7 @@ export default function BriefForm() {
             <option value="" className="bg-[#141414]">Sélectionner…</option>
             <option value="Oui, tout est prêt" className="bg-[#141414]">Oui, tout est prêt</option>
             <option value="Partiellement" className="bg-[#141414]">Partiellement</option>
-            <option value="Non, besoin d'aide" className="bg-[#141414]">Non, besoin d'aide</option>
+            <option value="Non, besoin d'aide" className="bg-[#141414]">Non, besoin d&apos;aide</option>
           </select>
         </Field>
         <Field label="Avez-vous un nom de domaine ?">

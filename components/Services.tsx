@@ -74,7 +74,7 @@ export default function Services() {
               <Link
                 href={
                   s.icon === 'shield' ? '#contact'
-                  : s.icon === 'globe' ? '/brief?plan=starter'
+                  : s.icon === 'monitor' ? '/brief?plan=starter'
                   : '/brief?plan=sur-mesure'
                 }
                 className={`mt-1 inline-flex items-center gap-2 text-sm font-bold px-6 py-3.5 rounded-full self-start transition-all active:scale-95 ${
