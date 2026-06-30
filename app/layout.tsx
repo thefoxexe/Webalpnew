@@ -104,7 +104,7 @@ const structuredData = {
       telephone: '+41798235862',
       email: 'contact@webalp.ch',
       foundingDate: '2025',
-      priceRange: 'CHF 890 – CHF 2490',
+      priceRange: 'CHF 690 – CHF 1990',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Sion',
