@@ -48,7 +48,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row gap-10 md:gap-16 justify-between">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 grid grid-cols-1 md:grid-cols-[260px_1fr_auto] gap-10 md:gap-16">
 
           {/* Brand */}
           <motion.div
@@ -126,7 +126,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Nav */}
-          <div className="flex flex-wrap gap-x-10 gap-y-8 flex-1">
+          <div className="grid grid-cols-3 gap-8 md:gap-10">
             {footerSections.map(([category, links], sectionIndex) => (
               <motion.div
                 key={category}
