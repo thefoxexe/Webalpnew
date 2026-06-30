@@ -106,14 +106,15 @@ const PROJECTS: Project[] = [
 ]
 
 
-function ProjectVisual({ slug, dark, name, url }: { slug: string; dark: boolean; name: string; url: string }) {
+function ProjectVisual({ slug, dark, name, url, variant = 'card' }: { slug: string; dark: boolean; name: string; url: string; variant?: 'card' | 'modal' }) {
   const [err, setErr] = useState(false)
+  const src = variant === 'modal' ? `/work/${slug}-fit.jpg` : `/work/${slug}.jpg`
 
   if (!err) {
     return (
       <div className="relative w-full h-full">
         <Image
-          src={`/portfolio/${slug}.jpg`}
+          src={src}
           alt={`Aperçu ${name}`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
@@ -191,7 +192,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         <div className="p-6 md:p-8">
           {/* Preview */}
           <div className="rounded-xl overflow-hidden mb-8 border border-white/6" style={{ aspectRatio: '16/9', background: project.bg }}>
-            <ProjectVisual slug={project.slug} dark url={project.url} name={project.name} />
+            <ProjectVisual slug={project.slug} dark url={project.url} name={project.name} variant="modal" />
           </div>
 
           <div className="mb-8">
