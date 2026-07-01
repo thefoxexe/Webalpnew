@@ -66,7 +66,7 @@ export const translations = {
           price: 'dès CHF 690',
           sub: 'Votre meilleur commercial, 24h/24',
           description: 'Votre site travaille quand vous dormez. On le conçoit pour qu\'il capte l\'attention, inspire confiance et pousse votre visiteur à décrocher son téléphone.',
-          features: ['Design 100% sur mesure', 'Mobile-first', 'SEO technique inclus', 'Formulaire de contact', 'Google Analytics', 'Code livré & documenté'],
+          features: ['Design 100% sur mesure', 'Mobile-first', 'SEO technique inclus', 'Formulaire de contact', 'Google Analytics', 'Code livré & documenté', 'Hébergement inclus chez WebAlp'],
         },
         {
           icon: 'lightning',
@@ -75,7 +75,7 @@ export const translations = {
           price: 'dès CHF 1\'990',
           sub: 'Vos concurrents n\'ont pas ça',
           description: 'Réservations en ligne, e-commerce, portail client. On développe ce que vos concurrents font encore à la main. Et ça change tout.',
-          features: ['E-commerce ou sur mesure', 'Système de réservation', 'Paiement en ligne', 'Dashboard admin', 'Emails automatiques', 'Tests complets'],
+          features: ['E-commerce ou sur mesure', 'Système de réservation', 'Paiement en ligne', 'Dashboard admin', 'Emails automatiques', 'Tests complets', 'Hébergement inclus chez WebAlp'],
         },
         {
           icon: 'shield',
@@ -158,7 +158,7 @@ export const translations = {
           tech: 'Next.js / React',
           tag: 'Notre spécialité',
           description: 'Code écrit de zéro pour votre projet. Performances maximales, SEO technique au niveau des grandes marques, évolutivité sans limite.',
-          pros: ['Performance 98/100 garantie', 'SEO technique optimal', '100% personnalisable', 'Pas de plugin tiers fragile'],
+          pros: ['Performance 98/100 garantie', 'SEO technique optimal', '100% personnalisable', 'Pas de plugin tiers fragile', 'Hébergement inclus chez WebAlp'],
           best: 'Sites vitrine, apps web, projets complexes',
           popular: true,
         },
@@ -200,7 +200,7 @@ export const translations = {
           name: 'Starter',
           price: '690',
           tagline: 'Site vitrine soigné pour démarrer proprement',
-          features: ['Design sur mesure', 'Mobile-first', 'SEO technique inclus', 'Formulaire de contact', 'Google Analytics', 'Nom de domaine & email pro', 'Mise en ligne incluse'],
+          features: ['Design sur mesure', 'Mobile-first', 'SEO technique inclus', 'Formulaire de contact', 'Google Analytics', 'Nom de domaine & email pro', 'Mise en ligne incluse', 'Hébergement chez WebAlp sans frais'],
           popular: false,
         },
         {
@@ -388,7 +388,7 @@ export const translations = {
           price: 'from CHF 690',
           sub: 'Your best salesperson, 24/7',
           description: 'Your site works while you sleep. We design it to capture attention, build trust, and push your visitor to pick up the phone.',
-          features: ['100% custom design', 'Mobile-first', 'SEO included', 'Contact form', 'Google Analytics', 'Clean code delivered'],
+          features: ['100% custom design', 'Mobile-first', 'SEO included', 'Contact form', 'Google Analytics', 'Clean code delivered', 'Hosting included with WebAlp'],
         },
         {
           icon: 'lightning',
@@ -397,7 +397,7 @@ export const translations = {
           price: 'from CHF 1\'990',
           sub: 'Your competitors don\'t have this',
           description: 'Online bookings, e-commerce, client portal. We build what your competitors are still doing by hand. And that changes everything.',
-          features: ['E-commerce or custom', 'Booking system', 'Online payments', 'Admin dashboard', 'Automated emails', 'Full testing'],
+          features: ['E-commerce or custom', 'Booking system', 'Online payments', 'Admin dashboard', 'Automated emails', 'Full testing', 'Hosting included with WebAlp'],
         },
         {
           icon: 'shield',
@@ -480,7 +480,7 @@ export const translations = {
           tech: 'Next.js / React',
           tag: 'Our specialty',
           description: 'Code written from scratch for your project. Maximum performance, technical SEO at the level of major brands, unlimited scalability.',
-          pros: ['98/100 performance guaranteed', 'Optimal technical SEO', '100% customizable', 'No fragile third-party plugins'],
+          pros: ['98/100 performance guaranteed', 'Optimal technical SEO', '100% customizable', 'No fragile third-party plugins', 'Hosting included with WebAlp'],
           best: 'Showcase sites, web apps, complex projects',
           popular: true,
         },
@@ -522,7 +522,7 @@ export const translations = {
           name: 'Starter',
           price: '690',
           tagline: 'A polished showcase site to start clean',
-          features: ['Custom design', 'Mobile-first', 'Technical SEO included', 'Contact form', 'Google Analytics', 'Domain & professional email', 'Go-live included'],
+          features: ['Custom design', 'Mobile-first', 'Technical SEO included', 'Contact form', 'Google Analytics', 'Domain & professional email', 'Go-live included', 'Hosting with WebAlp, no extra cost'],
           popular: false,
         },
         {
