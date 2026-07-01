@@ -24,7 +24,10 @@ export default function About() {
           className="flex flex-col sm:flex-row sm:items-end justify-between gap-8"
         >
           <div>
-            <p className="text-xs text-white/50 uppercase tracking-widest mb-6">— {t.about.label}</p>
+            <div className="flex items-center gap-2.5 mb-6">
+              <span className="block w-[3px] h-4 bg-accent rounded-full shrink-0" />
+              <span className="text-[11px] font-black uppercase tracking-[0.14em] text-white/40">{t.about.label}</span>
+            </div>
             <h2 id="about-title" className="font-display font-extrabold text-white leading-[0.88] tracking-tight"
               style={{ fontSize: 'clamp(34px, 7vw, 110px)' }}>
               {t.about.h2a}<br />

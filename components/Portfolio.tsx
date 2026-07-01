@@ -79,8 +79,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         {/* Header */}
         <div className="sticky top-0 z-10 flex items-center justify-between px-6 md:px-8 py-4 border-b border-white/6 bg-[#0D0D0D]/97 backdrop-blur-md">
           <div className="flex items-center gap-3">
-            <span className="font-mono text-[10px] text-white/20">{project.index}</span>
-            <span className="font-mono text-[10px] text-white/35 border border-white/8 px-2.5 py-1 rounded-full">{project.type}</span>
+            <span className="text-xs font-black text-white/20">{project.index}</span>
+            <span className="text-[11px] text-white/35 border border-white/10 px-2.5 py-1 rounded">{project.type}</span>
           </div>
           <button onClick={onClose}
             className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-white hover:border-white/25 transition-all"
@@ -114,7 +114,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           <div className="grid md:grid-cols-[1fr_240px] gap-8">
             <div className="space-y-7">
               <div>
-                <p className="font-mono text-[9px] text-white/18 tracking-[0.2em] uppercase mb-3">{"L'enjeu"}</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-white/25 mb-3">{"L'enjeu"}</p>
                 <p className="text-white/65 text-sm leading-[1.8]">{project.enjeu}</p>
               </div>
 
@@ -123,13 +123,13 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               </div>
 
               <div>
-                <p className="font-mono text-[9px] text-white/18 tracking-[0.2em] uppercase mb-3">La solution</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-white/25 mb-3">La solution</p>
                 <p className="text-white/45 text-sm leading-[1.8]">{project.description}</p>
               </div>
 
               {project.note && (
                 <div className="rounded-xl border border-white/8 bg-white/[0.03] px-5 py-4">
-                  <p className="font-mono text-[9px] text-white/20 tracking-[0.18em] uppercase mb-2">Note</p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.14em] text-white/25 mb-2">Note</p>
                   <p className="text-white/35 text-xs leading-[1.7]">{project.note}</p>
                 </div>
               )}
@@ -137,7 +137,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
             <div className="flex flex-col gap-5">
               <div>
-                <p className="font-mono text-[9px] text-white/18 tracking-[0.2em] uppercase mb-3">{"Ce qu'on a livré"}</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-white/25 mb-3">{"Ce qu'on a livré"}</p>
                 <ul className="space-y-2.5">
                   {project.deliverables.map(d => (
                     <li key={d} className="flex items-start gap-2.5 text-sm text-white/50">
@@ -193,8 +193,8 @@ function ProjectCard({ project: p, delay, inView, onClick }: { project: Project;
       style={{ background: p.bg, minHeight: 300 }}
     >
       <div className="flex items-start justify-between px-6 pt-6 pb-0">
-        <span className={`font-mono text-[10px] font-bold ${sc}`}>{p.index}</span>
-        <span className={`font-mono text-[10px] border px-2.5 py-1 rounded-full ${tagC}`}>{p.type}</span>
+        <span className={`text-xs font-black ${sc}`}>{p.index}</span>
+        <span className={`text-[11px] border px-2.5 py-1 rounded ${tagC}`}>{p.type}</span>
       </div>
 
       <div className="flex-1 flex flex-col justify-between px-6 py-5 gap-5">
@@ -202,7 +202,7 @@ function ProjectCard({ project: p, delay, inView, onClick }: { project: Project;
           <h3 className={`font-display font-extrabold text-xl md:text-2xl leading-tight mb-1.5 ${tc}`}>
             {p.name}
           </h3>
-          <p className={`font-mono text-[10px] mb-3 ${sc}`}>{p.url.replace('https://', '')}</p>
+          <p className={`text-[11px] mb-3 ${sc}`}>{p.url.replace('https://', '')}</p>
           <p className={`text-sm leading-relaxed line-clamp-2 ${bc}`}>{p.enjeu}</p>
         </div>
 
@@ -237,15 +237,15 @@ function SpotlightCard({ project: p, delay, inView, onClick }: { project: Projec
       <div className="flex flex-col md:flex-row items-stretch min-h-[220px]">
         <div className="flex-1 flex flex-col justify-between px-6 py-6 md:px-8 md:py-8">
           <div className="flex items-center justify-between mb-6">
-            <span className="font-mono text-[10px] text-white/25">{p.index}</span>
-            <span className="font-mono text-[10px] text-white/30 border border-white/8 px-2.5 py-1 rounded-full">{p.type}</span>
+            <span className="text-xs font-black text-white/25">{p.index}</span>
+            <span className="text-[11px] text-white/30 border border-white/10 px-2.5 py-1 rounded">{p.type}</span>
           </div>
           <div>
             <h3 className="font-display font-extrabold text-white leading-tight mb-2"
               style={{ fontSize: 'clamp(22px, 3vw, 36px)' }}>
               {p.name}
             </h3>
-            <p className="font-mono text-[10px] text-white/25 mb-3">{p.url.replace('https://', '')}</p>
+            <p className="text-[11px] text-white/25 mb-3">{p.url.replace('https://', '')}</p>
             <p className="text-sm text-white/45 leading-relaxed max-w-lg">{p.enjeu}</p>
           </div>
         </div>
@@ -259,7 +259,7 @@ function SpotlightCard({ project: p, delay, inView, onClick }: { project: Projec
             <p className="text-white/30 text-xs mt-1.5">{p.resultLabel}</p>
           </div>
           <div className="flex items-center justify-between mt-6">
-            <p className="font-mono text-[10px] text-white/18">{p.sector} · {p.year}</p>
+            <p className="text-[11px] text-white/18">{p.sector} · {p.year}</p>
             <span className="text-xs font-semibold text-white/20 group-hover:text-accent transition-colors">Voir →</span>
           </div>
         </div>
@@ -293,9 +293,10 @@ export default function Portfolio({ full = false }: { full?: boolean }) {
             className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
           >
             <div>
-              <p className={`font-mono text-[10px] tracking-[0.25em] uppercase mb-6 ${full ? 'text-white/30' : 'text-black/30'}`}>
-                — {t.portfolio.label}
-              </p>
+              <div className="flex items-center gap-2.5 mb-6">
+                <span className="block w-[3px] h-4 bg-accent rounded-full shrink-0" />
+                <span className={`text-[11px] font-black uppercase tracking-[0.14em] ${full ? 'text-white/40' : 'text-black/50'}`}>{t.portfolio.label}</span>
+              </div>
               <h2 id="portfolio-title" className={`font-display font-extrabold leading-[0.92] tracking-tight ${full ? 'text-white' : 'text-black'}`}
                 style={{ fontSize: 'clamp(32px, 5vw, 68px)' }}>
                 {t.portfolio.h2a}<br />
@@ -304,8 +305,7 @@ export default function Portfolio({ full = false }: { full?: boolean }) {
             </div>
             <div className="flex flex-col items-start md:items-end gap-3">
               <p className={`text-sm max-w-xs md:text-right leading-relaxed ${full ? 'text-white/35' : 'text-black/35'}`}>{t.portfolio.sub}</p>
-              <span className={`inline-flex items-center gap-2 border rounded-full px-3 py-1.5 font-mono text-[10px] ${full ? 'border-white/8 text-white/35' : 'border-black/8 text-black/35'}`}>
-                <span className="w-1.5 h-1.5 rounded-full bg-accent" style={{ boxShadow: '0 0 5px #B3FF47' }} />
+              <span className={`text-[11px] font-mono font-semibold ${full ? 'text-white/35' : 'text-black/35'}`}>
                 {full ? `${PROJECTS.length} projets` : t.portfolio.total}
               </span>
             </div>

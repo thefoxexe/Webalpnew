@@ -31,7 +31,10 @@ export default function Footer() {
         className="border-t border-white/10 overflow-hidden pt-14 pb-6"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 mb-4">
-          <p className="text-xs text-white/40 uppercase tracking-widest">— Valais, Suisse</p>
+          <div className="flex items-center gap-2.5">
+            <span className="block w-[3px] h-4 bg-accent rounded-full shrink-0" />
+            <span className="text-[11px] font-black uppercase tracking-[0.14em] text-white/40">Valais, Suisse</span>
+          </div>
         </div>
         <div className="px-4 md:px-10 overflow-hidden" aria-hidden="true">
           <motion.p
@@ -134,7 +137,7 @@ export default function Footer() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ ...spring, delay: 0.2 + sectionIndex * 0.08 }}
               >
-                <h3 className="text-xs text-white/40 uppercase tracking-widest mb-4">{category}</h3>
+                <h3 className="text-[11px] font-black uppercase tracking-[0.14em] text-white/40 mb-4">{category}</h3>
                 <ul className="space-y-2.5">
                   {links.map((label, linkIndex) => (
                     <li key={label}>

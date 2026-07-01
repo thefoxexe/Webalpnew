@@ -35,7 +35,10 @@ export default function FAQ() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
         >
           <div>
-            <p className="text-xs text-black/45 uppercase tracking-widest mb-4">— {t.faq.label}</p>
+            <div className="flex items-center gap-2.5 mb-5">
+              <span className="block w-[3px] h-4 bg-accent rounded-full shrink-0" />
+              <span className="text-[11px] font-black uppercase tracking-[0.14em] text-black/50">{t.faq.label}</span>
+            </div>
             <h2 id="faq-title" className="font-display font-extrabold text-black leading-[0.9] tracking-tight"
               style={{ fontSize: 'clamp(32px, 6vw, 80px)' }}>
               {t.faq.h2}

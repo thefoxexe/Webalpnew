@@ -29,9 +29,10 @@ export default function Testimonials() {
           transition={{ type: 'spring', stiffness: 240, damping: 22 }}
           className="mb-10"
         >
-          <p className="text-xs text-black/45 uppercase tracking-widest mb-4" id="testimonials-title">
-            — {t.testimonials.label}
-          </p>
+          <div className="flex items-center gap-2.5 mb-5" id="testimonials-title">
+            <span className="block w-[3px] h-4 bg-accent rounded-full shrink-0" />
+            <span className="text-[11px] font-black uppercase tracking-[0.14em] text-black/50">{t.testimonials.label}</span>
+          </div>
           <h2 className="font-display font-extrabold text-black leading-[0.9] tracking-tight"
             style={{ fontSize: 'clamp(32px, 6vw, 80px)' }}>
             {t.testimonials.h2a}<br />

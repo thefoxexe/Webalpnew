@@ -23,7 +23,10 @@ export default function Pricing() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
         >
           <div>
-            <p className="text-xs text-black/45 uppercase tracking-widest mb-4">— {t.pricing.label}</p>
+            <div className="flex items-center gap-2.5 mb-5">
+              <span className="block w-[3px] h-4 bg-accent rounded-full shrink-0" />
+              <span className="text-[11px] font-black uppercase tracking-[0.14em] text-black/50">{t.pricing.label}</span>
+            </div>
             <h2 id="pricing-title" className="font-display font-extrabold text-black leading-[0.9] tracking-tight"
               style={{ fontSize: 'clamp(32px, 6vw, 80px)' }}>
               {t.pricing.h2}
@@ -31,8 +34,7 @@ export default function Pricing() {
           </div>
           <div className="flex flex-col items-start md:items-end gap-2">
             <p className="text-black/55 text-sm max-w-xs leading-relaxed md:text-right">{t.pricing.sub}</p>
-            <span className="inline-flex items-center gap-2 border border-black/12 rounded-full px-3 py-1.5 text-xs text-black/45">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+            <span className="text-[11px] font-semibold text-accent/80 border-b border-accent/40 pb-0.5">
               {t.pricing.urgency}
             </span>
           </div>

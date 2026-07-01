@@ -22,7 +22,10 @@ export default function Services() {
           transition={{ type: 'spring', stiffness: 240, damping: 22 }}
           className="mb-12"
         >
-          <p className="text-xs text-black/45 uppercase tracking-widest mb-4">— {t.services.label}</p>
+          <div className="flex items-center gap-2.5 mb-5">
+            <span className="block w-[3px] h-4 bg-accent rounded-full shrink-0" />
+            <span className="text-[11px] font-black uppercase tracking-[0.14em] text-black/50">{t.services.label}</span>
+          </div>
           <h2 id="services-title" className="font-display font-extrabold text-black leading-[0.9] tracking-tight"
             style={{ fontSize: 'clamp(32px, 6vw, 80px)' }}>
             {t.services.h2}
@@ -44,7 +47,7 @@ export default function Services() {
             >
               <div className="flex items-start justify-between">
                 <span className={`text-sm font-bold ${i === 0 ? 'text-white/40' : 'text-black/35'}`}>{s.number}</span>
-                <span className={`text-sm border rounded-full px-3 py-1 ${
+                <span className={`text-sm border rounded px-3 py-1 ${
                   i === 0 ? 'border-white/20 text-white/60' : 'border-black/15 text-black/50'
                 }`}>
                   {s.price}
@@ -63,7 +66,7 @@ export default function Services() {
 
               <div className="flex flex-wrap gap-2 mt-auto">
                 {s.features.map(f => (
-                  <span key={f} className={`text-xs font-medium px-3 py-1.5 rounded-full ${
+                  <span key={f} className={`text-xs font-medium px-3 py-1.5 rounded ${
                     i === 0 ? 'bg-white/10 text-white/70' : 'bg-black/6 text-black/60'
                   }`}>
                     {f}

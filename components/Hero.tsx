@@ -29,7 +29,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...spring, delay: 0.05 }}
-          className="text-xs text-white/50 tracking-widest uppercase mb-auto"
+          className="text-[11px] font-medium text-white/40 tracking-[0.12em] mb-auto"
         >
           Agence web · Sion, Valais · Suisse
         </motion.p>

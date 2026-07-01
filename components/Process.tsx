@@ -21,7 +21,10 @@ export default function Process() {
           transition={{ type: 'spring', stiffness: 240, damping: 22 }}
           className="mb-12"
         >
-          <p className="text-xs text-black/45 uppercase tracking-widest mb-4">— {t.process.label}</p>
+          <div className="flex items-center gap-2.5 mb-5">
+            <span className="block w-[3px] h-4 bg-accent rounded-full shrink-0" />
+            <span className="text-[11px] font-black uppercase tracking-[0.14em] text-black/50">{t.process.label}</span>
+          </div>
           <h2 id="process-title" className="font-display font-extrabold text-black leading-[0.9] tracking-tight"
             style={{ fontSize: 'clamp(32px, 6vw, 80px)' }}>
             {t.process.h2}
@@ -39,11 +42,9 @@ export default function Process() {
               whileHover={{ y: -4, transition: { type: 'spring', stiffness: 400, damping: 28 } }}
               className="bg-[#F5F4F0] rounded-2xl p-6 flex flex-col cursor-default"
             >
-              <div className="w-10 h-10 rounded-full bg-accent text-[#0A0A0A] flex items-center justify-center text-sm font-bold mb-5 shrink-0">
-                {step.number}
-              </div>
+              <p className="font-mono text-3xl font-black text-accent leading-none mb-5">{step.number}</p>
 
-              <span className="text-xs text-black/45 border border-black/12 rounded-full px-3 py-1 self-start mb-4">
+              <span className="text-xs text-black/45 border border-black/12 rounded px-3 py-1 self-start mb-4">
                 {step.duration}
               </span>
 
