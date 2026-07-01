@@ -1,109 +1,11 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
-
-type Project = {
-  index: string
-  slug: string
-  url: string
-  name: string
-  type: string
-  year: string
-  sector: string
-  enjeu: string
-  description: string
-  deliverables: string[]
-  result: string
-  resultLabel: string
-  bg: string
-  dark: boolean
-}
-
-const PROJECTS: Project[] = [
-  {
-    index: '01',
-    slug: 'dronevalais',
-    url: 'https://dronevalais-production.ch',
-    name: 'Drone Valais Production',
-    type: 'Site vitrine + CMS sur mesure',
-    year: '2025',
-    sector: 'Vidéaste · Drone',
-    enjeu: 'Un vidéaste professionnel en Valais avait besoin d\'un site à la hauteur de son talent — et d\'un back-office propriétaire pour gérer devis et factures sans jongler entre Excel et e-mails.',
-    description: 'Site vitrine haut de gamme pensé pour convertir les demandes de tournage drone et corporate. CMS entièrement sur mesure : gestion des devis, facturation, suivi client — tout centralisé dans une interface propriétaire.',
-    deliverables: ['Site vitrine 5 pages premium', 'CMS sur mesure (devis + factures)', 'Gestion client intégrée', 'Galerie vidéo haute performance', 'SEO local ciblé Valais'],
-    result: '+280%',
-    resultLabel: 'demandes de devis',
-    bg: '#0A0A0A',
-    dark: true,
-  },
-  {
-    index: '02',
-    slug: 'goldenbulls',
-    url: 'https://goldenbulls.ch',
-    name: 'Golden Bulls',
-    type: 'Web app + Espace membres sécurisé',
-    year: '2024',
-    sector: 'Investissement · Cryptomonnaie',
-    enjeu: 'Un groupe d\'investissement crypto d\'élite devait à la fois afficher une présence forte et réserver son contenu aux seuls membres vérifiés — aucun outil standard ne couvrait les deux.',
-    description: 'Plateforme complète : site vitrine impactant et système de vérification de membership avec accès conditionnel. Seuls les membres accrédités franchissent la porte. Dashboard privé, outils de traction inclus.',
-    deliverables: ['Site vitrine haut de gamme', 'Système d\'authentification membres', 'Vérification d\'accès conditionnelle', 'Dashboard membres exclusif', 'Outils de traction & conversion'],
-    result: '100%',
-    resultLabel: 'accès sécurisé & contrôlé',
-    bg: '#0C0C0C',
-    dark: true,
-  },
-  {
-    index: '03',
-    slug: 'monhygiene',
-    url: 'https://monhygiene.ch',
-    name: 'MonHygiène',
-    type: 'Site + Réservation en ligne',
-    year: '2025',
-    sector: 'Hygiène · Services à domicile',
-    enjeu: 'Une entreprise de nettoyage voulait recevoir des réservations 24h/24 et garder la maîtrise complète de son planning — sans commission, sans outil tiers payant.',
-    description: 'Site professionnel optimisé conversion avec module de réservation en ligne. Gestion des créneaux, des clients, des récurrences et du suivi des interventions — 100% propriétaire.',
-    deliverables: ['Site vitrine optimisé conversion', 'Module de réservation en ligne', 'Gestion planning & clients', 'Gestion des récurrences', 'SEO local Valais ciblé'],
-    result: '24/7',
-    resultLabel: 'réservations actives',
-    bg: '#0F0F0F',
-    dark: true,
-  },
-  {
-    index: '04',
-    slug: 'vestedwear',
-    url: 'https://vestedwear.com',
-    name: 'Vestedwear',
-    type: 'Boutique Shopify · E-commerce',
-    year: '2025',
-    sector: 'Mode · Streetwear',
-    enjeu: 'Une marque de mode avait besoin d\'une boutique en ligne complète et performante — de zéro à une expérience d\'achat fluide, avec un design à l\'image de la marque et un tunnel de conversion optimisé.',
-    description: 'Mise en place intégrale de la boutique Shopify : configuration technique, thème personnalisé, catalogue produits structuré, paiements sécurisés et optimisation UX pour maximiser le taux de conversion.',
-    deliverables: ['Configuration Shopify complète', 'Thème sur mesure & design marque', 'Catalogue produits + variantes', 'Paiements & checkout optimisé', 'Expérience mobile-first'],
-    result: 'E-com live',
-    resultLabel: 'boutique opérationnelle',
-    bg: '#0A0A0A',
-    dark: true,
-  },
-  {
-    index: '05',
-    slug: 'yourbizflow',
-    url: 'https://yourbizflow.com',
-    name: 'YourBizFlow',
-    type: 'SaaS application complète',
-    year: '2025',
-    sector: 'B2B SaaS · Automatisation',
-    enjeu: 'Transformer une vision SaaS B2B en produit réel, monétisable et scalable — design, développement, paiements et back-office, livré de A à Z. Aujourd\'hui, YourBizFlow génère plus de CHF 4\'000 de MRR.',
-    description: 'Projet SaaS complet from scratch : design de la marque, architecture et développement de l\'application, gestion des abonnements, plans payants Stripe, dashboard client et admin.',
-    deliverables: ['Design & branding complet', 'Application web (front + back)', 'Plans d\'abonnement + Stripe', 'Dashboard client & admin', 'Gestion des versions payantes'],
-    result: 'CHF 4K+',
-    resultLabel: 'MRR mensuel',
-    bg: '#0F0F0F',
-    dark: true,
-  },
-]
+import { Project, PROJECTS, HOME_PROJECTS } from '@/lib/projects'
 
 
 function ProjectVisual({ slug, dark, name, url, variant = 'card' }: { slug: string; dark: boolean; name: string; url: string; variant?: 'card' | 'modal' }) {
@@ -190,7 +92,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         </div>
 
         <div className="p-6 md:p-8">
-          {/* Preview — image principale */}
+          {/* Preview */}
           <div className="rounded-xl overflow-hidden mb-8 border border-white/6" style={{ aspectRatio: '16/9', background: project.bg }}>
             <ProjectVisual slug={project.slug} dark url={project.url} name={project.name} variant="card" />
           </div>
@@ -224,6 +126,13 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 <p className="font-mono text-[9px] text-white/18 tracking-[0.2em] uppercase mb-3">La solution</p>
                 <p className="text-white/45 text-sm leading-[1.8]">{project.description}</p>
               </div>
+
+              {project.note && (
+                <div className="rounded-xl border border-white/8 bg-white/[0.03] px-5 py-4">
+                  <p className="font-mono text-[9px] text-white/20 tracking-[0.18em] uppercase mb-2">Note</p>
+                  <p className="text-white/35 text-xs leading-[1.7]">{project.note}</p>
+                </div>
+              )}
             </div>
 
             <div className="flex flex-col gap-5">
@@ -360,19 +269,21 @@ function SpotlightCard({ project: p, delay, inView, onClick }: { project: Projec
 }
 
 
-export default function Portfolio() {
+export default function Portfolio({ full = false }: { full?: boolean }) {
   const { t } = useLanguage()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [selected, setSelected] = useState<Project | null>(null)
 
-  const row1 = PROJECTS.slice(0, 2)
-  const row2 = PROJECTS.slice(2, 4)
-  const spotlight = PROJECTS[4]
+  const projects = full ? PROJECTS : HOME_PROJECTS
+  const row1 = projects.slice(0, 2)
+  const row2 = projects.slice(2, 4)
+  const spotlight = projects[4]
+  const extra = full ? projects.slice(5) : []
 
   return (
     <>
-      <section id="portfolio" className="py-32 bg-white" ref={ref} aria-labelledby="portfolio-title">
+      <section id="portfolio" className={`py-32 ${full ? 'bg-[#0A0A0A]' : 'bg-white'}`} ref={ref} aria-labelledby="portfolio-title">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
 
           <motion.div
@@ -382,20 +293,20 @@ export default function Portfolio() {
             className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
           >
             <div>
-              <p className="font-mono text-[10px] text-black/30 tracking-[0.25em] uppercase mb-6">
+              <p className={`font-mono text-[10px] tracking-[0.25em] uppercase mb-6 ${full ? 'text-white/30' : 'text-black/30'}`}>
                 — {t.portfolio.label}
               </p>
-              <h2 id="portfolio-title" className="font-display font-extrabold text-black leading-[0.92] tracking-tight"
+              <h2 id="portfolio-title" className={`font-display font-extrabold leading-[0.92] tracking-tight ${full ? 'text-white' : 'text-black'}`}
                 style={{ fontSize: 'clamp(32px, 5vw, 68px)' }}>
                 {t.portfolio.h2a}<br />
-                <span className="text-black/15">{t.portfolio.h2b}</span>
+                <span className={full ? 'text-white/15' : 'text-black/15'}>{t.portfolio.h2b}</span>
               </h2>
             </div>
             <div className="flex flex-col items-start md:items-end gap-3">
-              <p className="text-black/35 text-sm max-w-xs md:text-right leading-relaxed">{t.portfolio.sub}</p>
-              <span className="inline-flex items-center gap-2 border border-black/8 rounded-full px-3 py-1.5 font-mono text-[10px] text-black/35">
+              <p className={`text-sm max-w-xs md:text-right leading-relaxed ${full ? 'text-white/35' : 'text-black/35'}`}>{t.portfolio.sub}</p>
+              <span className={`inline-flex items-center gap-2 border rounded-full px-3 py-1.5 font-mono text-[10px] ${full ? 'border-white/8 text-white/35' : 'border-black/8 text-black/35'}`}>
                 <span className="w-1.5 h-1.5 rounded-full bg-accent" style={{ boxShadow: '0 0 5px #B3FF47' }} />
-                {t.portfolio.total}
+                {full ? `${PROJECTS.length} projets` : t.portfolio.total}
               </span>
             </div>
           </motion.div>
@@ -412,7 +323,15 @@ export default function Portfolio() {
             ))}
           </div>
 
-          <SpotlightCard project={spotlight} delay={0.32} inView={inView} onClick={() => setSelected(spotlight)} />
+          {spotlight && (
+            <SpotlightCard project={spotlight} delay={0.32} inView={inView} onClick={() => setSelected(spotlight)} />
+          )}
+
+          {extra.map((p, i) => (
+            <div key={p.index} className="mt-3">
+              <ProjectCard project={p} delay={0.4 + i * 0.08} inView={inView} onClick={() => setSelected(p)} />
+            </div>
+          ))}
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -420,14 +339,30 @@ export default function Portfolio() {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4"
           >
-            <p className="text-sm text-black/30">Votre projet sera le prochain sur cette liste.</p>
-            <a href="#contact"
-              className="inline-flex items-center gap-2 bg-black text-white text-sm font-semibold px-6 py-3 rounded-full hover:bg-black/80 active:scale-95 transition-all">
-              {t.portfolio.cta}
-              <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
+            {full ? (
+              <p className="text-sm text-white/30">Votre projet sera le prochain sur cette liste.</p>
+            ) : (
+              <p className="text-sm text-black/30">Votre projet sera le prochain sur cette liste.</p>
+            )}
+
+            <div className="flex items-center gap-3">
+              {!full && (
+                <Link href="/portfolio"
+                  className="inline-flex items-center gap-2 border border-black/12 text-black/45 text-sm font-semibold px-6 py-3 rounded-full hover:border-black/25 hover:text-black/70 active:scale-95 transition-all">
+                  Découvrir plus
+                  <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
+              )}
+              <a href="#contact"
+                className={`inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full active:scale-95 transition-all ${full ? 'bg-accent text-black hover:bg-accent/90' : 'bg-black text-white hover:bg-black/80'}`}>
+                {t.portfolio.cta}
+                <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
