@@ -30,7 +30,7 @@ export default function BriefForm() {
     sector: '', description: '', goal: '',
     hasLogo: '', visualStyle: '', references: '', colors: '',
     existingSite: '', existingUrl: '', contentReady: '', hasDomain: '',
-    deadline: '', notes: '',
+    deadline: '2 semaines (délai standard)', notes: '',
   })
 
   useEffect(() => {
@@ -228,11 +228,10 @@ export default function BriefForm() {
       <Section number="05" title="Planning & infos complémentaires" />
       <Field label="Délai souhaité de mise en ligne">
         <select name="deadline" value={form.deadline} onChange={set} className={`${field} appearance-none cursor-pointer`}>
-          <option value="" className="bg-[#141414]">Sélectionner…</option>
-          <option value="Urgent — moins de 2 semaines" className="bg-[#141414]">Urgent — moins de 2 semaines</option>
-          <option value="1 mois" className="bg-[#141414]">1 mois</option>
-          <option value="2 à 3 mois" className="bg-[#141414]">2 à 3 mois</option>
-          <option value="Flexible" className="bg-[#141414]">Flexible</option>
+          <option value="2 semaines (délai standard)" className="bg-[#141414]">2 semaines (délai standard)</option>
+          <option value="1 mois" className="bg-[#141414]">1 mois — pas de presse</option>
+          <option value="2 à 3 mois" className="bg-[#141414]">2 à 3 mois — on a le temps</option>
+          <option value="Flexible" className="bg-[#141414]">Flexible — à votre convenance</option>
         </select>
       </Field>
       <Field label="Informations complémentaires">
