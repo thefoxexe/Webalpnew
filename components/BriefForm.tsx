@@ -13,6 +13,41 @@ const PLANS = {
 
 const PAGES_OPTIONS = ['Accueil', 'À propos', 'Services', 'Portfolio', 'Blog', 'Contact', 'E-shop', 'Réservation', 'FAQ']
 
+const DEADLINE_CONFIG = {
+  starter: {
+    default: '2 semaines (délai standard)',
+    note: null,
+    options: [
+      { value: '2 semaines (délai standard)', label: '2 semaines (délai standard)' },
+      { value: '1 mois', label: '1 mois — pas de presse' },
+      { value: '2 à 3 mois', label: '2 à 3 mois — on a le temps' },
+      { value: 'Flexible', label: 'Flexible — à votre convenance' },
+    ],
+  },
+  croissance: {
+    default: '',
+    note: null,
+    options: [
+      { value: '', label: 'Choisir…' },
+      { value: '3 semaines (délai minimum)', label: '3 semaines (délai minimum)' },
+      { value: '1 mois', label: '1 mois' },
+      { value: '2 à 3 mois', label: '2 à 3 mois' },
+      { value: 'Flexible', label: 'Flexible — à votre convenance' },
+    ],
+  },
+  'sur-mesure': {
+    default: '',
+    note: 'Délai minimum 1 mois — varie selon la taille du projet.',
+    options: [
+      { value: '', label: 'Choisir…' },
+      { value: '1 mois (minimum)', label: '1 mois (minimum)' },
+      { value: '2 à 3 mois', label: '2 à 3 mois' },
+      { value: '3 à 6 mois', label: '3 à 6 mois' },
+      { value: 'Flexible', label: 'Flexible — à définir ensemble' },
+    ],
+  },
+} as const
+
 const field = "w-full bg-white/6 border border-white/12 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/28 focus:outline-none focus:border-accent/60 transition-colors [color-scheme:dark]"
 const label = "block text-[11px] text-white/45 uppercase tracking-widest mb-2"
 
@@ -20,6 +55,7 @@ export default function BriefForm() {
   const searchParams = useSearchParams()
   const planKey = (searchParams.get('plan') ?? 'starter') as keyof typeof PLANS
   const plan = PLANS[planKey] ?? PLANS.starter
+  const deadlineCfg = DEADLINE_CONFIG[planKey] ?? DEADLINE_CONFIG.starter
 
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -30,7 +66,7 @@ export default function BriefForm() {
     sector: '', description: '', goal: '',
     hasLogo: '', visualStyle: '', references: '', colors: '',
     existingSite: '', existingUrl: '', contentReady: '', hasDomain: '',
-    deadline: '2 semaines (délai standard)', notes: '',
+    deadline: DEADLINE_CONFIG[planKey]?.default ?? '', notes: '',
   })
 
   useEffect(() => {
@@ -228,11 +264,13 @@ export default function BriefForm() {
       <Section number="05" title="Planning & infos complémentaires" />
       <Field label="Délai souhaité de mise en ligne">
         <select name="deadline" value={form.deadline} onChange={set} className={`${field} appearance-none cursor-pointer`}>
-          <option value="2 semaines (délai standard)" className="bg-[#141414]">2 semaines (délai standard)</option>
-          <option value="1 mois" className="bg-[#141414]">1 mois — pas de presse</option>
-          <option value="2 à 3 mois" className="bg-[#141414]">2 à 3 mois — on a le temps</option>
-          <option value="Flexible" className="bg-[#141414]">Flexible — à votre convenance</option>
+          {deadlineCfg.options.map(o => (
+            <option key={o.value} value={o.value} className="bg-[#141414]">{o.label}</option>
+          ))}
         </select>
+        {deadlineCfg.note && (
+          <p className="text-[11px] text-white/35 mt-2">{deadlineCfg.note}</p>
+        )}
       </Field>
       <Field label="Informations complémentaires">
         <textarea name="notes" rows={4} placeholder="Tout ce qui vous semble important à nous dire pour démarrer dans les meilleures conditions…" value={form.notes} onChange={set} className={`${field} resize-none`} />
