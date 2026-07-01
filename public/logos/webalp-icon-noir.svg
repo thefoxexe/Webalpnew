@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-label="WebAlp">
+  <text
+    x="14.5"
+    y="24"
+    text-anchor="middle"
+    font-family="'Space Grotesk', 'Arial Black', Arial, Helvetica, sans-serif"
+    font-weight="700"
+    font-size="19"
+    fill="#0A0A0A"
+  >W</text>
+  <rect x="22" y="21" width="4" height="4" fill="#B3FF47"/>
+</svg>
