@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 
@@ -8,6 +9,7 @@ const spring = { type: 'spring', stiffness: 280, damping: 24 } as const
 
 export default function Contact() {
   const { t } = useLanguage()
+  const router = useRouter()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [submitted, setSubmitted] = useState(false)
@@ -36,7 +38,7 @@ export default function Contact() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body,
       })
-      if (res.ok) setSubmitted(true)
+      if (res.ok) router.push('/merci')
       else setError(t.contact.fields.errorMsg)
     } catch {
       setError(t.contact.fields.errorMsg)
