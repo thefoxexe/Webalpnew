@@ -4,3 +4,10 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Force www → non-www (évite les pages en double pour Google)
+[[redirects]]
+  from = "https://www.webalp.ch/*"
+  to = "https://webalp.ch/:splat"
+  status = 301
+  force = true
