@@ -97,7 +97,14 @@ export default function BriefForm() {
         body,
       })
 
-      if (res.ok) setSubmitted(true)
+      if (res.ok) {
+        // @ts-ignore
+        if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+          // @ts-ignore
+          window.gtag('event', 'conversion', { send_to: 'AW-18292642678/REMPLACE_PAR_TON_LABEL' })
+        }
+        setSubmitted(true)
+      }
       else setError('Une erreur est survenue. Réessayez ou écrivez-nous directement.')
     } catch {
       setError('Une erreur est survenue. Réessayez ou écrivez-nous directement.')
