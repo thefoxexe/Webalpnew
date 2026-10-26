@@ -1,0 +1,29 @@
+WEBALP — 5 CAROUSELS INSTAGRAM
+==============================
+
+Format : 1080 × 1350 px (4:5, portrait) · 7 slides par carousel · PNG
+Chaque dossier contient les slides dans l'ordre (slide-01.png → slide-07.png) + description.txt
+(légende prête à copier-coller, hashtags, premier commentaire, textes alternatifs).
+
+Les slides sont conçues en panorama : certains éléments (frise, échelle de prix, grand chiffre)
+continuent d'une slide à l'autre. Il faut donc les publier dans l'ordre, sans recadrage.
+
+ORDRE DE PUBLICATION CONSEILLÉ (2–3 posts / semaine)
+1. 02-5-erreurs-qui-font-fuir     → fort engagement (commentaires « mon score »)
+2. 01-pourquoi-un-site-web        → mot-clé « SITE » en commentaire
+3. 05-combien-coute-un-site       → très « enregistrable », transparence sur les prix
+4. 04-ton-site-en-14-jours        → rassure sur le process
+5. 03-pourquoi-webalp             → conversion, à publier quand l'audience est chaude
+
+CONSEILS
+- Publier mardi à jeudi, 7h30–8h30 ou 12h–13h (heure suisse).
+- Répondre à chaque commentaire dans la 1re heure.
+- Les mots-clés DM / commentaire (SITE, 14, PRIX) peuvent être automatisés avec un outil de réponse auto (ex. ManyChat).
+- Pour la pub (Meta Ads), utiliser le carousel 03 ou 05 en objectif « Messages » ou « Trafic » vers webalp.ch/brief.
+
+À VÉRIFIER AVANT PUBLICATION
+- Les noms d'entreprises (« Électricité Martin & Fils », « Alpes Élec ») sur la slide Google sont fictifs.
+- « 9 sites sur 10 », « 98/100 », « 3 projets max/mois » et les tarifs reprennent les infos du site webalp.ch.
+- Le « 120+ » et la note « 4,9 » du carousel 2 sont des exemples génériques.
+
+Dossier source/ : le script qui génère les visuels (Node + Playwright), pour les modifier facilement.
