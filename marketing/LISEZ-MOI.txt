@@ -1,0 +1,47 @@
+WEBALP — PACK INSTAGRAM COMPLET
+================================
+
+1-carousels-generaux/     5 carousels (1080 × 1350, 4:5, 7 slides)
+  01 Pourquoi un site web · 02 5 erreurs qui font fuir · 03 Pourquoi WebAlp
+  04 Ton site en 14 jours · 05 Combien coûte un site
+
+2-carousels-par-secteur/  5 carousels (1080 × 1350, 4:5, 7 slides)
+  06 Restaurants · 07 Artisans · 08 Beauté & bien-être · 09 Chalets & hôtels · 10 Commerces
+
+3-reels-avec-son/         10 Reels (1080 × 1920, 9:16, 9 à 9,5 s, MP4 avec son)
+  01 Restaurant (recherche Google)      06 Garage (WhatsApp, pneus d'hiver)
+  02 Artisans (WhatsApp)                07 Fiduciaire (recherche Google)
+  03 Beauté (appels manqués)            08 Physio / santé (SMS)
+  04 Chalets (calculette)               09 Immobilier (WhatsApp)
+  05 Commerce (Notes)                   10 Caves & vignerons (dialogue)
+
+Chaque dossier contient un description.txt : légende prête à copier, hashtags,
+et pour les carousels le 1er commentaire et le texte alternatif de chaque slide.
+Chaque Reel a aussi son image de couverture (-cover.jpg).
+
+SON DES REELS
+  Musique lo-fi originale + bruitages (clavier, messages, notifications, calculette)
+  créés pour WebAlp : pas de problème de droits. Volume normalisé pour Instagram.
+  Tu peux garder ce son, ou le remplacer par un son tendance dans l'app.
+
+PUBLICATION
+  - Carousels : publier les slides dans l'ordre, sans recadrage (certains éléments
+    passent d'une slide à l'autre).
+  - Reels : ajoute la couverture et colle la légende du description.txt.
+  - Rythme conseillé : 3 à 4 posts par semaine, en alternant Reel et carousel.
+    Le Reel d'un secteur attire, le carousel du même secteur convertit 2 jours après.
+  - Saison : garages et chalets maintenant (pneus d'hiver, saison de ski),
+    commerces avant décembre (bons cadeaux), fiduciaires en janvier-février.
+
+MOTS-CLÉS À SURVEILLER (commentaires / DM)
+  SITE · RESTO · CHANTIER · RDV · CHALET · BOUTIQUE · GARAGE · FIDU · IMMO · CAVE · 14 · PRIX
+
+À VÉRIFIER AVANT PUBLICATION
+  - Tous les noms d'entreprises, de personnes et de contacts sont fictifs.
+  - Les prix de plats, produits et soins sont des exemples.
+  - « ~15 % de commission » : ordre de grandeur, varie selon la plateforme.
+  - Les fonctions mises en avant (réservation, rappels, e-shop TWINT, multilingue)
+    doivent correspondre à ce que vous vendez. Tarifs repris de webalp.ch.
+
+source/ : les scripts qui génèrent tout (Node + Playwright + GSAP + ffmpeg + Python)
+pour changer un texte, une couleur ou un timing et tout régénérer.
