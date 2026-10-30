@@ -1,0 +1,31 @@
+WEBALP — SÉRIE 2 : 5 CAROUSELS PAR SECTEUR + 5 REELS
+====================================================
+
+CAROUSELS (1080 × 1350, 4:5, 7 slides, PNG)
+  06-restaurants · 07-artisans · 08-beaute-bien-etre · 09-chalets-hotels · 10-commerces-boutiques
+  Chaque dossier contient slide-01 à slide-07 + description.txt (légende, hashtags, 1er commentaire, textes alternatifs).
+
+REELS (1080 × 1920, 9:16, 30 i/s, MP4 H.264, 15 à 19 s)
+  reel-01-restaurant · reel-02-artisans · reel-03-beaute · reel-04-chalets-hotels · reel-05-commerces
+  Chaque dossier contient la vidéo, une image de couverture (-cover.jpg) et description.txt.
+  ⚠ Les vidéos sont MUETTES : ajoute un son tendance directement dans Instagram (meilleure portée).
+  Les textes restent dans la zone visible (hors interface Instagram en haut et en bas).
+
+PLANNING CONSEILLÉ (2 semaines, un secteur tous les 2–3 jours)
+  Lun : Reel restaurant  → Mer : carousel restaurant
+  Jeu : Reel artisans    → Sam : carousel artisans
+  Lun : Reel beauté      → Mer : carousel beauté
+  … puis chalets (avant la saison d'hiver) et commerces (avant décembre).
+  Astuce : le Reel attire, le carousel du même secteur convertit deux jours après.
+
+MOTS-CLÉS À SURVEILLER EN COMMENTAIRE / DM
+  RESTO · CHANTIER · RDV · CHALET · BOUTIQUE
+
+À VÉRIFIER AVANT PUBLICATION
+  - Les noms d'établissements (La Pinte du Bourg, Chez Mario, Chalet Les Mélèzes, Dupont Menuiserie…) sont fictifs.
+  - Les prix des plats, produits et soins sont des exemples.
+  - Commission plateforme « ~15 % » : ordre de grandeur, varie selon la plateforme et le contrat.
+  - Les fonctions mises en avant (réservation en ligne, rappels auto, e-shop TWINT, multilingue) doivent
+    correspondre à ce que vous vendez ; les prix « dès CHF 690 / 1'990 » reprennent webalp.ch.
+
+source/ : scripts de génération (Node + Playwright + GSAP + ffmpeg) pour modifier textes et couleurs.
