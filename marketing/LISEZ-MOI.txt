@@ -8,21 +8,20 @@ WEBALP — PACK INSTAGRAM COMPLET
 2-carousels-par-secteur/  5 carousels (1080 × 1350, 4:5, 7 slides)
   06 Restaurants · 07 Artisans · 08 Beauté & bien-être · 09 Chalets & hôtels · 10 Commerces
 
-3-reels-avec-son/         10 Reels (1080 × 1920, 9:16, 9 à 9,5 s, MP4 avec son)
-  01 Restaurant (recherche Google)      06 Garage (WhatsApp, pneus d'hiver)
-  02 Artisans (WhatsApp)                07 Fiduciaire (recherche Google)
-  03 Beauté (appels manqués)            08 Physio / santé (SMS)
-  04 Chalets (calculette)               09 Immobilier (WhatsApp)
-  05 Commerce (Notes)                   10 Caves & vignerons (dialogue)
+3-reels/                  10 Reels (1080 × 1920, 9:16, 9,2 s, MP4 avec son)
+  01 Restaurant · 02 Artisans · 03 Beauté · 04 Chalets · 05 Commerces
+  06 Garages · 07 Fiduciaires · 08 Physio / santé · 09 Immobilier · 10 Caves & vignerons
+  Direction : typo géante en coupes franches calées sur une track tech-house (124 BPM),
+  noir / crème / lime, et de VRAIES preuves : le site webalp.ch filmé sur mobile et
+  vos projets clients réels (Drone Valais Production, MonHygiène, Vestedwear).
 
 Chaque dossier contient un description.txt : légende prête à copier, hashtags,
 et pour les carousels le 1er commentaire et le texte alternatif de chaque slide.
 Chaque Reel a aussi son image de couverture (-cover.jpg).
 
 SON DES REELS
-  Musique lo-fi originale + bruitages (clavier, messages, notifications, calculette)
-  créés pour WebAlp : pas de problème de droits. Volume normalisé pour Instagram.
-  Tu peux garder ce son, ou le remplacer par un son tendance dans l'app.
+  Track tech-house originale + bruitages (impacts, clics, clavier, montée finale),
+  composés pour WebAlp : aucun problème de droits. Volume normalisé pour Instagram.
 
 PUBLICATION
   - Carousels : publier les slides dans l'ordre, sans recadrage (certains éléments
