@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+import Logo from '@/components/Logo'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 
@@ -15,9 +15,9 @@ export default function Footer() {
   const footerSections = Object.entries(t.footer.sections) as unknown as [string, readonly string[]][]
 
   const sectionHrefs: Record<number, string[]> = {
-    0: ['#services', '#services', '#services', '#services'],
-    1: ['#process', '#portfolio', '#tarifs', '#testimonials'],
-    2: ['#contact', 'mailto:contact@webalp.ch', 'tel:+41798235862', '#'],
+    0: ['/creation-site-vitrine-valais', '/application-web-sur-mesure-valais', '/creation-site-ecommerce-valais', '/maintenance-site-internet-valais'],
+    1: ['/#process', '/realisations', '/tarifs', '/#testimonials'],
+    2: ['/contact', 'mailto:contact@webalp.ch', 'tel:+41798235862', '/contact'],
   }
 
   return (
@@ -61,13 +61,7 @@ export default function Footer() {
             className="shrink-0 max-w-xs"
           >
             <Link href="/" className="inline-block mb-4" aria-label="WebAlp">
-              <Image
-                src="/logos/webalp-blanc-vert.svg"
-                alt="WebAlp"
-                width={120}
-                height={34}
-                className="h-8 w-auto"
-              />
+              <Logo />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed mb-5">{t.footer.tagline}</p>
             <div className="flex items-center gap-2">

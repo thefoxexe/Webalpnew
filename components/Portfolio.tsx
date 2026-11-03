@@ -347,7 +347,7 @@ export default function Portfolio({ full = false }: { full?: boolean }) {
 
             <div className="flex items-center gap-3">
               {!full && (
-                <Link href="/portfolio"
+                <Link href="/realisations"
                   className="inline-flex items-center gap-2 border border-black/12 text-black/45 text-sm font-semibold px-6 py-3 rounded-full hover:border-black/25 hover:text-black/70 active:scale-95 transition-all">
                   Découvrir plus
                   <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true">

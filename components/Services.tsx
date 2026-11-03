@@ -17,8 +17,8 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         <motion.div
-          initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
-          animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+          initial={{ opacity: 0, y: 28 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ type: 'spring', stiffness: 240, damping: 22 }}
           className="mb-12"
         >
@@ -90,9 +90,27 @@ export default function Services() {
                   <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
+              <Link
+                href={
+                  s.icon === 'shield' ? '/maintenance-site-internet-valais'
+                  : s.icon === 'monitor' ? '/creation-site-vitrine-valais'
+                  : '/application-web-sur-mesure-valais'
+                }
+                className={`text-sm font-semibold underline underline-offset-4 ${i === 0 ? 'text-white/70 hover:text-white' : 'text-black/60 hover:text-black'}`}>
+                {s.icon === 'shield' ? 'La maintenance en détail' : s.icon === 'monitor' ? 'Le site vitrine en détail' : 'Les applications web en détail'}
+              </Link>
             </motion.div>
           ))}
         </div>
+
+        <p className="mt-8 text-sm text-black/55">
+          Aussi :{' '}
+          <Link href="/creation-site-ecommerce-valais" className="font-semibold text-black underline underline-offset-4">création de site e-commerce</Link>
+          {' · '}
+          <Link href="/refonte-site-internet-valais" className="font-semibold text-black underline underline-offset-4">refonte de site internet</Link>
+          {' · '}
+          <Link href="/tarifs" className="font-semibold text-black underline underline-offset-4">tous nos tarifs</Link>
+        </p>
 
       </div>
     </section>
