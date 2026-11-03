@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Politique de confidentialité | WebAlp',
+  title: 'Politique de confidentialité',
   description: 'Politique de confidentialité de WebAlp, agence web à Sion, Valais. Comment nous collectons et utilisons vos données personnelles.',
   robots: { index: false, follow: false },
   alternates: { canonical: 'https://webalp.ch/confidentialite' },

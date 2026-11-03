@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import Script from 'next/script'
 import { LanguageProvider } from '@/contexts/LanguageContext'
-import Loader from '@/components/Loader'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import CustomCursor from '@/components/CustomCursor'
 import ScrollProgress from '@/components/ScrollProgress'
 import './globals.css'
+import { SERVICES } from '@/lib/services'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -21,26 +21,17 @@ const spaceGrotesk = Space_Grotesk({
   weight: ['600', '700'],
 })
 
+const HOME_TITLE = 'Agence web Sion, Valais · Création de site internet | WebAlp'
+const HOME_DESCRIPTION =
+  'Agence web à Sion (Valais) : création de sites internet, e-commerce et applications web pour PME. Dès CHF 690, devis gratuit sous 24h.'
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://webalp.ch'),
   title: {
-    default: 'WebAlp — Agence Web Suisse | Sites qui convertissent',
+    default: HOME_TITLE,
     template: '%s | WebAlp',
   },
-  description:
-    'Agence web à Sion, Valais. Nous créons des sites web performants, SEO-optimisés et orientés résultats pour startups et PME suisses. À partir de CHF 890.',
-  keywords: [
-    'agence web Suisse',
-    'création site web Valais',
-    'site web Sion',
-    'agence web Sion',
-    'SEO Suisse romande',
-    'agence web PME Suisse',
-    'création site web startup',
-    'site web professionnel Suisse',
-    'référencement naturel Suisse',
-    'WebAlp',
-  ],
+  description: HOME_DESCRIPTION,
   authors: [{ name: 'WebAlp', url: 'https://webalp.ch' }],
   creator: 'WebAlp',
   publisher: 'WebAlp',
@@ -49,22 +40,21 @@ export const metadata: Metadata = {
     locale: 'fr_CH',
     url: 'https://webalp.ch',
     siteName: 'WebAlp',
-    title: 'WebAlp — Agence Web Suisse | Sites qui convertissent',
-    description:
-      'Des sites web performants pour startups et PME suisses. Design sur mesure, SEO natif, résultats mesurables.',
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'WebAlp — Agence Web Suisse',
+        alt: 'WebAlp — Agence web à Sion, Valais',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WebAlp — Agence Web Suisse',
-    description: 'Des sites web qui travaillent pour vous, 24h/24.',
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     images: ['/og-image.png'],
   },
   robots: {
@@ -76,12 +66,6 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
-    },
-  },
-  alternates: {
-    canonical: 'https://webalp.ch',
-    languages: {
-      'fr-CH': 'https://webalp.ch',
     },
   },
   icons: {
@@ -101,12 +85,15 @@ const structuredData = {
       '@id': 'https://webalp.ch/#business',
       name: 'WebAlp',
       description:
-        'Agence web à Sion, Valais. Création de sites web professionnels pour startups et PME suisses.',
+        'Agence web à Sion, en Valais. Création de sites vitrines, de sites e-commerce et d\'applications web pour les PME, maintenance et SEO technique.',
       url: 'https://webalp.ch',
+      logo: 'https://webalp.ch/logo-webalp.png',
+      image: 'https://webalp.ch/og-image.png',
       telephone: '+41798235862',
       email: 'contact@webalp.ch',
       foundingDate: '2025',
-      priceRange: 'CHF 690 – CHF 1990',
+      priceRange: "CHF 690 – CHF 1'990",
+      currenciesAccepted: 'CHF',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Sion',
@@ -119,33 +106,44 @@ const structuredData = {
         latitude: 46.2313,
         longitude: 7.3595,
       },
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '09:00',
+          closes: '18:00',
+        },
+      ],
       areaServed: [
+        { '@type': 'AdministrativeArea', name: 'Valais' },
         { '@type': 'Country', name: 'Suisse' },
-        { '@type': 'State', name: 'Valais' },
       ],
-      serviceType: [
-        'Création de sites web',
-        'Optimisation SEO',
-        'Design web',
-        'Maintenance web',
-      ],
-      sameAs: [],
+      knowsLanguage: ['fr', 'en'],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Services WebAlp',
+        itemListElement: SERVICES.map(sv => ({
+          '@type': 'Offer',
+          url: `https://webalp.ch/${sv.slug}`,
+          itemOffered: { '@type': 'Service', name: sv.name },
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            price: sv.priceFrom,
+            priceCurrency: 'CHF',
+            minPrice: sv.priceFrom,
+            ...(sv.monthly ? { unitText: 'mois' } : {}),
+          },
+        })),
+      },
+      sameAs: ['https://www.instagram.com/webalp.ch', 'https://www.linkedin.com/company/webalpch/'],
     },
     {
       '@type': 'WebSite',
       '@id': 'https://webalp.ch/#website',
       url: 'https://webalp.ch',
       name: 'WebAlp',
-      description: 'Agence web suisse à Sion, Valais',
+      inLanguage: 'fr-CH',
       publisher: { '@id': 'https://webalp.ch/#business' },
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: {
-          '@type': 'EntryPoint',
-          urlTemplate: 'https://webalp.ch/search?q={search_term_string}',
-        },
-        'query-input': 'required name=search_term_string',
-      },
     },
   ],
 }
@@ -162,8 +160,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="font-sans bg-white text-black overflow-x-hidden">
         <form name="contactv2" data-netlify="true" data-netlify-honeypot="bot-field" hidden aria-hidden="true">
@@ -219,7 +215,6 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
-        <Loader />
         <LanguageProvider>
           {children}
         </LanguageProvider>

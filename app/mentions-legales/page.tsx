@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Mentions légales | WebAlp',
+  title: 'Mentions légales',
   description: 'Mentions légales de WebAlp, agence web à Sion, Valais, Suisse. Éditeur, hébergement, propriété intellectuelle.',
   robots: { index: false, follow: false },
   alternates: { canonical: 'https://webalp.ch/mentions-legales' },

@@ -4,7 +4,8 @@ import Navbar from '@/components/Navbar'
 import BriefForm from '@/components/BriefForm'
 
 export const metadata: Metadata = {
-  title: 'Démarrer un projet — Brief WebAlp',
+  title: 'Démarrer un projet',
+  alternates: { canonical: 'https://webalp.ch/brief' },
   description: 'Partagez votre projet en quelques minutes. On revient avec un devis et une première direction créative sous 24h.',
   robots: { index: false, follow: false },
 }

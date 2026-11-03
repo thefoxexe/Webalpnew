@@ -1,27 +1,27 @@
 import { MetadataRoute } from 'next'
 import { BLOG_POSTS } from '@/lib/blog-posts'
+import { SERVICES } from '@/lib/services'
+import { PROJECTS } from '@/lib/projects'
+
+// Date de la dernière modification réelle des pages (à mettre à jour quand une page change).
+const SITE_UPDATED = new Date('2026-11-03')
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const blogUrls: MetadataRoute.Sitemap = BLOG_POSTS.map(post => ({
-    url: `https://webalp.ch/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: 'monthly',
-    priority: post.featured ? 0.8 : 0.7,
-  }))
+  const page = (path: string, priority: number): MetadataRoute.Sitemap[number] => ({
+    url: `https://webalp.ch${path}`,
+    lastModified: SITE_UPDATED,
+    priority,
+  })
 
   return [
-    {
-      url: 'https://webalp.ch',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: 'https://webalp.ch/blog',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    ...blogUrls,
+    page('', 1),
+    ...SERVICES.map(s => page(`/${s.slug}`, 0.9)),
+    page('/tarifs', 0.8),
+    page('/realisations', 0.8),
+    ...PROJECTS.map(p => page(`/realisations/${p.slug}`, 0.6)),
+    page('/contact', 0.7),
+    page('/blog', 0.6),
+    // Dates de publication d'origine inconnues : pas de lastmod inventé pour les articles.
+    ...BLOG_POSTS.map(post => ({ url: `https://webalp.ch/blog/${post.slug}`, priority: 0.5 })),
   ]
 }

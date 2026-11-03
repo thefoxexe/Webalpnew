@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Blog — Conseils web & SEO pour PME suisses | WebAlp',
+  title: 'Blog : conseils web et SEO pour les PME du Valais',
   description: 'Ressources, guides et conseils concrets pour les PME suisses : SEO local, prix d\'un site web, erreurs à éviter, conversion. Par les experts de WebAlp à Sion, Valais.',
   openGraph: {
     title: 'Blog WebAlp — Conseils web & SEO pour PME suisses',

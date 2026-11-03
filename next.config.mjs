@@ -4,6 +4,12 @@ const nextConfig = {
   images: {
     remotePatterns: [],
   },
+  async redirects() {
+    return [
+      { source: '/portfolio', destination: '/realisations', statusCode: 301 },
+      { source: '/impressum', destination: '/mentions-legales', statusCode: 301 },
+    ]
+  },
   async headers() {
     return [
       {
