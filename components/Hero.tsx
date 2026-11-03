@@ -25,25 +25,17 @@ export default function Hero() {
       {/* Left: headline + CTAs */}
       <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 flex-1 flex flex-col px-6 sm:px-10 md:px-14 lg:px-20 pt-24 sm:pt-28 md:pt-36 pb-12 min-w-0">
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...spring, delay: 0.05 }}
-          className="text-[11px] font-medium text-white/40 tracking-[0.12em] mb-auto"
-        >
-          Agence web · Sion, Valais · Suisse
-        </motion.p>
+        <p className="text-sm font-medium text-white/60 tracking-[0.02em] mb-auto">
+          {t.hero.tag}
+        </p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 48, filter: 'blur(12px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.1 }}
+        <h1
           className="font-display font-extrabold text-white tracking-[-0.04em] leading-[0.87] my-10 md:my-14"
           style={{ fontSize: 'clamp(42px, 10vw, 148px)' }}
         >
           {t.hero.h1}<br />
           <span className="text-accent">{t.hero.h2}</span>
-        </motion.h1>
+        </h1>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}

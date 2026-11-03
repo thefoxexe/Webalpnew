@@ -29,8 +29,8 @@ export default function FAQ() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         <motion.div
-          initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
-          animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+          initial={{ opacity: 0, y: 28 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ type: 'spring', stiffness: 240, damping: 22 }}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
         >

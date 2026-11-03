@@ -18,8 +18,8 @@ export default function About() {
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-20 sm:pt-24 pb-12 border-b border-white/10">
         <motion.div
-          initial={{ opacity: 0, y: 32, filter: 'blur(10px)' }}
-          animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+          initial={{ opacity: 0, y: 32 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ type: 'spring', stiffness: 220, damping: 22 }}
           className="flex flex-col sm:flex-row sm:items-end justify-between gap-8"
         >

@@ -24,8 +24,8 @@ export default function Testimonials() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-20 sm:pt-24 pb-12">
         <motion.div
-          initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
-          animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+          initial={{ opacity: 0, y: 28 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ type: 'spring', stiffness: 240, damping: 22 }}
           className="mb-10"
         >
@@ -44,9 +44,9 @@ export default function Testimonials() {
           <AnimatePresence mode="wait">
             <motion.blockquote
               key={active}
-              initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, y: -16, filter: 'blur(4px)' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
               transition={{ type: 'spring', stiffness: 280, damping: 26 }}
               className="font-display font-extrabold text-black leading-[1.05] tracking-tight"
               style={{ fontSize: 'clamp(20px, 4vw, 52px)' }}
@@ -62,9 +62,9 @@ export default function Testimonials() {
           <AnimatePresence mode="wait">
             <motion.div
               key={`a-${active}`}
-              initial={{ opacity: 0, x: -12, filter: 'blur(4px)' }}
-              animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, x: 10, filter: 'blur(4px)' }}
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 10 }}
               transition={{ type: 'spring', stiffness: 340, damping: 28 }}
               className="flex items-center gap-3"
             >
