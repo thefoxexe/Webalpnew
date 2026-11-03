@@ -106,17 +106,73 @@ Ce sont des mesures de labo, pas des données terrain. **À compléter** par Pag
 
 ---
 
-## 4. Jalons (changements mis en ligne)
+## 4. Étape 1 et 2 — corrections faites le 3 novembre 2026 (branche, pas encore en ligne)
 
-Format : `AAAA-MM-JJ · type · ce qui a changé · pages touchées`
+Réponses de Bastien (2 nov.) : projets = vrais clients · chiffres de résultats = à retirer · délai = réponse sous 24h · prix confirmés (690 / 1'490 / 1'990 / 49 par mois) · contact = contact@webalp.ch · pas d'infos supplémentaires sur l'équipe · dates des articles inconnues · suivi : pas prioritaire.
 
-| Date | Type | Changement | Pages |
-|---|---|---|---|
-| — | — | Aucun changement en ligne pour l'instant | — |
+### Titles et metas, avant / après
+
+| Page | Avant | Après |
+|---|---|---|
+| Accueil (title) | WebAlp — Agence Web Suisse \| Sites qui convertissent | **Agence web Sion, Valais · Création de site internet \| WebAlp** |
+| Accueil (meta) | … pour startups et PME suisses. À partir de CHF 890. | Agence web à Sion (Valais) : création de sites internet, e-commerce et applications web pour PME. Dès CHF 690, devis gratuit sous 24h. |
+| `/portfolio` | Portfolio — Nos réalisations \| WebAlp (canonical → accueil, pas de H1) | → 301 vers **`/realisations`** : « Réalisations : sites et applications web en Valais \| WebAlp », canonical propre, H1 |
+| `/blog` | Blog — Conseils web & SEO pour PME suisses \| WebAlp \| WebAlp | Blog : conseils web et SEO pour les PME du Valais \| WebAlp |
+| Articles | « … 2025 — WebAlp Sion \| WebAlp » | sans « 2025 », sans doublon : ex. « Prix site web professionnel Suisse \| WebAlp » |
+| Mentions, confidentialité, 404, brief, merci | « … \| WebAlp \| WebAlp » ou title de l'accueil | title propre à chaque page |
+
+Variantes proposées pour l'accueil (la n°1 est en place) :
+1. Title « Agence web Sion, Valais · Création de site internet | WebAlp » · meta ci-dessus.
+2. Title « Agence web en Valais · Création de sites internet à Sion | WebAlp » · meta « Création de sites internet à Sion et en Valais pour les PME : sites vitrines dès CHF 690, e-commerce, applications web. Réponse sous 24h. »
+3. Title « Création de site internet en Valais · Agence web à Sion | WebAlp » · meta « WebAlp crée des sites rapides et bien référencés pour les entreprises du Valais. Vitrine dès CHF 690, boutique et application dès CHF 1'990. »
+
+### Corrections
+- Canonical global supprimée du layout : chaque page a sa propre canonical.
+- Accueil : sous-titre visible « Agence web à Sion, en Valais · Création de sites internet pour PME ».
+- Compteurs retirés (section Stats supprimée), plus de « 0 » dans le HTML.
+- Chiffres de résultats retirés : +280 %, 45+, 340 %, 98/100, CHF 4K MRR, 1 sur 2 (remplacés par ce qui a été livré).
+- Fausse urgence retirée (« 2 places en juillet », « 3 projets/mois »).
+- Délai unique : **réponse et devis sous 24h** partout.
+- Prix cohérents : meta, page, JSON-LD (`priceRange` CHF 690 – 1'990, `hasOfferCatalog`).
+- « Chaque client recommande WebAlp », « Satisfaction garantie », « Ça ne nous est jamais arrivé », « clients à Genève, Berne, Zurich » : retirés ou reformulés.
+- JSON-LD : `SearchAction` retiré, `sameAs` (Instagram, LinkedIn), horaires, `hasOfferCatalog`, `Service`, `FAQPage` et `BreadcrumbList` sur les nouvelles pages, `CreativeWork` sur les réalisations.
+- Redirections 301 : `/portfolio` → `/realisations`, `/impressum` → `/mentions-legales`. `/contact` existe maintenant.
+- Sitemap : toutes les pages indexables, `lastmod` réel pour les pages, aucun `lastmod` inventé pour les articles.
+- Blog : fausses dates retirées (affichage, JSON-LD, sitemap), faux compteurs de vues et de « j'aime » supprimés (API `/api/views` supprimée), « 2025 » retiré des titres, bloc « service lié » sous chaque article.
+- `/netlify-forms` en `noindex`. Images manquantes créées : `og-image.png`, `favicon.ico`, `apple-touch-icon.png`.
+- `/api/contact` : échappement du contenu dans l'e-mail.
+- Performance : hero affiché immédiatement, écran de chargement supprimé, logo en texte (plus de police externe), filtres de flou animés retirés.
+
+### Nouvelles pages
+`/creation-site-vitrine-valais` · `/creation-site-ecommerce-valais` · `/application-web-sur-mesure-valais` · `/maintenance-site-internet-valais` · `/refonte-site-internet-valais` · `/tarifs` · `/contact` · `/realisations` · `/realisations/<projet>` (6). Menu avec sous-menu Services, pied de page relié aux pages, fil d'Ariane.
+
+### Mesures après corrections (labo, Lighthouse mobile, serveur local)
+
+| Page | Perf. avant | Perf. après | LCP | TBT |
+|---|---|---|---|---|
+| `/` | 51 | **88–91** | 4,5 s → 3,3 s | 2 550 ms → 60–140 ms |
+| `/creation-site-vitrine-valais` | — | 92 | 3,0 s | 190 ms |
 
 ---
 
-## 5. Résultats mensuels
+## 5. Jalons (changements mis en ligne)
+
+Format : `AAAA-MM-JJ · type · ce qui a changé · pages touchées`
+
+À reporter **le jour de la mise en ligne** (date à remplacer) :
+
+```
+AAAA-MM-JJ · SEO · title + meta accueil ciblés « agence web Sion, Valais », canonical par page · /
+AAAA-MM-JJ · technique · redirections 301 /portfolio → /realisations et /impressum → /mentions-legales, sitemap complet · site
+AAAA-MM-JJ · contenu · 5 pages de services + /tarifs + /contact + /realisations (6 projets) · nouvelles pages
+AAAA-MM-JJ · contenu · retrait des chiffres non vérifiés, fausse urgence, faux compteurs, délai 24h partout · / , blog
+AAAA-MM-JJ · technique · performance accueil (hero immédiat, sans loader ni flous) · /
+AAAA-MM-JJ · SEO · blog : titles sans 2025 ni doublon, fausses dates retirées, lien service sous chaque article · /blog/*
+```
+
+---
+
+## 6. Résultats mensuels
 
 | Mois | Devis via recherche | Clics hors marque | Pos. « agence web valais » | Pos. « agence web sion » | Notes |
 |---|---|---|---|---|---|
