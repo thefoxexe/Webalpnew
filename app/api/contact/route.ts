@@ -1,5 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+const escapeHtml = (v: unknown) =>
+  String(v ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json()
@@ -22,18 +30,18 @@ export async function POST(request: NextRequest) {
           from: 'WebAlp Contact <contact@webalp.ch>',
           to: ['contact@webalp.ch'],
           reply_to: email,
-          subject: `Nouveau message de ${name} — webalp.ch`,
+          subject: `Nouveau message de ${String(name).replace(/[\r\n]/g, ' ').slice(0, 80)} — webalp.ch`,
           html: `
             <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
               <h2 style="color:#0a0a0a">Nouveau message via webalp.ch</h2>
               <table style="width:100%;border-collapse:collapse">
-                <tr><td style="padding:8px 0;color:#666;width:120px">Nom</td><td style="padding:8px 0;font-weight:600">${name}</td></tr>
-                <tr><td style="padding:8px 0;color:#666">Email</td><td style="padding:8px 0"><a href="mailto:${email}">${email}</a></td></tr>
-                <tr><td style="padding:8px 0;color:#666">Entreprise</td><td style="padding:8px 0">${company || '—'}</td></tr>
-                <tr><td style="padding:8px 0;color:#666">Budget</td><td style="padding:8px 0">${budget || '—'}</td></tr>
+                <tr><td style="padding:8px 0;color:#666;width:120px">Nom</td><td style="padding:8px 0;font-weight:600">${escapeHtml(name)}</td></tr>
+                <tr><td style="padding:8px 0;color:#666">Email</td><td style="padding:8px 0"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
+                <tr><td style="padding:8px 0;color:#666">Entreprise</td><td style="padding:8px 0">${escapeHtml(company) || '—'}</td></tr>
+                <tr><td style="padding:8px 0;color:#666">Budget</td><td style="padding:8px 0">${escapeHtml(budget) || '—'}</td></tr>
               </table>
               <hr style="border:none;border-top:1px solid #eee;margin:16px 0">
-              <p style="color:#333;line-height:1.6">${message.replace(/\n/g, '<br>')}</p>
+              <p style="color:#333;line-height:1.6">${escapeHtml(message).replace(/\n/g, '<br>')}</p>
             </div>
           `,
         }),
