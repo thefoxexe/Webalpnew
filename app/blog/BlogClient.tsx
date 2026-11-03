@@ -4,10 +4,6 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import type { BlogPost } from '@/lib/blog-posts'
 
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('fr-CH', { day: 'numeric', month: 'long', year: 'numeric' })
-}
-
 export default function BlogClient({ posts }: { posts: BlogPost[] }) {
   const [query, setQuery] = useState('')
 
@@ -110,7 +106,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                     i === 0 ? 'border-white/8' : 'border-black/6'
                   }`}>
                     <span className={`text-xs font-mono ${i === 0 ? 'text-white/25' : 'text-black/25'}`}>
-                      {formatDate(post.date)}
+                      {post.readTime} min de lecture
                     </span>
                     <span className={`text-xs font-bold transition-colors ${
                       i === 0
@@ -148,7 +144,6 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                         {post.category}
                       </span>
                       <span className="text-[10px] font-mono text-black/20">{post.readTime} min</span>
-                      <span className="hidden md:inline text-[10px] font-mono text-black/15">{formatDate(post.date)}</span>
                     </div>
                     <h2 className="font-display font-extrabold text-black text-sm md:text-base lg:text-lg leading-tight mb-1">
                       {post.title}

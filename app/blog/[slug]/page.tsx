@@ -6,6 +6,25 @@ import ReadingProgress from './ReadingProgress'
 import ArticleActions from './ArticleActions'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import JsonLd from '@/components/site/JsonLd'
+import { getService } from '@/lib/services'
+
+const SERVICE_BY_CATEGORY: Record<string, string> = {
+  'E-commerce': 'creation-site-ecommerce-valais',
+  Performance: 'maintenance-site-internet-valais',
+  Technologie: 'application-web-sur-mesure-valais',
+  'UX & Conversion': 'refonte-site-internet-valais',
+  SEO: 'creation-site-vitrine-valais',
+  Design: 'creation-site-vitrine-valais',
+  'Stratégie web': 'creation-site-vitrine-valais',
+}
+const SERVICE_BY_SLUG: Record<string, string> = {
+  'signes-refonte-site-wordpress': 'refonte-site-internet-valais',
+  'refonte-site-web-erreurs-eviter': 'refonte-site-internet-valais',
+  'pourquoi-wix-squarespace-insuffisant': 'refonte-site-internet-valais',
+  'wordpress-lent-comment-reparer': 'maintenance-site-internet-valais',
+  'application-web-sur-mesure-vs-saas': 'application-web-sur-mesure-valais',
+}
 
 export function generateStaticParams() {
   return getAllSlugs().map(slug => ({ slug }))
@@ -23,16 +42,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       url: `https://webalp.ch/blog/${post.slug}`,
       siteName: 'WebAlp',
       type: 'article',
-      publishedTime: post.date,
       authors: ['WebAlp'],
       tags: post.tags,
     },
     alternates: { canonical: `https://webalp.ch/blog/${post.slug}` },
   }
-}
-
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('fr-CH', { day: 'numeric', month: 'long', year: 'numeric' })
 }
 
 function BlockRenderer({ block }: { block: Block }) {
@@ -123,6 +137,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   if (!post) notFound()
 
   const related = BLOG_POSTS.filter(p => p.slug !== post.slug).slice(0, 2)
+  const service = getService(SERVICE_BY_SLUG[post.slug] ?? SERVICE_BY_CATEGORY[post.category] ?? 'creation-site-vitrine-valais')
+  const isPricing = post.category === 'Budget & tarifs'
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -131,7 +147,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     description: post.metaDescription,
     author: { '@type': 'Organization', name: 'WebAlp', url: 'https://webalp.ch' },
     publisher: { '@type': 'Organization', name: 'WebAlp', url: 'https://webalp.ch' },
-    datePublished: post.date,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://webalp.ch/blog/${post.slug}` },
     keywords: post.tags.join(', '),
   }
@@ -172,8 +187,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <div className="flex items-center gap-5 text-[11px] font-mono text-black/30 pt-6 border-t border-black/8">
               <span>{post.author}</span>
               <span>·</span>
-              <span>{formatDate(post.date)}</span>
-              <span>·</span>
               <span>{post.readTime} min de lecture</span>
             </div>
           </div>
@@ -186,7 +199,26 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           ))}
         </article>
 
-        {/* Likes + Views + Tags */}
+        <div className="max-w-3xl mx-auto px-6 md:px-8 pb-10">
+          <div className="rounded-2xl bg-[#0A0A0A] text-white p-7">
+            <p className="text-xs uppercase tracking-[0.12em] text-white/45">Notre service lié</p>
+            {isPricing ? (
+              <>
+                <p className="font-display font-bold text-2xl mt-2">Nos tarifs, affichés clairement</p>
+                <p className="text-white/65 mt-2 text-sm">Site vitrine dès CHF 690, e-commerce et application web dès CHF 1&apos;990, maintenance dès CHF 49/mois.</p>
+                <Link href="/tarifs" className="inline-block mt-4 text-sm font-semibold text-accent underline underline-offset-4">Voir les tarifs</Link>
+              </>
+            ) : service && (
+              <>
+                <p className="font-display font-bold text-2xl mt-2">{service.name} en Valais</p>
+                <p className="text-white/65 mt-2 text-sm">{service.short} {service.priceLabel}, devis gratuit sous 24h.</p>
+                <Link href={`/${service.slug}`} className="inline-block mt-4 text-sm font-semibold text-accent underline underline-offset-4">Découvrir le service</Link>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Partage + tags */}
         <div className="max-w-3xl mx-auto px-6 md:px-8 pb-14">
           <div className="pt-8 border-t border-black/6 space-y-6">
             <ArticleActions slug={post.slug} />
@@ -246,6 +278,15 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
       <Footer />
+      <JsonLd data={{
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://webalp.ch' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://webalp.ch/blog' },
+          { '@type': 'ListItem', position: 3, name: post.title, item: `https://webalp.ch/blog/${post.slug}` },
+        ],
+      }} />
     </>
   )
 }

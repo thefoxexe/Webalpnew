@@ -1,89 +1,38 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
-function baseLikesForSlug(slug: string, views: number): number {
-  const n = slug.split('').reduce((a, c, i) => a + c.charCodeAt(0) * (i + 1), 0)
-  const factor = 0.20 + (n % 130) / 1000
-  return Math.max(1, Math.floor(views * factor))
-}
+import { useState } from 'react'
 
 export default function ArticleActions({ slug }: { slug: string }) {
-  const [liked, setLiked] = useState(false)
-  const [baseLikes, setBaseLikes] = useState(0)
-  const [views, setViews] = useState<number | null>(null)
-  const [justLiked, setJustLiked] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const url = `https://webalp.ch/blog/${slug}`
 
-  useEffect(() => {
-    const storedLiked = localStorage.getItem(`like:${slug}`) === '1'
-    setLiked(storedLiked)
-
-    const sessionKey = `viewed:${slug}`
-    const fetchViews = (method: 'GET' | 'POST') =>
-      fetch(`/api/views/${slug}`, { method })
-        .then(r => r.json())
-        .then(d => {
-          setViews(d.views)
-          setBaseLikes(baseLikesForSlug(slug, d.views))
-        })
-        .catch(() => {})
-
-    if (!sessionStorage.getItem(sessionKey)) {
-      sessionStorage.setItem(sessionKey, '1')
-      fetchViews('POST')
-    } else {
-      fetchViews('GET')
-    }
-  }, [slug])
-
-  const displayLikes = baseLikes + (liked ? 1 : 0)
-
-  const handleLike = () => {
-    const next = !liked
-    setLiked(next)
-    if (next) {
-      setJustLiked(true)
-      setTimeout(() => setJustLiked(false), 600)
-      localStorage.setItem(`like:${slug}`, '1')
-    } else {
-      localStorage.removeItem(`like:${slug}`)
+  const share = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({ url })
+        return
+      }
+      await navigator.clipboard.writeText(url)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // partage annulé
     }
   }
 
   return (
     <div className="flex flex-wrap items-center gap-4">
       <button
-        onClick={handleLike}
-        className={`group flex items-center gap-2.5 px-5 py-3 rounded-full border font-semibold text-sm transition-all ${
-          liked
-            ? 'bg-accent border-accent text-[#0A0A0A]'
-            : 'bg-white border-black/12 text-black/55 hover:border-black/30 hover:text-black'
-        } ${justLiked ? 'scale-110' : 'scale-100'}`}
-        aria-pressed={liked}
-        aria-label={liked ? "Retirer mon like" : "J'aime cet article"}
-        style={{ transition: 'transform 0.15s, background 0.2s, border-color 0.2s, color 0.2s' }}
+        onClick={share}
+        className="flex items-center gap-2.5 px-5 py-3 rounded-full border font-semibold text-sm bg-white border-black/12 text-black/55 hover:border-black/30 hover:text-black transition-colors"
       >
-        <svg
-          width="16" height="16" viewBox="0 0 24 24"
-          fill={liked ? 'currentColor' : 'none'}
-          stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z"/>
-          <path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8" />
+          <path d="M16 6l-4-4-4 4" />
+          <path d="M12 2v13" />
         </svg>
-        <span>{displayLikes > 0 ? `${displayLikes} j'aime` : "J'aime"}</span>
+        <span>{copied ? 'Lien copié' : 'Partager cet article'}</span>
       </button>
-
-      {views !== null && (
-        <div className="flex items-center gap-1.5 text-black/35 text-xs font-mono">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-            <circle cx="12" cy="12" r="3"/>
-          </svg>
-          {views.toLocaleString('fr-CH')} vue{views > 1 ? 's' : ''}
-        </div>
-      )}
     </div>
   )
 }
