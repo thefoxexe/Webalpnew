@@ -249,6 +249,13 @@ export const translations = {
         { title: 'Ce que vous y gagnez', items: ['Des prix plus bas qu\'une agence classique', 'Des délais plus courts', 'Un site pensé par des humains, pas un modèle générique', 'Deux interlocuteurs qui répondent sous 24h'] },
       ],
       quote: 'L\'IA est un outil. La réflexion, la polyvalence et la responsabilité restent les nôtres.',
+      toolsLabel: 'Les outils qu\'on utilise chaque jour',
+      demo: {
+        file: 'nouveau-projet — menuisier, Savièse',
+        prompt: ['Page d\'accueil pour un menuisier', 'à Savièse, ton chaleureux,', 'bouton « devis » bien visible.'],
+        ai: ['structure des pages proposée', 'premiers textes rédigés', 'code généré'],
+        human: ['textes réécrits avec le vrai métier', 'vraies photos du client, pas de banque d\'images', 'testé sur mobile, relu, mis en ligne'],
+      },
       cta: 'Voir nos tarifs',
     },
     faq: {
@@ -573,6 +580,13 @@ export const translations = {
         { title: 'What you get', items: ['Lower prices than a traditional agency', 'Shorter timelines', 'A site thought through by humans, not a generic template', 'Two people who reply within 24h'] },
       ],
       quote: 'AI is a tool. The thinking, the versatility and the responsibility remain ours.',
+      toolsLabel: 'The tools we use every day',
+      demo: {
+        file: 'new-project — carpenter, Savièse',
+        prompt: ['Homepage for a carpenter', 'in Savièse, warm tone,', '"quote" button clearly visible.'],
+        ai: ['page structure proposed', 'first copy drafted', 'code generated'],
+        human: ['copy rewritten with the real trade', 'the client\'s real photos, no stock images', 'tested on mobile, reviewed, put live'],
+      },
       cta: 'See our pricing',
     },
     faq: {
