@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 const spring = { type: 'spring', stiffness: 280, damping: 24 } as const
@@ -36,8 +36,7 @@ export default function FAQ() {
         >
           <div>
             <div className="flex items-center gap-2.5 mb-5">
-              <span className="block w-[3px] h-4 bg-accent rounded-full shrink-0" />
-              <span className="text-[11px] font-black uppercase tracking-[0.14em] text-black/50">{t.faq.label}</span>
+              <span className="text-sm font-medium text-black/50">{t.faq.label}</span>
             </div>
             <h2 id="faq-title" className="font-display font-extrabold text-black leading-[0.9] tracking-tight"
               style={{ fontSize: 'clamp(32px, 6vw, 80px)' }}>
@@ -80,19 +79,13 @@ export default function FAQ() {
                 </motion.span>
               </button>
 
-              <AnimatePresence initial={false}>
-                {open === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    className="overflow-hidden"
-                  >
-                    <p className="pb-6 text-black/60 text-sm leading-relaxed max-w-2xl">{faq.a}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <div
+                className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(.22,1,.36,1)] ${open === i ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+              >
+                <div className="overflow-hidden">
+                  <p className={`pb-6 text-black/60 text-sm leading-relaxed max-w-2xl transition-opacity duration-300 ${open === i ? 'opacity-100' : 'opacity-0'}`}>{faq.a}</p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
