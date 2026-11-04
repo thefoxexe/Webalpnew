@@ -63,58 +63,9 @@ export default function Hero() {
 
           <p className="text-white/40 text-sm">{t.hero.price}</p>
 
-          {/* Mini stats — visible on mobile only */}
-          <div className="flex gap-6 mt-2 lg:hidden">
-            {t.hero.bottomStats.slice(0, 3).map((s, i) => (
-              <motion.div
-                key={s.l}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ ...spring, delay: 0.4 + i * 0.06 }}
-              >
-                <p className="font-display font-extrabold text-white leading-none text-xl">{s.n}</p>
-                <p className="text-xs text-white/40 mt-0.5">{s.l}</p>
-              </motion.div>
-            ))}
-          </div>
         </motion.div>
       </motion.div>
 
-      {/* Right: stats sidebar */}
-      <motion.aside
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ ...spring, delay: 0.35 }}
-        className="hidden lg:flex w-52 xl:w-60 shrink-0 border-l border-white/10 flex-col pt-36 pb-12 px-6"
-      >
-        <div className="flex items-center gap-2 mb-auto">
-          <span className="w-2 h-2 rounded-full bg-accent shrink-0" />
-          <span className="text-sm text-white/60">{t.hero.available}</span>
-        </div>
-
-        <div className="border-t border-white/10">
-          {t.hero.bottomStats.map((s, i) => (
-            <motion.div
-              key={s.l}
-              initial={{ opacity: 0, x: 16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ ...spring, delay: 0.45 + i * 0.08 }}
-              className="py-6 border-b border-white/10"
-            >
-              <p className="font-display font-extrabold text-white leading-none mb-1.5"
-                style={{ fontSize: 'clamp(20px, 2vw, 28px)' }}>
-                {s.n}
-              </p>
-              <p className="text-xs text-white/50">{s.l}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        <a href="tel:+41798235862"
-          className="text-sm text-white/45 hover:text-white transition-colors mt-6">
-          079 823 58 62
-        </a>
-      </motion.aside>
 
     </section>
   )

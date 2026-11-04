@@ -114,7 +114,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           <div className="grid md:grid-cols-[1fr_240px] gap-8">
             <div className="space-y-7">
               <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-white/25 mb-3">{"L'enjeu"}</p>
+                <p className="text-sm font-medium text-white/25 mb-3">{"L'enjeu"}</p>
                 <p className="text-white/65 text-sm leading-[1.8]">{project.enjeu}</p>
               </div>
 
@@ -123,13 +123,13 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               </div>
 
               <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-white/25 mb-3">La solution</p>
+                <p className="text-sm font-medium text-white/25 mb-3">La solution</p>
                 <p className="text-white/45 text-sm leading-[1.8]">{project.description}</p>
               </div>
 
               {project.note && (
                 <div className="rounded-xl border border-white/8 bg-white/[0.03] px-5 py-4">
-                  <p className="text-[10px] font-black uppercase tracking-[0.14em] text-white/25 mb-2">Note</p>
+                  <p className="text-sm font-medium text-white/25 mb-2">Note</p>
                   <p className="text-white/35 text-xs leading-[1.7]">{project.note}</p>
                 </div>
               )}
@@ -137,7 +137,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
             <div className="flex flex-col gap-5">
               <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-white/25 mb-3">{"Ce qu'on a livré"}</p>
+                <p className="text-sm font-medium text-white/25 mb-3">{"Ce qu'on a livré"}</p>
                 <ul className="space-y-2.5">
                   {project.deliverables.map(d => (
                     <li key={d} className="flex items-start gap-2.5 text-sm text-white/50">
@@ -151,12 +151,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               </div>
 
               <div className="border border-white/8 rounded-xl p-5">
-                <p className="font-display font-extrabold text-accent leading-none"
-                  style={{ fontSize: 'clamp(28px, 4vw, 44px)', textShadow: '0 0 30px rgba(179,255,71,0.25)' }}>
-                  {project.result}
-                </p>
-                <p className="text-white/30 text-xs mt-1.5">{project.resultLabel}</p>
-                <p className="font-mono text-[10px] text-white/15 mt-3 pt-3 border-t border-white/6">
+                <p className="font-display font-bold text-white text-lg leading-snug">{project.type}</p>
+                <p className="text-xs text-white/40 mt-3 pt-3 border-t border-white/6">
                   {project.sector} · {project.year}
                 </p>
               </div>
@@ -207,13 +203,7 @@ function ProjectCard({ project: p, delay, inView, onClick }: { project: Project;
         </div>
 
         <div className="flex items-end justify-between">
-          <div>
-            <p className="font-display font-extrabold text-3xl leading-none text-accent"
-              style={{ textShadow: '0 0 20px rgba(179,255,71,0.3)' }}>
-              {p.result}
-            </p>
-            <p className={`text-[11px] mt-1 ${sc}`}>{p.resultLabel}</p>
-          </div>
+          <p className={`text-xs font-medium ${sc}`}>{p.type}</p>
           <span className={`text-xs font-semibold transition-all duration-200 ${p.dark ? 'text-white/20 group-hover:text-accent' : 'text-black/20 group-hover:text-black/70'}`}>
             Voir →
           </span>
@@ -251,13 +241,7 @@ function SpotlightCard({ project: p, delay, inView, onClick }: { project: Projec
         </div>
 
         <div className="shrink-0 flex flex-col justify-between border-t md:border-t-0 md:border-l border-white/[0.05] px-6 py-6 md:px-8 md:py-8 md:w-56">
-          <div>
-            <p className="font-display font-extrabold text-accent leading-none"
-              style={{ fontSize: 'clamp(30px, 4vw, 48px)', textShadow: '0 0 28px rgba(179,255,71,0.3)' }}>
-              {p.result}
-            </p>
-            <p className="text-white/30 text-xs mt-1.5">{p.resultLabel}</p>
-          </div>
+          <p className="font-display font-bold text-white text-lg leading-snug">{p.type}</p>
           <div className="flex items-center justify-between mt-6">
             <p className="text-[11px] text-white/18">{p.sector} · {p.year}</p>
             <span className="text-xs font-semibold text-white/20 group-hover:text-accent transition-colors">Voir →</span>
@@ -294,8 +278,7 @@ export default function Portfolio({ full = false }: { full?: boolean }) {
           >
             <div>
               <div className="flex items-center gap-2.5 mb-6">
-                <span className="block w-[3px] h-4 bg-accent rounded-full shrink-0" />
-                <span className={`text-[11px] font-black uppercase tracking-[0.14em] ${full ? 'text-white/40' : 'text-black/50'}`}>{t.portfolio.label}</span>
+                <span className={`text-sm font-medium ${full ? 'text-white/40' : 'text-black/50'}`}>{t.portfolio.label}</span>
               </div>
               <h2 id="portfolio-title" className={`font-display font-extrabold leading-[0.92] tracking-tight ${full ? 'text-white' : 'text-black'}`}
                 style={{ fontSize: 'clamp(32px, 5vw, 68px)' }}>

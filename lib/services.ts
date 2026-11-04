@@ -55,7 +55,7 @@ export const SERVICES: Service[] = [
     ],
     process: [
       { title: 'Premier échange', text: 'Un appel ou un message pour comprendre votre activité, vos clients et ce que le site doit vous apporter. Vous recevez un devis clair sous 24h.' },
-      { title: 'Maquettes', text: 'On vous présente le design des pages principales. Vous commentez, on ajuste avant d\'écrire la moindre ligne de code.' },
+      { title: 'Design', text: 'On conçoit le design de vos pages principales. Vous le voyez, vous donnez votre avis, on ajuste.' },
       { title: 'Développement', text: 'On construit le site, on intègre vos textes et vos photos, et on le teste sur téléphone, tablette et ordinateur.' },
       { title: 'Mise en ligne', text: 'Le site est publié, relié à Google Search Console et à vos statistiques. On vous explique comment tout fonctionne.' },
     ],
@@ -102,7 +102,7 @@ export const SERVICES: Service[] = [
     ],
     process: [
       { title: 'Cadrage', text: 'On fait le point sur vos produits, vos volumes, vos moyens de paiement et de livraison, puis on vous recommande la plateforme adaptée. Devis sous 24h.' },
-      { title: 'Design', text: 'Maquettes de l\'accueil, des catégories, des fiches produits et du panier, validées avec vous.' },
+      { title: 'Design', text: 'Design de l\'accueil, des catégories, des fiches produits et du panier, validé avec vous.' },
       { title: 'Mise en place', text: 'Configuration de la boutique, import du catalogue, paiements, livraison, e-mails, puis tests de commande de bout en bout.' },
       { title: 'Lancement', text: 'Mise en ligne, connexion à Google Search Console et aux statistiques, et prise en main avec vous.' },
     ],
@@ -148,7 +148,7 @@ export const SERVICES: Service[] = [
     ],
     process: [
       { title: 'Atelier de cadrage', text: 'On liste ensemble les utilisateurs, les écrans et les règles métier. Vous recevez un devis clair sous 24h après l\'échange.' },
-      { title: 'Prototype', text: 'Maquettes des écrans clés pour valider le parcours avant de développer.' },
+      { title: 'Parcours', text: 'On définit ensemble les écrans clés et le parcours de vos utilisateurs avant de développer.' },
       { title: 'Développement par étapes', text: 'On livre l\'application en plusieurs versions testables, pour que vous voyiez avancer le projet.' },
       { title: 'Mise en production', text: 'Déploiement, reprise des données si nécessaire, prise en main par vos équipes et suivi.' },
     ],
@@ -240,7 +240,7 @@ export const SERVICES: Service[] = [
     process: [
       { title: 'Audit', text: 'On analyse votre site actuel et ce qu\'il rapporte (visites, positions Google, demandes) avant de proposer quoi que ce soit. Devis sous 24h.' },
       { title: 'Nouvelle structure', text: 'On décide quelles pages garder, fusionner ou créer, et on prépare la correspondance entre anciennes et nouvelles adresses.' },
-      { title: 'Design et développement', text: 'Maquettes, validation, puis construction du nouveau site en parallèle de l\'ancien, qui reste en ligne.' },
+      { title: 'Design et développement', text: 'Nouveau design validé avec vous, puis construction du site en parallèle de l\'ancien, qui reste en ligne.' },
       { title: 'Bascule', text: 'Mise en ligne avec les redirections, puis vérification dans Google Search Console les semaines suivantes.' },
     ],
     delay: 'Pour un site vitrine, comptez environ deux à trois semaines. Le délai exact est fixé dans le devis.',
