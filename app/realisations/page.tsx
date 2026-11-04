@@ -33,7 +33,7 @@ export default function RealisationsPage() {
       </section>
       <section className="pb-16">
         <div className="max-w-6xl mx-auto px-6 md:px-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {PROJECTS.map(p => <ProjectCard key={p.slug} p={p} />)}
+          {PROJECTS.map((p, i) => <div key={p.slug} className="rv" style={{ ['--d' as string]: `${(i % 3) * 100}ms` }}><ProjectCard p={p} /></div>)}
         </div>
       </section>
       <section className="border-t border-white/10">

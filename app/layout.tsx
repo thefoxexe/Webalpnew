@@ -7,6 +7,7 @@ import CustomCursor from '@/components/CustomCursor'
 import ScrollProgress from '@/components/ScrollProgress'
 import './globals.css'
 import { SERVICES } from '@/lib/services'
+import RevealObserver from '@/components/site/RevealObserver'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -154,8 +155,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${spaceGrotesk.variable} overflow-x-hidden`}>
+    <html lang="fr" suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable} overflow-x-hidden`}>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -218,6 +220,7 @@ export default function RootLayout({
         <LanguageProvider>
           {children}
         </LanguageProvider>
+        <RevealObserver />
         <WhatsAppButton />
         <CustomCursor />
         <ScrollProgress />

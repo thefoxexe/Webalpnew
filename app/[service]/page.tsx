@@ -33,10 +33,10 @@ function Section({ title, children, tone = 'white' }: { title: string; children:
   return (
     <section className={tone === 'cream' ? 'bg-[#F5F4F0]' : 'bg-white'}>
       <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-20">
-        <h2 className="font-display font-extrabold text-black tracking-tight leading-[0.95] mb-8" style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}>
+        <h2 className="rv font-display font-extrabold text-black tracking-tight leading-[0.95] mb-8" style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}>
           {title}
         </h2>
-        {children}
+        <div className="rv" style={{ ['--d' as string]: '120ms' }}>{children}</div>
       </div>
     </section>
   )
@@ -70,8 +70,8 @@ export default function ServicePage({ params }: { params: { service: string } })
 
       <Section title="Pour qui ?">
         <ul className="grid gap-4 md:grid-cols-3">
-          {s.forWho.map(x => (
-            <li key={x} className="rounded-2xl bg-[#F5F4F0] p-6 text-black/75 leading-relaxed">{x}</li>
+          {s.forWho.map((x, i) => (
+            <li key={x} className="rv lift rounded-2xl bg-[#F5F4F0] p-6 text-black/75 leading-relaxed" style={{ ['--d' as string]: `${i * 90}ms` }}>{x}</li>
           ))}
         </ul>
       </Section>
@@ -90,7 +90,7 @@ export default function ServicePage({ params }: { params: { service: string } })
       <Section title="Comment on travaille">
         <ol className="grid gap-4 md:grid-cols-2">
           {s.process.map((p, i) => (
-            <li key={p.title} className="rounded-2xl border border-black/10 p-6">
+            <li key={p.title} className="rv lift rounded-2xl border border-black/10 p-6" style={{ ['--d' as string]: `${i * 90}ms` }}>
               <p className="font-mono text-xs text-black/40">0{i + 1}</p>
               <p className="font-display font-bold text-xl mt-2">{p.title}</p>
               <p className="text-black/65 mt-2 leading-relaxed">{p.text}</p>
@@ -131,7 +131,7 @@ export default function ServicePage({ params }: { params: { service: string } })
       <Section title="À lire aussi">
         <div className="grid gap-8 md:grid-cols-2">
           <div>
-            <p className="text-xs uppercase tracking-[0.12em] text-black/45 mb-3">Services proches</p>
+            <p className="text-sm font-medium text-black/45 mb-3">Services proches</p>
             <ul className="space-y-2">
               {related.map(r => (
                 <li key={r.slug}><Link href={`/${r.slug}`} className="font-semibold underline underline-offset-4">{r.name}</Link> <span className="text-black/50">· {r.priceLabel}</span></li>
@@ -139,7 +139,7 @@ export default function ServicePage({ params }: { params: { service: string } })
             </ul>
           </div>
           <div>
-            <p className="text-xs uppercase tracking-[0.12em] text-black/45 mb-3">Sur le blog</p>
+            <p className="text-sm font-medium text-black/45 mb-3">Sur le blog</p>
             <ul className="space-y-2">
               {articles.map(a => (
                 <li key={a.slug}><Link href={`/blog/${a.slug}`} className="font-semibold underline underline-offset-4">{a.title}</Link></li>
