@@ -34,7 +34,7 @@ const FACTORS = [
 
 const FAQ = [
   { q: 'Combien coûte un site internet en Valais ?', a: 'Chez WebAlp, un site vitrine démarre à CHF 690 (Starter), un site plus complet avec blog et travail sur le contenu à CHF 1\'490 (Croissance), et une boutique en ligne ou une application web à CHF 1\'990. Le prix exact est fixé dans un devis gratuit, envoyé sous 24h.' },
-  { q: 'Pourquoi vos prix sont-ils plus bas que ceux de grandes agences ?', a: 'On est deux, sans structure lourde : pas de directeur de compte, pas de réunions facturées, pas de marge sur des sous-traitants. Ce que vous payez va dans votre site.' },
+  { q: 'Pourquoi vos prix sont-ils plus bas que ceux de grandes agences ?', a: 'On est deux, sans structure lourde, et on travaille avec l\'intelligence artificielle pour tout ce qui est répétitif (code, tests, traductions). On gagne beaucoup de temps, et ce temps gagné, on le répercute sur votre prix. La réflexion, le design et la vérification de chaque page restent faits par nous.' },
   { q: 'Le prix annoncé est-il le prix final ?', a: 'Les prix « dès » sont des repères. Votre devis détaille ce qui est inclus et son prix. Ce qui est signé est ce qui est payé : s\'il y a un ajout en cours de route, il est chiffré et validé avec vous avant.' },
   { q: 'Y a-t-il des frais chaque mois ?', a: 'L\'hébergement chez WebAlp est inclus dans les formules. La maintenance (mises à jour, sauvegardes, modifications) est en option, dès CHF 49 par mois. Pour une boutique en ligne, l\'abonnement de la plateforme (par exemple Shopify) et les frais de paiement sont à votre charge.' },
   { q: 'La TVA est-elle comprise ?', a: 'WebAlp n\'est pas assujetti à la TVA : les prix sont des prix finaux, sans TVA ajoutée.' },
@@ -59,8 +59,8 @@ export default function TarifsPage() {
 
       <section className="bg-white">
         <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 grid gap-5 md:grid-cols-3">
-          {t.plans.map(p => (
-            <div key={p.name} className={`rounded-2xl p-7 flex flex-col ${p.popular ? 'bg-[#0A0A0A] text-white' : 'bg-[#F5F4F0] text-black'}`}>
+          {t.plans.map((p, i) => (
+            <div key={p.name} style={{ ['--d' as string]: `${i * 100}ms` }} className={`rv lift rounded-2xl p-7 flex flex-col ${p.popular ? 'bg-[#0A0A0A] text-white' : 'bg-[#F5F4F0] text-black'}`}>
               {p.popular && <p className="text-xs font-semibold text-accent mb-3">{t.popular}</p>}
               <h2 className="font-display font-bold text-2xl">{p.name}</h2>
               <p className={`text-sm mt-1 ${p.popular ? 'text-white/60' : 'text-black/60'}`}>{p.tagline}</p>
@@ -74,13 +74,13 @@ export default function TarifsPage() {
           ))}
         </div>
         <div className="max-w-5xl mx-auto px-6 md:px-12 pb-16 grid gap-5 md:grid-cols-2">
-          <div className="rounded-2xl border border-black/10 p-7">
+          <div className="rv lift rounded-2xl border border-black/10 p-7">
             <h2 className="font-display font-bold text-2xl">Maintenance et gestion</h2>
             <p className="font-display font-extrabold text-3xl tracking-tight mt-3">dès CHF 49/mois</p>
             <p className="text-black/65 mt-3 text-sm leading-relaxed">Jusqu&apos;à 2 modifications par mois, sauvegardes quotidiennes, sécurité et rapport mensuel.</p>
             <Link href="/maintenance-site-internet-valais" className="mt-4 inline-block text-sm font-semibold underline underline-offset-4">La maintenance en détail</Link>
           </div>
-          <div className="rounded-2xl border border-black/10 p-7">
+          <div className="rv lift rounded-2xl border border-black/10 p-7">
             <h2 className="font-display font-bold text-2xl">E-commerce et application web</h2>
             <p className="font-display font-extrabold text-3xl tracking-tight mt-3">dès CHF 1&apos;990</p>
             <p className="text-black/65 mt-3 text-sm leading-relaxed">Boutique Shopify, WooCommerce ou sur mesure, réservation en ligne, portail client, intranet, SaaS.</p>
@@ -92,11 +92,28 @@ export default function TarifsPage() {
         </div>
       </section>
 
+      <section className="bg-[#0A0A0A] text-white">
+        <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 grid gap-8 md:grid-cols-[1.2fr_1fr] items-end">
+          <div>
+            <p className="rv text-sm font-medium text-white/50">Pourquoi ces prix</p>
+            <h2 className="rv font-display font-extrabold tracking-tight text-3xl md:text-5xl leading-[0.95] mt-3" style={{ ['--d' as string]: '80ms' }}>
+              On utilise l&apos;IA. <span className="text-accent">Vous payez moins.</span>
+            </h2>
+          </div>
+          <div className="rv" style={{ ['--d' as string]: '160ms' }}>
+            <p className="text-white/65 leading-relaxed">L&apos;intelligence artificielle nous fait gagner un temps énorme sur le code, les tests et les traductions. Ce temps gagné, on le répercute sur votre devis. La réflexion, le design et la vérification de chaque page restent faits par nous, à Sion.</p>
+            <Link href="/#ia" className="nudge inline-flex items-center gap-2 mt-4 text-sm font-semibold text-accent underline underline-offset-4">Notre façon de travailler
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-[#F5F4F0]">
         <div className="max-w-5xl mx-auto px-6 md:px-12 py-16">
           <h2 className="font-display font-extrabold tracking-tight text-3xl md:text-5xl leading-[0.95]">Ce qui fait varier le prix</h2>
           <ul className="mt-8 grid gap-3 md:grid-cols-2">
-            {FACTORS.map(f => <li key={f} className="rounded-xl bg-white p-5 text-black/75">{f}</li>)}
+            {FACTORS.map((f, i) => <li key={f} className="rv rounded-xl bg-white p-5 text-black/75" style={{ ['--d' as string]: `${i * 60}ms` }}>{f}</li>)}
           </ul>
           <p className="mt-6 text-black/65 text-sm">{t.guarantee}</p>
           <p className="mt-3 text-sm">Pour aller plus loin : <Link href="/blog/prix-site-web-professionnel-suisse-2025" className="font-semibold underline underline-offset-4">combien coûte vraiment un site web professionnel en Suisse</Link>.</p>

@@ -7,6 +7,8 @@ import TechStack from '@/components/TechStack'
 import Process from '@/components/Process'
 import Portfolio from '@/components/Portfolio'
 import Pricing from '@/components/Pricing'
+import AiSection from '@/components/AiSection'
+import FactsTicker from '@/components/FactsTicker'
 import Testimonials from '@/components/Testimonials'
 import About from '@/components/About'
 import FAQ from '@/components/FAQ'
@@ -36,6 +38,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <FactsTicker />
       <Problem />
 
       <Services />
@@ -44,6 +47,7 @@ export default function Home() {
       <Divider />
       <Process />
       <Portfolio />
+      <AiSection />
       <Pricing />
       <Divider />
       <Testimonials />
