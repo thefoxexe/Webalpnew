@@ -3,7 +3,6 @@ import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Problem from '@/components/Problem'
 import Services from '@/components/Services'
-import TechStack from '@/components/TechStack'
 import Process from '@/components/Process'
 import Portfolio from '@/components/Portfolio'
 import Pricing from '@/components/Pricing'
@@ -42,8 +41,6 @@ export default function Home() {
       <Problem />
 
       <Services />
-      <Divider />
-      <TechStack />
       <Divider />
       <Process />
       <Portfolio />

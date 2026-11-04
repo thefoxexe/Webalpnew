@@ -176,3 +176,29 @@ html.js .rv-line.is-in { transform: scaleX(1); }
   .ticker { animation: none; }
   .lift:hover { transform: none; }
 }
+
+/* ─── Section IA ─── */
+.ai-spotlight {
+  background: radial-gradient(600px circle at var(--mx, 70%) var(--my, 20%), rgba(179,255,71,0.07), transparent 60%);
+  transition: background .2s;
+}
+@keyframes ai-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -18px, 0) rotate(6deg); }
+}
+.ai-float { opacity: .055; animation: ai-float 18s ease-in-out infinite; will-change: transform; }
+
+/* Démo : lignes tapées puis résultats qui apparaissent (sans JS : tout est visible) */
+html.js .ai-term .ai-type { clip-path: inset(0 100% 0 0); }
+html.js .ai-term .ai-line { opacity: 0; transform: translateY(6px); }
+html.js .ai-term.is-in .ai-type { animation: ai-typing .9s steps(32, end) forwards; animation-delay: calc(.4s + var(--i) * .9s); }
+html.js .ai-term.is-in .ai-line { transition: opacity .5s, transform .5s; transition-delay: calc(3.3s + var(--i) * .35s); opacity: 1; transform: none; }
+html.js .ai-term.is-in .ai-line-h { transition-delay: calc(4.6s + var(--i) * .4s); }
+@keyframes ai-typing { to { clip-path: inset(0 0 0 0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-float { animation: none; }
+  html.js .ai-term .ai-type { clip-path: none; animation: none; }
+  html.js .ai-term .ai-line { opacity: 1; transform: none; transition: none; }
+}
+.ticker-outline { color: transparent; -webkit-text-stroke: 1.5px #0A0A0A; }

@@ -1,16 +1,18 @@
-const FACTS = [
-  'Sites vitrines', 'E-commerce', 'Applications web', 'Maintenance', 'Refonte',
-  'Next.js', 'Webflow', 'WordPress', 'Shopify',
-  'Sion, Valais', 'Réponse sous 24h', 'Dès CHF 690', 'Hébergement inclus', 'Code livré et documenté',
+const SERVICES = [
+  'Site vitrine', 'Boutique en ligne', 'Application web', 'Réservation en ligne', 'Espace client',
+  'Refonte de site', 'Maintenance', 'Référencement Google', 'Site multilingue', 'Landing page',
+  'Blog', 'Nom de domaine et e-mail pro', 'Hébergement',
 ]
 
 function Row({ hidden = false }: { hidden?: boolean }) {
   return (
     <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
-      {FACTS.map(f => (
-        <li key={f} className="flex items-center whitespace-nowrap font-display font-bold text-[#0A0A0A] text-lg sm:text-xl tracking-tight px-6">
-          {f}
-          <span aria-hidden="true" className="ml-12 w-1.5 h-1.5 rounded-full bg-[#0A0A0A]/35" />
+      {SERVICES.map((f, i) => (
+        <li key={f} className="flex items-center whitespace-nowrap px-7">
+          <span className={`font-display font-extrabold tracking-[-0.03em] text-2xl sm:text-3xl ${i % 2 ? 'ticker-outline' : 'text-[#0A0A0A]'}`}>{f}</span>
+          <svg className="ml-14 shrink-0" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+            <path d="M7 0l1.6 5.4L14 7l-5.4 1.6L7 14l-1.6-5.4L0 7l5.4-1.6z" fill="#0A0A0A" />
+          </svg>
         </li>
       ))}
     </ul>
@@ -19,7 +21,7 @@ function Row({ hidden = false }: { hidden?: boolean }) {
 
 export default function FactsTicker() {
   return (
-    <section aria-label="Ce que fait WebAlp" className="bg-accent overflow-hidden py-4 border-y border-[#0A0A0A]">
+    <section aria-label="Ce que WebAlp réalise" className="bg-accent overflow-hidden py-5 border-y border-[#0A0A0A]">
       <div className="ticker">
         <Row />
         <Row hidden />
