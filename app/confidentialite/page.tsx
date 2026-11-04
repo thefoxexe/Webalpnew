@@ -23,7 +23,7 @@ export default function Confidentialite() {
               </svg>
               Retour
             </Link>
-            <p className="text-[10px] font-mono text-black/30 uppercase tracking-widest mb-3">— Légal</p>
+            <p className="text-[10px] font-mono text-black/30 mb-3">— Légal</p>
             <h1 className="font-display text-3xl md:text-4xl font-extrabold text-black">Politique de confidentialité</h1>
           </div>
 

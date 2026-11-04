@@ -29,7 +29,7 @@ export default function NotFound() {
       </p>
 
       <div className="relative z-10 flex flex-col items-center text-center gap-6 max-w-md">
-        <div className="inline-flex items-center gap-2 border border-white/10 rounded-full px-4 py-1.5 text-xs text-white/40 uppercase tracking-widest">
+        <div className="inline-flex items-center gap-2 border border-white/10 rounded-full px-4 py-1.5 text-xs text-white/40">
           <span className="w-1.5 h-1.5 rounded-full bg-accent" />
           Erreur 404
         </div>

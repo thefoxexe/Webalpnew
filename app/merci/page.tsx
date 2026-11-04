@@ -49,7 +49,7 @@ export default function MerciPage() {
           <span className="font-display font-extrabold text-lg text-white tracking-tight">WebAlp</span>
           <span className="w-[5px] h-[5px] bg-[#B3FF47] mt-0.5" />
         </Link>
-        <span className="text-[11px] text-white/20 tracking-[0.12em] uppercase">Sion, Valais · CH</span>
+        <span className="text-xs text-white/30">Sion, Valais · CH</span>
       </nav>
 
       {/* Main */}
@@ -63,8 +63,7 @@ export default function MerciPage() {
             transition={{ ...spring, delay: 0.05 }}
             className="flex items-center gap-2.5 mb-8"
           >
-            <span className="block w-[3px] h-4 bg-[#B3FF47] rounded-full shrink-0" />
-            <span className="text-[11px] font-black uppercase tracking-[0.14em] text-white/30">Message reçu</span>
+            <span className="text-sm font-medium text-white/30">Message reçu</span>
           </motion.div>
 
           {/* Big heading */}

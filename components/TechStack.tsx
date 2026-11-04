@@ -22,7 +22,7 @@ export default function TechStack() {
           transition={{ type: 'spring', stiffness: 240, damping: 22 }}
           className="mb-12"
         >
-          <p className="text-xs text-black/45 uppercase tracking-widest mb-4">— {ts.label}</p>
+          <p className="text-xs text-black/45 mb-4">{ts.label}</p>
           <h2 id="tech-title" className="font-display font-extrabold text-black leading-[0.9] tracking-tight"
             style={{ fontSize: 'clamp(32px, 6vw, 80px)' }}>
             {ts.h2a}<br />
@@ -51,7 +51,7 @@ export default function TechStack() {
               <div className="flex items-start justify-between">
                 <div>
                   {opt.popular ? (
-                    <span className="text-xs text-accent font-bold uppercase tracking-widest block mb-1">{opt.tag}</span>
+                    <span className="text-xs text-accent font-bold block mb-1">{opt.tag}</span>
                   ) : (
                     <span className="text-xs text-black/40 border border-black/15 px-2 py-0.5 rounded-full inline-block mb-2">{opt.tag}</span>
                   )}
@@ -78,7 +78,7 @@ export default function TechStack() {
               </ul>
 
               <div className={`pt-4 border-t text-sm leading-relaxed ${opt.popular ? 'border-white/15 text-white/50' : 'border-black/10 text-black/45'}`}>
-                <span className={`text-xs uppercase tracking-wider block mb-1 font-medium ${opt.popular ? 'text-white/40' : 'text-black/35'}`}>Idéal pour</span>
+                <span className={`text-xs block mb-1 font-medium ${opt.popular ? 'text-white/40' : 'text-black/35'}`}>Idéal pour</span>
                 {opt.best}
               </div>
             </motion.div>

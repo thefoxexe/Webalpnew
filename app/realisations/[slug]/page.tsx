@@ -50,7 +50,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         <header className="pt-28 md:pt-36 pb-10">
           <div className="max-w-5xl mx-auto px-6 md:px-12">
             <Breadcrumbs items={[{ name: 'Réalisations', href: '/realisations' }, { name: p.name, href: `/realisations/${p.slug}` }]} />
-            <p className="text-xs uppercase tracking-[0.12em] text-white/45 mt-8">{p.sector} · {p.year}</p>
+            <p className="text-sm font-medium text-white/45 mt-8">{p.sector} · {p.year}</p>
             <h1 className="font-display font-extrabold tracking-[-0.035em] leading-[0.95] mt-3" style={{ fontSize: 'clamp(36px, 6vw, 76px)' }}>
               {p.name}
             </h1>

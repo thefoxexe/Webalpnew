@@ -82,7 +82,7 @@ export default function Contact() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ type: 'spring', stiffness: 220, damping: 22 }}
         >
-          <p className="text-xs text-white/50 uppercase tracking-widest mb-6">— {t.contact.label}</p>
+          <p className="text-xs text-white/50 mb-6">{t.contact.label}</p>
           <h2 id="contact-title" className="font-display font-extrabold text-white leading-[0.88] tracking-tight"
             style={{ fontSize: 'clamp(36px, 8vw, 120px)' }}>
             {t.contact.h2a}<br />
@@ -153,7 +153,7 @@ export default function Contact() {
                   { id: 'company', label: f.company, type: 'text', placeholder: f.companyPlaceholder, required: false },
                 ].map(field => (
                   <div key={field.id}>
-                    <label htmlFor={field.id} className="block text-xs text-white/55 uppercase tracking-widest mb-2">
+                    <label htmlFor={field.id} className="block text-xs text-white/55 mb-2">
                       {field.label}
                     </label>
                     <input
@@ -171,7 +171,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="budget" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.budget}</label>
+                <label htmlFor="budget" className="block text-xs text-white/55 mb-2">{f.budget}</label>
                 <select id="budget" name="budget" value={form.budget} onChange={handleChange}
                   className={`${fieldClass} appearance-none cursor-pointer`}>
                   <option value="" className="bg-[#141414] text-white/50">{f.budgetDefault}</option>
@@ -180,7 +180,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-xs text-white/55 uppercase tracking-widest mb-2">{f.message}</label>
+                <label htmlFor="message" className="block text-xs text-white/55 mb-2">{f.message}</label>
                 <textarea id="message" name="message" required value={form.message} onChange={handleChange}
                   rows={4} placeholder={f.messagePlaceholder}
                   className={`${fieldClass} resize-none`} />

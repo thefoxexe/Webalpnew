@@ -24,8 +24,7 @@ export default function Pricing() {
         >
           <div>
             <div className="flex items-center gap-2.5 mb-5">
-              <span className="block w-[3px] h-4 bg-accent rounded-full shrink-0" />
-              <span className="text-[11px] font-black uppercase tracking-[0.14em] text-black/50">{t.pricing.label}</span>
+              <span className="text-sm font-medium text-black/50">{t.pricing.label}</span>
             </div>
             <h2 id="pricing-title" className="font-display font-extrabold text-black leading-[0.9] tracking-tight"
               style={{ fontSize: 'clamp(32px, 6vw, 80px)' }}>
@@ -61,7 +60,7 @@ export default function Pricing() {
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       {plan.popular && (
-                        <span className="text-xs text-accent font-bold uppercase tracking-widest block mb-2">
+                        <span className="text-xs text-accent font-bold block mb-2">
                           {t.pricing.popular}
                         </span>
                       )}
@@ -71,7 +70,7 @@ export default function Pricing() {
                       <p className={`text-sm ${plan.popular ? 'text-white/55' : 'text-black/50'}`}>{plan.tagline}</p>
                     </div>
                     <div className="text-right shrink-0">
-                      <p className={`text-xs uppercase tracking-wider mb-0.5 ${plan.popular ? 'text-white/50' : 'text-black/40'}`}>à partir de</p>
+                      <p className={`text-xs mb-0.5 ${plan.popular ? 'text-white/50' : 'text-black/40'}`}>à partir de</p>
                       <p className={`font-display font-extrabold text-2xl leading-none ${plan.popular ? 'text-white' : 'text-black'}`}>
                         CHF {plan.price}
                       </p>
@@ -105,7 +104,7 @@ export default function Pricing() {
                 <div className="hidden md:flex md:items-center gap-0">
                   <div className="w-48 lg:w-56 shrink-0">
                     {plan.popular && (
-                      <span className="text-xs text-accent font-bold uppercase tracking-widest block mb-2">
+                      <span className="text-xs text-accent font-bold block mb-2">
                         {t.pricing.popular}
                       </span>
                     )}
@@ -116,7 +115,7 @@ export default function Pricing() {
                   </div>
 
                   <div className={`w-40 lg:w-44 shrink-0 pl-8 border-l ${plan.popular ? 'border-white/15' : 'border-black/12'}`}>
-                    <p className={`text-xs uppercase tracking-wider mb-1 ${plan.popular ? 'text-white/50' : 'text-black/40'}`}>à partir de</p>
+                    <p className={`text-xs mb-1 ${plan.popular ? 'text-white/50' : 'text-black/40'}`}>à partir de</p>
                     <p className={`font-display font-extrabold leading-none ${plan.popular ? 'text-white' : 'text-black'}`}
                       style={{ fontSize: 'clamp(24px, 2.5vw, 38px)' }}>
                       CHF {plan.price}
@@ -161,7 +160,7 @@ export default function Pricing() {
           transition={{ ...spring, delay: 0.42 }}
           className="bg-[#F5F4F0] rounded-2xl p-7 md:p-8"
         >
-          <p className="text-xs text-black/45 uppercase tracking-widest mb-6">{t.pricing.addonsTitle}</p>
+          <p className="text-xs text-black/45 mb-6">{t.pricing.addonsTitle}</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-0 md:divide-x divide-black/8">
             {t.pricing.addons.map(addon => (
               <div key={addon.name} className="md:px-6 first:md:pl-0 last:md:pr-0 flex items-start gap-2">

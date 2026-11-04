@@ -22,8 +22,7 @@ export default function Process() {
           className="mb-12"
         >
           <div className="flex items-center gap-2.5 mb-5">
-            <span className="block w-[3px] h-4 bg-accent rounded-full shrink-0" />
-            <span className="text-[11px] font-black uppercase tracking-[0.14em] text-black/50">{t.process.label}</span>
+            <span className="text-sm font-medium text-black/50">{t.process.label}</span>
           </div>
           <h2 id="process-title" className="font-display font-extrabold text-black leading-[0.9] tracking-tight"
             style={{ fontSize: 'clamp(32px, 6vw, 80px)' }}>

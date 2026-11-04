@@ -84,7 +84,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                 }`}>
                   <div>
                     <div className="flex items-center justify-between mb-6">
-                      <span className={`text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-full border ${
+                      <span className={`text-[10px] font-mono px-2.5 py-1 rounded-full border ${
                         i === 0 ? 'border-white/10 text-white/35' : 'border-black/8 text-black/35'
                       }`}>
                         {post.category}
@@ -126,7 +126,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
       {/* All other posts */}
       {rest.length > 0 && (
         <div className="max-w-7xl mx-auto px-6 md:px-12 pb-24">
-          {!query && <p className="text-[10px] font-mono text-black/25 uppercase tracking-widest mb-6">— Tous les articles</p>}
+          {!query && <p className="text-[10px] font-mono text-black/25 mb-6">— Tous les articles</p>}
           <div className="border border-black/10 rounded-2xl overflow-hidden bg-white">
             {rest.map((post, i) => (
               <Link

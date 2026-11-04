@@ -25,8 +25,7 @@ export default function About() {
         >
           <div>
             <div className="flex items-center gap-2.5 mb-6">
-              <span className="block w-[3px] h-4 bg-accent rounded-full shrink-0" />
-              <span className="text-[11px] font-black uppercase tracking-[0.14em] text-white/40">{t.about.label}</span>
+              <span className="text-sm font-medium text-white/40">{t.about.label}</span>
             </div>
             <h2 id="about-title" className="font-display font-extrabold text-white leading-[0.88] tracking-tight"
               style={{ fontSize: 'clamp(34px, 7vw, 110px)' }}>
@@ -79,7 +78,6 @@ export default function About() {
                 transition={{ ...spring, delay: 0.32 + i * 0.06 }}
                 className="inline-flex items-center gap-2 border border-white/15 rounded-full px-4 py-2 text-sm text-white/55 hover:text-white/80 hover:border-white/25 transition-colors"
               >
-                <span aria-hidden="true">{v.icon}</span>
                 {v.label}
               </motion.span>
             ))}

@@ -17,7 +17,7 @@ export default function BriefPage() {
       <div className="h-16" />
 
       <div className="max-w-2xl mx-auto px-6 md:px-12 pt-12 pb-4">
-        <p className="text-[11px] text-white/35 uppercase tracking-widest mb-4">— Brief projet</p>
+        <p className="text-[11px] text-white/35 mb-4">— Brief projet</p>
         <h1
           className="font-display font-extrabold text-white leading-[0.9] tracking-tight mb-3"
           style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}

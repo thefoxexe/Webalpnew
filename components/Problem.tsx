@@ -47,7 +47,7 @@ export default function Problem() {
             transition={{ ...spring, delay: 0.3 }}
             className="border border-white/15 rounded-2xl p-7 md:p-8"
           >
-            <p className="text-xs text-white/50 uppercase tracking-widest mb-6">{t.problem.beforeLabel}</p>
+            <p className="text-xs text-white/50 mb-6">{t.problem.beforeLabel}</p>
             <div className="space-y-3.5">
               {t.problem.before.map(item => (
                 <div key={item} className="flex items-center gap-3">
@@ -64,7 +64,7 @@ export default function Problem() {
             transition={{ ...spring, delay: 0.42 }}
             className="border border-accent/30 bg-accent/5 rounded-2xl p-7 md:p-8"
           >
-            <p className="text-xs text-accent/70 uppercase tracking-widest mb-6">{t.problem.afterLabel}</p>
+            <p className="text-xs text-accent/70 mb-6">{t.problem.afterLabel}</p>
             <div className="space-y-3.5">
               {t.problem.after.map(item => (
                 <div key={item} className="flex items-center gap-3">

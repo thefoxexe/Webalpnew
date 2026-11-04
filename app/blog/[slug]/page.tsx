@@ -102,7 +102,7 @@ function BlockRenderer({ block }: { block: Block }) {
         <blockquote className="my-8 px-6 py-6 bg-[#0A0A0A] rounded-2xl">
           <p className="text-white/70 text-base md:text-lg leading-relaxed italic mb-3">{`"${block.text}"`}</p>
           {block.author && (
-            <p className="text-white/35 text-xs font-mono">— {block.author}</p>
+            <p className="text-white/35 text-xs font-mono">{block.author}</p>
           )}
         </blockquote>
       )
@@ -201,7 +201,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
         <div className="max-w-3xl mx-auto px-6 md:px-8 pb-10">
           <div className="rounded-2xl bg-[#0A0A0A] text-white p-7">
-            <p className="text-xs uppercase tracking-[0.12em] text-white/45">Notre service lié</p>
+            <p className="text-sm font-medium text-white/45">Notre service lié</p>
             {isPricing ? (
               <>
                 <p className="font-display font-bold text-2xl mt-2">Nos tarifs, affichés clairement</p>
@@ -236,7 +236,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         {related.length > 0 && (
           <div className="bg-[#F5F4F0] py-16">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
-              <p className="text-[10px] font-mono text-black/30 uppercase tracking-widest mb-8">— Articles similaires</p>
+              <p className="text-sm font-medium text-black/45 mb-8">Articles similaires</p>
               <div className="grid md:grid-cols-2 gap-4">
                 {related.map(p => (
                   <Link key={p.slug} href={`/blog/${p.slug}`} className="group block bg-white border border-black/8 rounded-2xl p-6 hover:border-black/20 hover:shadow-md transition-all">
@@ -259,7 +259,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         {/* Final CTA */}
         <div className="bg-[#0A0A0A] py-20">
           <div className="max-w-3xl mx-auto px-6 text-center">
-            <p className="text-[10px] font-mono text-white/25 uppercase tracking-widest mb-4">{"— Passez à l'action"}</p>
+            <p className="text-[10px] font-mono text-white/25 mb-4">{"Passez à l'action"}</p>
             <h2 className="font-display font-extrabold text-white leading-tight mb-4"
               style={{ fontSize: 'clamp(24px, 3.5vw, 42px)' }}>
               Prêt à appliquer ces conseils à votre site ?

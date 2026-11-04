@@ -49,7 +49,7 @@ const DEADLINE_CONFIG = {
 } as const
 
 const field = "w-full bg-white/6 border border-white/12 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/28 focus:outline-none focus:border-accent/60 transition-colors [color-scheme:dark]"
-const label = "block text-[11px] text-white/45 uppercase tracking-widest mb-2"
+const label = "block text-[11px] text-white/45 mb-2"
 
 export default function BriefForm() {
   const searchParams = useSearchParams()
@@ -142,7 +142,7 @@ export default function BriefForm() {
       <div className="inline-flex items-center gap-3 bg-white/6 border border-white/10 rounded-2xl px-5 py-3.5 mb-12">
         <span className="text-xs text-white/40 font-mono">{plan.emoji}</span>
         <div>
-          <p className="text-[11px] text-white/40 uppercase tracking-widest leading-none mb-0.5">Plan sélectionné</p>
+          <p className="text-[11px] text-white/40 leading-none mb-0.5">Plan sélectionné</p>
           <p className="text-sm font-bold text-white leading-none">{plan.name} <span className="text-accent">{plan.price}</span></p>
         </div>
         <Link href="/#tarifs" className="ml-2 text-[11px] text-white/30 hover:text-white/60 transition-colors">Changer →</Link>
@@ -316,7 +316,7 @@ export default function BriefForm() {
 function Section({ number, title }: { number: string; title: string }) {
   return (
     <div className="border-t border-white/8 pt-10 mt-10 mb-6">
-      <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">{number} —</p>
+      <p className="text-[11px] text-white/30 mb-1">{number} —</p>
       <h2 className="font-display font-bold text-white text-xl">{title}</h2>
     </div>
   )

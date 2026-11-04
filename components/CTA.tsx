@@ -21,7 +21,7 @@ export default function CTA() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ type: 'spring', stiffness: 220, damping: 22 }}
           >
-            <p className="text-xs text-[#0A0A0A]/45 uppercase tracking-widest mb-5">{t.cta.badge}</p>
+            <p className="text-xs text-[#0A0A0A]/45 mb-5">{t.cta.badge}</p>
             <h2 className="font-display font-extrabold text-[#0A0A0A] leading-[0.92] tracking-tight mb-4"
               style={{ fontSize: 'clamp(32px, 6vw, 80px)' }}>
               {t.cta.h2a}<br />

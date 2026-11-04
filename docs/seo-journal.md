@@ -155,6 +155,17 @@ Variantes proposées pour l'accueil (la n°1 est en place) :
 
 ---
 
+### Changements du 4 novembre 2026 (demandes de Bastien)
+- Hero : panneau de droite (« Réponse sous 24h », Sion, 24h, CHF 690, téléphone) et mini-infos mobiles retirés.
+- Processus : plus de « maquettes Figma », uniquement les étapes réellement faites.
+- Projets : plus aucun « résultat » affiché (MRR, E-com live, accès 100 %, réservations 24/7…), remplacé par le type de projet.
+- Avis : présentés comme avis Google, les 4 avis sont maintenant tous dans le HTML (avant : un seul à la fois dans un carrousel).
+- FAQ : toutes les réponses sont dans le HTML (avant : seulement la question ouverte), nouvelle question sur l'IA.
+- Nouvelle section « Oui, on utilise l'IA » sur l'accueil, et bloc IA sur `/tarifs`.
+- Bandeau défilant sous le hero (services, technologies, Sion, 24h, dès CHF 690).
+- Animations d'apparition au scroll lisibles sans JavaScript (le texte reste dans le HTML et visible si le JS ne tourne pas).
+- Style : traits verts et étiquettes en majuscules espacées retirés, émojis retirés, bulle WhatsApp automatique retirée, composant de faux logos clients supprimé.
+
 ## 5. Jalons (changements mis en ligne)
 
 Format : `AAAA-MM-JJ · type · ce qui a changé · pages touchées`
@@ -168,6 +179,7 @@ AAAA-MM-JJ · contenu · 5 pages de services + /tarifs + /contact + /realisation
 AAAA-MM-JJ · contenu · retrait des chiffres non vérifiés, fausse urgence, faux compteurs, délai 24h partout · / , blog
 AAAA-MM-JJ · technique · performance accueil (hero immédiat, sans loader ni flous) · /
 AAAA-MM-JJ · SEO · blog : titles sans 2025 ni doublon, fausses dates retirées, lien service sous chaque article · /blog/*
+AAAA-MM-JJ · contenu · section IA, avis Google, FAQ et avis lisibles par Google, hero simplifié · /
 ```
 
 ---

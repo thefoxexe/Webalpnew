@@ -37,7 +37,7 @@ export default function BlogPage() {
 
       {/* Hero */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-16 pb-10">
-        <p className="text-[10px] font-mono text-black/30 tracking-[0.2em] uppercase mb-5">— Ressources</p>
+        <p className="text-sm font-medium text-black/45 mb-5">Ressources</p>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <h1
             className="font-display font-extrabold text-black leading-[0.92] tracking-tight"
@@ -57,7 +57,7 @@ export default function BlogPage() {
       {/* Bottom CTA */}
       <div className="bg-[#0A0A0A] py-20">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="text-[10px] font-mono text-white/25 uppercase tracking-widest mb-4">{"— Passez à l'action"}</p>
+          <p className="text-[10px] font-mono text-white/25 mb-4">{"Passez à l'action"}</p>
           <h2
             className="font-display font-extrabold text-white leading-tight mb-4"
             style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}
