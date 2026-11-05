@@ -1,0 +1,16 @@
+WEBALP — SÉRIE 3 : 10 CAROUSELS INSTAGRAM (1080 × 1350, 4:5)
+
+11 Oui, on utilise l'IA            16 Ce qui est inclus dans votre site
+12 Anatomie d'une page d'accueil   17 Réalisation : MonHygiène
+13 Fiche Google : 6 réglages       18 Réalisation : Drone Valais Production
+14 Avant d'appeler une agence      19 5 idées reçues
+15 Vitrine, boutique ou appli ?    20 Le test des 60 secondes
+
+Chaque dossier : slides PNG dans l'ordre + description.txt (légende, hashtags, 1er commentaire).
+Style aligné sur le nouveau site : vouvoiement, pas de chiffres inventés, prix réels (690 / 1'490 / 1'990 / 49 par mois).
+
+À vérifier :
+- Carousel 11 : la liste d'outils IA (ChatGPT, Claude, Cursor, Gemini, GitHub Copilot, Perplexity, v0) doit correspondre à ce que vous utilisez vraiment.
+- Carousel 12 : « Menuiserie Exemple » est un exemple fictif, signalé comme tel.
+- Carousels 12, 19 et 20 promettent « un retour gratuit » sur le site du client : à tenir.
+- Carousel 13 : « Fiche Google optimisée » est indiquée comme incluse dans la formule Croissance (comme sur webalp.ch).
