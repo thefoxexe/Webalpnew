@@ -9,6 +9,7 @@ import Pricing from '@/components/Pricing'
 import AiSection from '@/components/AiSection'
 import FactsTicker from '@/components/FactsTicker'
 import Testimonials from '@/components/Testimonials'
+import Partners from '@/components/Partners'
 import About from '@/components/About'
 import FAQ from '@/components/FAQ'
 import Contact from '@/components/Contact'
@@ -48,6 +49,7 @@ export default function Home() {
       <Pricing />
       <Divider />
       <Testimonials />
+      <Partners />
 
       <About />
 

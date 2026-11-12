@@ -224,6 +224,15 @@ export const translations = {
         { quote: 'Notre nouvelle application web est fluide, moderne et pensée pour l\'utilisateur. Bastien et Noé ont su allier efficacité, écoute et qualité. Le résultat est au-delà de nos attentes !', author: 'Cook\'Eazy', role: 'Application culinaire', initial: 'C' },
       ],
     },
+    partners: {
+      label: 'Partenaire',
+      h2a: 'On avance avec',
+      h2b: 'Cantia.',
+      intro: 'Cantia est un logiciel suisse de gestion pour les artisans et les PME du bâtiment. Devis, factures QR, planning, rapports et heures au même endroit, du devis à la facture.',
+      facts: ['Données hébergées à Zurich', 'Facturation QR suisse', 'Français, allemand, italien'],
+      cta: 'Découvrir Cantia',
+      footer: 'Partenaire',
+    },
     about: {
       label: 'L\'équipe',
       h2a: 'Notre studio.',
@@ -554,6 +563,15 @@ export const translations = {
         { quote: 'Very competent, motivated, understanding! Delivered beyond what we hoped for! Magnificent! Thank you WebAlp!!', author: 'Jose Gustavsson', role: 'Private client', initial: 'J' },
         { quote: 'Our new web app is smooth, modern and user-focused. Bastien and Noé combined efficiency, listening, and quality. The result is beyond our expectations!', author: 'Cook\'Eazy', role: 'Culinary app', initial: 'C' },
       ],
+    },
+    partners: {
+      label: 'Partner',
+      h2a: 'We work alongside',
+      h2b: 'Cantia.',
+      intro: 'Cantia is Swiss management software for tradespeople and construction SMEs. Quotes, QR invoices, planning, reports and hours in one place, from quote to invoice.',
+      facts: ['Data hosted in Zurich', 'Swiss QR invoicing', 'French, German, Italian'],
+      cta: 'Discover Cantia',
+      footer: 'Partner',
     },
     about: {
       label: 'The team',

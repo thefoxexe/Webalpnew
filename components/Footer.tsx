@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Logo from '@/components/Logo'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -153,6 +154,14 @@ export default function Footer() {
             <Link href="/confidentialite" className="text-sm text-white/40 hover:text-white/70 transition-colors">
               {t.footer.privacy}
             </Link>
+            <div className="mt-4 flex flex-col gap-2 md:items-end">
+              <span className="text-xs text-white/35">{t.partners.footer}</span>
+              <a href="https://cantia.ch" target="_blank" rel="noopener"
+                className="inline-flex items-center rounded-full bg-white px-4 py-2 opacity-80 hover:opacity-100 transition-opacity w-fit"
+                aria-label="Cantia, partenaire de WebAlp">
+                <Image src="/partners/cantia.png" alt="Cantia" width={1036} height={192} className="h-4 w-auto" />
+              </a>
+            </div>
             <p className="text-xs text-white/30 mt-2">
               {t.footer.rights.replace('{year}', String(new Date().getFullYear()))}
             </p>
